@@ -1,6 +1,23 @@
-# dawn
-procedurally generated socio-genetic simulation
-______________
+dawn
+==================
+
+Approach
+-------
+
+
+Points for development:
+*
+*
+
+Instructions
+-------
+
+* Clone this repository
+* cd dawn
+* Run the command 'bundle' in the project directory to ensure you have all the gems
+
+User stories
+--------
 
 ```
 as an observer
@@ -31,3 +48,29 @@ as an observer
 so that the new cells are genetic offspring
 the new cell will have attributes that are a mix of the parent attributes
 ```
+
+Technologies Used:
+--------
+*
+
+FYI:
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+####Things you may want to cover:
+
+* version
+
+* System dependencies
+
+* Configuration
+
+* Database creation/initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
