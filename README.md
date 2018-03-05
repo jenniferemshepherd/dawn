@@ -2,14 +2,15 @@
 
 ## process
 
-`Placeholder`
+1. listed user interactions and defined mvp and v2 interactions.
+1. wrote user stories
 
 ## getting started
 
 * `git clone` this repository.
 * `cd` into the cloned directory.
 * `npm install` to install dependencies for development.
-* `open` (OSX) or `xdg-open` (Linux) specRunner.html to run unit tests.
+* `open specRunner.html` (OSX) or `xdg-open specRunner.html` (Linux) to run unit tests.
 * to be continued
 
 ## user stories
@@ -63,7 +64,7 @@ the new cell will have attributes that are a mix of the parent attributes
 * [React.js](https://reactjs.org/) for UI.
 * [Jasmine](https://jasmine.github.io/) for unit and integration testing.
 * [Nightwatch.js](http://nightwatchjs.org/) for front-end UI testing.
-* [webpack](https://webpack.js.org/) for bundling.
+* [webpack](https://webpack.js.org/) for bundling on deployment.
 
 <!-- ####Things you may want to cover:
 
