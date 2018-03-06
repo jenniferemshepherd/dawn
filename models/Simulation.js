@@ -2,10 +2,10 @@
 
 (function(exports) {
 
-  function Simulation(engine, render, world) {
+  function Simulation(engine, render, worldModule) {
     this._engine = engine;
     this._render = render;
-    this._world = world;
+    this._worldModule = worldModule;
   };
 
   Simulation.prototype.engine = function() {
@@ -17,7 +17,11 @@
   };
 
   Simulation.prototype.world = function() {
-    return this._world;
+    return this._engine.world;
+  };
+
+  Simulation.prototype.addToWorld = function (cell) {
+    this._worldModule.add(this.world(), [cell.body()])
   };
 
   exports.Simulation = Simulation;
