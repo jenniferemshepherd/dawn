@@ -2,19 +2,14 @@
 
 (function(exports) {
 
-  function Cell(x, y) {
-    this._x = x;
-    this._y = y;
+  function Cell(body) {
+    this._body = body;
   };
 
-  Cell.prototype.x = function(){
-    return this._x;
+  Cell.prototype.body = function() {
+    return this._body;
   };
 
-  Cell.prototype.y = function(){
-    return this._y;
-  };
+  exports.Cell = Cell;
 
-exports.Cell = Cell;
-
-})(this)
+})(this);
