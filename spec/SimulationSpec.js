@@ -11,7 +11,7 @@ describe("Simulation", function() {
     add: function() { return }
   };
   var cell = {
-    body: function() { return }
+    body: function() { return "I am a body!" }
   };
 
   beforeEach(function() {
@@ -38,7 +38,7 @@ describe("Simulation", function() {
     });
 
     it("called add() on its world module", function() {
-      expect(worldModule.add).toHaveBeenCalled();
+      expect(worldModule.add).toHaveBeenCalledWith(ourWorld, "I am a body!");
     });
 
   });

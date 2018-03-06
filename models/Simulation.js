@@ -21,7 +21,7 @@
   };
 
   Simulation.prototype.addToWorld = function (cell) {
-    this._worldModule.add(this.world(), [cell.body()])
+    this._worldModule.add(this.world(), cell.body())
   };
 
   exports.Simulation = Simulation;
