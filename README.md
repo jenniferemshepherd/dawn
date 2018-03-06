@@ -3,12 +3,12 @@
 ## process
 
 1. listed user interactions and defined mvp and v2 interactions.
-1. wrote user stories
+2. wrote user stories
 
 ## getting started
 
 * `git clone` this repository.
-* `cd` into the cloned directory.
+* `cd dawn`.
 * `npm install` to install dependencies for development.
 * `open specRunner.html` (OSX) or `xdg-open specRunner.html` (Linux) to run unit tests.
 * to be continued
@@ -65,6 +65,12 @@ the new cell will have attributes that are a mix of the parent attributes
 * [Jasmine](https://jasmine.github.io/) for unit and integration testing.
 * [Nightwatch.js](http://nightwatchjs.org/) for front-end UI testing.
 * [webpack](https://webpack.js.org/) for bundling on deployment.
+
+# Points for development:
+* sounds
+* tbc
+
+
 
 <!-- ####Things you may want to cover:
 
