@@ -9,11 +9,13 @@
     <script src="./node_modules/matter-js/build/matter.js"></script>
     <script src="./models/Cell.js"></script>
     <script src="./models/Simulation.js"></script>
+    <script src="./models/Engine.js"></script>
 
     <script>
-      var myEngine = Matter.Engine.create();
+      var myEngine = new Engine();
+      myEngine.disableGravity();
       var myRenderer = Matter.Render.create({element: document.body, engine: myEngine});
-      var MvpSimulation = new Simulation(myEngine, myRenderer, Matter.World);
+      var MvpSimulation = new Simulation(myEngine.matterEngine(), myRenderer, Matter.World);
       var firstCell = new Cell(Matter.Bodies.circle(400, 200, 80, 80));
       MvpSimulation.addToWorld(firstCell);
       Matter.Engine.run(myEngine);
