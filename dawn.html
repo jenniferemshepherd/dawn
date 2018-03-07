@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>dawn</title>
+    <link href="./public/dawn_stylesheet.css" type="text/css" rel="stylesheet">
   </head>
   <body>
 
@@ -12,11 +13,11 @@
     <script src="./models/DecoratedEngine.js"></script>
 
     <script>
-      var myEngine = new Engine();
+      var myEngine = new DecoratedEngine();
       myEngine.disableGravity();
       var myRenderer = Matter.Render.create({element: document.body, engine: myEngine.matterEngine()});
       var MvpSimulation = new Simulation(myEngine.matterEngine(), myRenderer, Matter.World);
-      var firstCell = new Cell(Matter.Bodies.circle(400, 200, 80, 80));
+      var firstCell = new Cell(Matter.Bodies.circle(400, 200, 40, 40));
       MvpSimulation.addToWorld(firstCell);
       Matter.Engine.run(myEngine.matterEngine());
       Matter.Render.run(myRenderer);
