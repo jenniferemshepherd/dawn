@@ -1,6 +1,6 @@
 'use strict';
 
-describe("Engine", function() {
+describe("DecoratedEngine", function() {
   var engine;
   var ourGravity = {
     y: 30
@@ -13,7 +13,7 @@ describe("Engine", function() {
   };
 
   beforeEach(function() {
-    engine = new Engine(matterEngine)
+    engine = new DecoratedEngine(matterEngine)
   });
 
   it("stores an instance of matterEngine", function() {
