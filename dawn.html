@@ -16,6 +16,7 @@
       var myEngine = new DecoratedEngine();
       myEngine.disableGravity();
       var myRenderer = Matter.Render.create({element: document.body, engine: myEngine.matterEngine()});
+      var ourWorld = Matter.World;
       var MvpSimulation = new Simulation(myEngine.matterEngine(), myRenderer, ourWorld, Matter.Events, Matter.Body);
       MvpSimulation.addWalls()
       var firstCell = new Cell(Matter.Bodies.circle(50, 200, 10, 10));
