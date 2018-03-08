@@ -19,11 +19,10 @@
     <script>
       // instantiate our objects
       var decoratedEngine = new DecoratedEngine();
-      decoratedEngine.disableGravity(); // should go in setup
       var renderer = Matter.Render.create({element: document.body, engine: decoratedEngine.matterEngine()});
       var eventController = new EventController();
       var animator = new Animator();
-      var simulation = new Simulation(decoratedEngine.matterEngine(), renderer);
+      var simulation = new Simulation(decoratedEngine, renderer);
       simulation.setup()
       var cellRepository = new CellRepository();
       // need a cell factory to remove the next 4 lines
@@ -41,11 +40,10 @@
       cellRepository.add(thirdCell);
 
       // register our listener
-      eventController.register(decoratedEngine.matterEngine(), 'afterUpdate', animator, cellRepository)
+      eventController.register(decoratedEngine.matterEngine(), 'afterUpdate', animator, cellRepository);
 
       // run things
-      Matter.Engine.run(decoratedEngine.matterEngine());
-      Matter.Render.run(renderer);
+      simulation.begin();
     </script>
 
     <!-- <script>
