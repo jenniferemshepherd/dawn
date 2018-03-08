@@ -14,7 +14,7 @@
 
     <script>
       var myEngine = new DecoratedEngine();
-      // myEngine.disableGravity();
+      myEngine.disableGravity();
       var myRenderer = Matter.Render.create({element: document.body, engine: myEngine.matterEngine()});
       var MvpSimulation = new Simulation(myEngine.matterEngine(), myRenderer, ourWorld, Matter.Events, Matter.Body);
       MvpSimulation.addWalls()
