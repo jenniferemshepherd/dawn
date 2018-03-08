@@ -13,7 +13,7 @@
 
   Cell.prototype.gait = function() {
     return this._gait;
-  }
+  };
 
   exports.Cell = Cell;
 

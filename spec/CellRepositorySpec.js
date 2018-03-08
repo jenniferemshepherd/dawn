@@ -4,7 +4,6 @@ describe("CellRepository", function() {
   var cellRepository;
   var cell;
 
-
   beforeEach(function() {
     cellRepository = new CellRepository();
   });
