@@ -16,11 +16,15 @@
       var myEngine = new DecoratedEngine();
       // myEngine.disableGravity();
       var myRenderer = Matter.Render.create({element: document.body, engine: myEngine.matterEngine()});
-      var ourWorld = Matter.World
-      var MvpSimulation = new Simulation(myEngine.matterEngine(), myRenderer, ourWorld);
+      var MvpSimulation = new Simulation(myEngine.matterEngine(), myRenderer, ourWorld, Matter.Events, Matter.Body);
       MvpSimulation.addWalls()
-      var firstCell = new Cell(Matter.Bodies.circle(400, 200, 40, 40));
+      var firstCell = new Cell(Matter.Bodies.circle(50, 200, 10, 10));
+      var secondCell = new Cell(Matter.Bodies.circle(150, 200, 10, 20));
+      var thirdCell = new Cell(Matter.Bodies.circle(300, 200, 10, 40));
       MvpSimulation.addToWorld(firstCell);
+      MvpSimulation.addToWorld(secondCell);
+      MvpSimulation.addToWorld(thirdCell);
+      MvpSimulation.listenForUpdate();
       Matter.Engine.run(myEngine.matterEngine());
       Matter.Render.run(myRenderer);
     </script>

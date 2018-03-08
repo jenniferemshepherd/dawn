@@ -3,23 +3,42 @@ var Engine = Matter.Engine,
     Render = Matter.Render,
     World = Matter.World,
     Bodies = Matter.Bodies;
+    Body = Matter.Body;
+    Vector = Matter.Vector;
+    Events = Matter.Events;
 
 // create an engine
 var engine = Engine.create();
 
+engine.world.gravity.y = 0
+
 // create a renderer
 var render = Render.create({
     element: document.body,
-    engine: engine
+    engine: engine,
+    options: {
+    width: 1200,
+    height: 800
+  }
 });
 
 // create two boxes and a ground
-var boxA = Bodies.circle(400, 200, 80, 80);
-var boxB = Bodies.rectangle(450, 50, 80, 80);
-var ground = Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
+var boxA = Bodies.circle(780, 700, 20, 20);
+var boxB = Bodies.circle(400, 600, 20, 20);
+var ground = Bodies.rectangle(600, 800, 1200, 1, { isStatic: true });
+var wall1 = Bodies.rectangle(0, 400, 1, 1200, { isStatic: true });
+var wall2 = Bodies.rectangle(1200, 400, 1, 1200, { isStatic: true });
+var ceiling = Bodies.rectangle(600, 0, 1200, 1, { isStatic: true });
 
 // add all of the bodies to the world
-World.add(engine.world, [boxA, boxB, ground]);
+World.add(engine.world, [boxA, boxB, wall1, wall2, ground, ceiling]);
+
+Events.on(engine, 'afterUpdate', function(event) {
+  var force1 = Vector.create(0.005 * (0.5 -  Math.random()), 0.005 * (0.5 - Math.random()));
+  var force2 = Vector.create(0.005 * (0.5 -  Math.random()), 0.005 * (0.5 - Math.random()));
+  Body.applyForce(boxA, boxA.position, force1)
+  Body.applyForce(boxB, boxB.position, force2)
+});
 
 // run the engine
 Engine.run(engine);
