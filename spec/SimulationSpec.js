@@ -43,4 +43,17 @@ describe("Simulation", function() {
 
   });
 
+  describe("#addWalls()", function() {
+
+    beforeEach(function() {
+      spyOn(worldModule, 'add');
+      simulation.addWalls();
+    });
+
+    it("calls add() on its world module", function() {
+      expect(worldModule.add).toHaveBeenCalled();
+    });
+
+  });
+
 });

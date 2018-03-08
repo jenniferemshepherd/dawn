@@ -26,6 +26,19 @@
   Simulation.prototype.addToWorld = function (cell) {
     this._worldModule.add(this.world(), cell.body())
   };
+  
+  Simulation.prototype.setup = function() {
+    this.addWalls();
+  };
+
+
+  Simulation.prototype.addWalls = function() {
+    this._worldModule.add(this.world(), [Matter.Bodies.rectangle(400, -50, 1200, 100, { isStatic: true }),
+                                         Matter.Bodies.rectangle(850, 300, 100, 600, { isStatic: true }),
+                                         Matter.Bodies.rectangle(400, 650, 1200, 100, { isStatic: true }),
+                                         Matter.Bodies.rectangle(-50, 300, 100, 600, { isStatic: true })]);
+    // top, right, bottom, left
+  };
 
   Simulation.prototype.listenForUpdate = function () {
     this._eventsModule.on(this._engine, 'afterUpdate', function(event) {
