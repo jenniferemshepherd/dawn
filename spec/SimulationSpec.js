@@ -58,14 +58,50 @@ describe("Simulation", function() {
   describe("#addWalls()", function() {
 
     beforeEach(function() {
-      spyOn(worldModule, 'add');
+      spyOn(mockWorldModule, 'add');
       simulation.addWalls();
     });
 
     it("calls add() on its world module", function() {
-      expect(worldModule.add).toHaveBeenCalled();
+      expect(mockWorldModule.add).toHaveBeenCalled();
     });
 
   });
+
+  describe("#setup()", function() {
+
+    beforeEach(function() {
+      spyOn(simulation, 'addWalls');
+      spyOn(mockDecoratedEngine, 'disableGravity');
+      simulation.setup();
+    });
+
+    it("calls addWalls()", function() {
+      expect(simulation.addWalls).toHaveBeenCalled();
+    });
+
+    it("calls disableGravity() on its decoratedEngine", function() {
+      expect(mockDecoratedEngine.disableGravity).toHaveBeenCalled();
+    });
+
+  });
+
+  describe("#run()", function() {
+
+    beforeEach(function() {
+      spyOn(mockEngineModule, 'run')
+      spyOn(mockRenderModule, 'run')
+      simulation.run();
+    });
+
+    it("calls run on its engine module", function() {
+      expect(mockEngineModule.run).toHaveBeenCalledWith(mockMatterEngine);
+    });
+
+    it("calls run on its render module", function() {
+      expect(mockRenderModule.run).toHaveBeenCalledWith(mockRenderer);
+    });
+
+  })
 
 });
