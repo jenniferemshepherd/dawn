@@ -5,10 +5,16 @@ describe("DecoratedRender", function() {
   var matterRender = {}
 
   beforeEach(function() {
-    decoratedRender = new DecoratedRender(matterRender)
+    decoratedRender = new DecoratedRender()
   });
 
-  it("stores an instance of matterRender", function() {
-    expect(decoratedRender.matterRender()).toEqual(matterRender)
+  describe("#createRender", function() {
+
+    it("creates a value for the property _matterRender", function() {
+      decoratedRender.createRender()
+      expect(decoratedRender.matterRender()).not.toEqual(null)
+    });
+
   });
+
 });
