@@ -5,9 +5,11 @@ describe("DecoratedEngine", function() {
   var ourGravity = {
     y: 30
   };
+
   var ourWorld = {
     gravity: ourGravity
   };
+
   var matterEngine = {
     world: ourWorld
   };
@@ -22,8 +24,8 @@ describe("DecoratedEngine", function() {
 
   describe('#disableGravity', function() {
     it("sets gravity to 0", function() {
-      engine.disableGravity()
-      expect(engine.matterEngine().world.gravity.y).toEqual(0)
+      engine.disableGravity();
+      expect(engine.matterEngine().world.gravity.y).toEqual(0);
     });
   });
 

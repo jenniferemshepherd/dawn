@@ -18,7 +18,7 @@ describe("EventController", function() {
     spyOn(mockEventsModule, 'on');
   });
 
-  it("calls on() on the eventsModule with three arguments", function() {
+  it("calls on() on the events module", function() {
     eventController.register(mockEngine, 'afterUpdate', mockAnimator, mockCellRepository);
     expect(mockEventsModule.on).toHaveBeenCalled();
   });

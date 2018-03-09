@@ -2,43 +2,55 @@
 
 describe("Simulation", function() {
   var simulation;
-  var ourWorld;
-  var engine = {
-    world: ourWorld
+  var mockWorld;
+  var mockMatterEngine = {
+    world: mockWorld
   };
-  var render;
-  var worldModule = {
+  var mockDecoratedEngine = {
+    matterEngine: function() { return mockMatterEngine },
+    disableGravity: function() { return }
+  };
+  var mockRenderer;
+  var mockWorldModule = {
     add: function() { return }
   };
-  var cell = {
+  var mockCell = {
     body: function() { return "I am a body!" }
+  };
+  var mockEngineModule = {
+    run: function() { return }
+  };
+  var mockRenderModule = {
+    run: function() { return }
   };
 
   beforeEach(function() {
-    simulation = new Simulation(engine, render, worldModule);
+    simulation = new Simulation(mockDecoratedEngine, mockRenderer, mockWorldModule, mockEngineModule, mockRenderModule);
   });
 
-  it("has an engine", function() {
-    expect(simulation.engine()).toEqual(engine);
-  });
+  describe("initially", function() {
+    it("has a decorated engine", function() {
+      expect(simulation.decoratedEngine()).toEqual(mockDecoratedEngine);
+    });
 
-  it("has a render", function() {
-    expect(simulation.render()).toEqual(render);
-  });
+    it("has a renderer", function() {
+      expect(simulation.renderer()).toEqual(mockRenderer);
+    });
 
-  it("has a world", function() {
-    expect(simulation.world()).toEqual(ourWorld);
-  });
+    it("has a world", function() {
+      expect(simulation.world()).toEqual(mockWorld);
+    });
+  })
 
   describe("#addToWorld()", function() {
 
     beforeEach(function() {
-      spyOn(worldModule, 'add');
-      simulation.addToWorld(cell);
+      spyOn(mockWorldModule, 'add');
+      simulation.addToWorld(mockCell);
     });
 
-    it("called add() on its world module", function() {
-      expect(worldModule.add).toHaveBeenCalledWith(ourWorld, "I am a body!");
+    it("calls add() on its world module", function() {
+      expect(mockWorldModule.add).toHaveBeenCalledWith(mockWorld, "I am a body!");
     });
 
   });
@@ -46,14 +58,50 @@ describe("Simulation", function() {
   describe("#addWalls()", function() {
 
     beforeEach(function() {
-      spyOn(worldModule, 'add');
+      spyOn(mockWorldModule, 'add');
       simulation.addWalls();
     });
 
     it("calls add() on its world module", function() {
-      expect(worldModule.add).toHaveBeenCalled();
+      expect(mockWorldModule.add).toHaveBeenCalled();
     });
 
   });
+
+  describe("#setup()", function() {
+
+    beforeEach(function() {
+      spyOn(simulation, 'addWalls');
+      spyOn(mockDecoratedEngine, 'disableGravity');
+      simulation.setup();
+    });
+
+    it("calls addWalls()", function() {
+      expect(simulation.addWalls).toHaveBeenCalled();
+    });
+
+    it("calls disableGravity() on its decoratedEngine", function() {
+      expect(mockDecoratedEngine.disableGravity).toHaveBeenCalled();
+    });
+
+  });
+
+  describe("#run()", function() {
+
+    beforeEach(function() {
+      spyOn(mockEngineModule, 'run')
+      spyOn(mockRenderModule, 'run')
+      simulation.run();
+    });
+
+    it("calls run on its engine module", function() {
+      expect(mockEngineModule.run).toHaveBeenCalledWith(mockMatterEngine);
+    });
+
+    it("calls run on its render module", function() {
+      expect(mockRenderModule.run).toHaveBeenCalledWith(mockRenderer);
+    });
+
+  })
 
 });

@@ -8,9 +8,8 @@ describe("Gait", function() {
   });
 
   describe("#calculate", function() {
-  it("returns a number", function() {
-    expect(gait.calculate()).toEqual(jasmine.any(Number))
+    it("returns a number", function() {
+      expect(gait.calculate()).toEqual(jasmine.any(Number));
+    });
   });
-});
-
 });

@@ -3,7 +3,7 @@
 (function(exports) {
 
   function CellRepository() {
-    this._store = []
+    this._store = [];
   };
 
   CellRepository.prototype.store = function() {
@@ -11,7 +11,7 @@
   };
 
   CellRepository.prototype.add = function(cell) {
-    this._store.push(cell)
+    this._store.push(cell);
   };
 
   exports.CellRepository = CellRepository;
