@@ -3,22 +3,34 @@
 describe("CellFactory", function() {
   var cellFactory;
   var cell;
+  var simulation = {
+    addToWorld: function() { return }
+  };
   var cellRepository = {
     add: function() { return }
   };
 
-  beforeEach(function() {
-    cellFactory = new CellFactory();
-  });
+  describe("#create", function() {
 
-  it("can create a cell", function() {
-    expect(cellFactory.create(cellRepository).body().type).toEqual('body')
-  });
+    beforeEach(function() {
+      cellFactory = new CellFactory(simulation);
+    });
 
-  it("stores it in the repository", function() {
-    spyOn(cellRepository, 'add')
-    cellFactory.create(cellRepository);
-    expect(cellRepository.add).toHaveBeenCalled();
+    it("can create a cell", function() {
+      expect(cellFactory.create(cellRepository).body().type).toEqual('body');
+    });
+
+    it("stores it in the repository", function() {
+      spyOn(cellRepository, 'add');
+      cellFactory.create(cellRepository);
+      expect(cellRepository.add).toHaveBeenCalled();
+    });
+
+    it("adds the cell to the world", function() {
+      spyOn(simulation, 'addToWorld');
+      cellFactory.create(cellRepository);
+      expect(simulation.addToWorld).toHaveBeenCalled();
+    });
   });
 
 });
