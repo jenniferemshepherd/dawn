@@ -10,7 +10,9 @@ describe("Simulation", function() {
     matterEngine: function() { return mockMatterEngine },
     disableGravity: function() { return }
   };
-  var mockRenderer;
+  var mockRenderer = {
+    matterRender: function() { return }
+  }
   var mockWorldModule = {
     add: function() { return }
   };
@@ -99,7 +101,7 @@ describe("Simulation", function() {
     });
 
     it("calls run on its render module", function() {
-      expect(mockRenderModule.run).toHaveBeenCalledWith(mockRenderer);
+      expect(mockRenderModule.run).toHaveBeenCalledWith(mockRenderer.matterRender());
     });
 
   })
