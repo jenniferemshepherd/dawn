@@ -23,22 +23,29 @@ var render = Render.create({
 });
 
 // create two boxes and a ground
-var boxA = Bodies.circle(780, 700, 20, 20);
-var boxB = Bodies.circle(400, 600, 20, 20);
+var boxA = Bodies.circle(780, 700, 100, 100);
+var boxB = Bodies.circle(400, 600, 150, 150);
 var ground = Bodies.rectangle(600, 800, 1200, 1, { isStatic: true });
 var wall1 = Bodies.rectangle(0, 400, 1, 1200, { isStatic: true });
 var wall2 = Bodies.rectangle(1200, 400, 1, 1200, { isStatic: true });
 var ceiling = Bodies.rectangle(600, 0, 1200, 1, { isStatic: true });
 
 // add all of the bodies to the world
-World.add(engine.world, [boxA, boxB, wall1, wall2, ground, ceiling]);
 
 Events.on(engine, 'afterUpdate', function(event) {
-  var force1 = Vector.create(0.005 * (0.5 -  Math.random()), 0.005 * (0.5 - Math.random()));
-  var force2 = Vector.create(0.005 * (0.5 -  Math.random()), 0.005 * (0.5 - Math.random()));
+  var force1 = Vector.create(0.1 * (0.5 -  Math.random()), 0.1 * (0.5 - Math.random()));
+  var force2 = Vector.create(0.1 * (0.5 -  Math.random()), 0.1 * (0.5 - Math.random()));
   Body.applyForce(boxA, boxA.position, force1)
   Body.applyForce(boxB, boxB.position, force2)
 });
+
+Events.on(engine, 'collisionActive', function(event) {
+  if (event.pairs.length > 0) {
+      console.log(event.pairs)
+  }
+})
+
+World.add(engine.world, [boxA, boxB, wall1, wall2, ground, ceiling]);
 
 // run the engine
 Engine.run(engine);
