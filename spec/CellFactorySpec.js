@@ -21,7 +21,4 @@ describe("CellFactory", function() {
     expect(cellRepository.add).toHaveBeenCalled();
   });
 
-  it("can respond to an event", function() {
-
-  });
 });
