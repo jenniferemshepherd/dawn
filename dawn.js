@@ -1,6 +1,6 @@
 // instantiate our objects
 var decoratedEngine = new DecoratedEngine();
-var renderer = Matter.Render.create({element: document.body, engine: decoratedEngine.matterEngine()});
+var renderer = new DecoratedRender();
 var eventController = new EventController();
 var animator = new Animator();
 var simulation = new Simulation(decoratedEngine, renderer);
