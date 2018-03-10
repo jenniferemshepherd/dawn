@@ -32,4 +32,5 @@ describe("CellFactory", function() {
       expect(simulation.addToWorld).toHaveBeenCalled();
     });
   });
+
 });

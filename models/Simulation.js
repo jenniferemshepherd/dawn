@@ -48,7 +48,7 @@
 
   Simulation.prototype.run = function() {
     this._engineModule.run(this._decoratedEngine.matterEngine());
-    this._renderModule.run(this._renderer);
+    this._renderModule.run(this._renderer.matterRender());
   };
 
   exports.Simulation = Simulation;
