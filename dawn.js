@@ -17,6 +17,7 @@ cellFactory.create(cellRepository)
 
 // register our listeners
 eventController.register(decoratedEngine.matterEngine(), 'afterUpdate', animator, cellRepository);
+eventController.register(decoratedEngine.matterEngine(), 'collisionStart', cellFactory, cellRepository);
 
 // run things
 simulation.setup()
