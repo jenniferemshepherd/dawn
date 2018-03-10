@@ -1,8 +1,33 @@
+html {
+  font-size: 14px;
+}
+
 body {
   display: flex;
   justify-content: center;
+  align-content: center;
   align-items: center;
   height: 100vh;
   background-image: url('./resources/cell9.png');
   background-size: cover;
+}
+
+.main_container {
+  margin-top: -1em;
+  text-align: center;
+}
+
+h1 {
+  margin-top: -0.3em;
+  font-family: 'Comfortaa', cursive;
+  font-size: 10em;
+  background: -webkit-linear-gradient(#FFFC69, #55ABBD);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#canvas_container {
+  margin-top: -3em;
+  height: 600px;
+  width: 800px;
 }
