@@ -2,10 +2,10 @@
 var decoratedEngine = new DecoratedEngine();
 var decoratedRenderer = new DecoratedRender();
 var eventController = new EventController();
-var animator = new Animator();
 var simulation = new Simulation(decoratedEngine, decoratedRenderer);
 var cellRepository = new CellRepository();
 var cellFactory = new CellFactory(simulation);
+var animator = new Animator(cellRepository);
 
 // create render
 decoratedRenderer.createRender(decoratedEngine.matterEngine());
