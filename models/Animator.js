@@ -6,7 +6,7 @@
     this._bodyModule = bodyModule;
   };
 
-  Animator.prototype.propel = function(cellRepository) {
+  Animator.prototype.action = function(cellRepository) {
     cellRepository.store().forEach(function(cell) {
       var force1 = Matter.Vector.create(cell.gait().calculate(), cell.gait().calculate());
       this._bodyModule.applyForce(cell.body(), cell.body().position, force1);
