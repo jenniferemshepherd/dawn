@@ -2,34 +2,34 @@
 
 describe("CellFactory", function() {
   var cellFactory;
-  var cell;
-  var simulation = {
+  var mockCell;
+  var mockSimulation = {
     addToWorld: function() { return }
   };
-  var cellRepository = {
+  var mockCellRepository = {
     add: function() { return }
   };
 
   describe("#create", function() {
 
     beforeEach(function() {
-      cellFactory = new CellFactory(simulation);
+      cellFactory = new CellFactory(mockSimulation, mockCellRepository);
+      spyOn(mockCellRepository, 'add');
+      spyOn(mockSimulation, 'addToWorld');
     });
 
     it("can create a cell", function() {
-      expect(cellFactory.create(cellRepository).body().type).toEqual('body');
+      expect(cellFactory.create().body().type).toEqual('body');
     });
 
     it("stores it in the repository", function() {
-      spyOn(cellRepository, 'add');
-      cellFactory.create(cellRepository);
-      expect(cellRepository.add).toHaveBeenCalled();
+      cellFactory.create();
+      expect(mockCellRepository.add).toHaveBeenCalled();
     });
 
     it("adds the cell to the world", function() {
-      spyOn(simulation, 'addToWorld');
-      cellFactory.create(cellRepository);
-      expect(simulation.addToWorld).toHaveBeenCalled();
+      cellFactory.create();
+      expect(mockSimulation.addToWorld).toHaveBeenCalled();
     });
   });
 
