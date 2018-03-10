@@ -16,27 +16,21 @@
 
   CellFactory.prototype.action = function (cellRepository, event) {
     var time = event.source.timing.timestamp;
-    if (this.isTwoCells(event)) {
-      this.hello(time, cellRepository);
+    if (this.isCompatible(event) && this.isFertile(time)) {
+      this.create(cellRepository);
+      this.timeArray.push(time);
     }
   };
 
-  CellFactory.prototype.hello = function(time, cellRepository) {
-    if (this.isFertile(time)) {
-      this.makeBaby(time, cellRepository);
-    }
-  };
+  CellFactory.prototype.methodName = function () {
 
-  CellFactory.prototype.makeBaby = function (time, cellRepository) {
-    this.create(cellRepository);
-    this.timeArray.push(time);
   };
 
   CellFactory.prototype.isFertile = function (time) {
     return (time > this.timeArray[this.timeArray.length - 1] + 1000)
   };
 
-  CellFactory.prototype.isTwoCells = function (event) {
+  CellFactory.prototype.isCompatible = function (event) {
     return (event.pairs[0].bodyA.label !== 'Rectangle Body' && event.pairs[0].bodyB.label !== 'Rectangle Body')
   };
 
