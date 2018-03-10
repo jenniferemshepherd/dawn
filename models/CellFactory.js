@@ -23,7 +23,7 @@
   };
 
   CellFactory.prototype._isMating = function (time, event) {
-    return (this.isFertile(time) && this.isCompatible(event));
+    return (this._isFertile(time) && this._isCompatible(event));
   };
 
   CellFactory.prototype._isFertile = function (time) {
