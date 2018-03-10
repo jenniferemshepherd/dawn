@@ -8,7 +8,7 @@
 
   EventController.prototype.register = function(engine, eventString, listener, cellRepository) {
     this._eventsModule.on(engine, eventString, function(event) {
-      listener.action(cellRepository, event);
+      listener.action(event);
     });
   };
 
