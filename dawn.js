@@ -1,7 +1,7 @@
 // instantiate our objects
 var decoratedEngine = new DecoratedEngine();
 var decoratedRenderer = new DecoratedRender();
-var eventController = new EventController();
+var eventController = new EventController(decoratedEngine);
 var simulation = new Simulation(decoratedEngine, decoratedRenderer);
 var cellRepository = new CellRepository();
 var cellFactory = new CellFactory(simulation, cellRepository);
@@ -16,8 +16,8 @@ cellFactory.create();
 cellFactory.create();
 
 // register our listeners
-eventController.register(decoratedEngine.matterEngine(), 'afterUpdate', animator, cellRepository);
-eventController.register(decoratedEngine.matterEngine(), 'collisionStart', cellFactory, cellRepository);
+eventController.register('afterUpdate', animator);
+eventController.register('collisionStart', cellFactory);
 
 // run things
 simulation.setup();
