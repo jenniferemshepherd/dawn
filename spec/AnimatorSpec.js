@@ -2,8 +2,12 @@
 
 describe("Animator", function() {
   var animator;
-  var matterBody = {
+  var mockBodyModule = {
     applyForce: function() { return }
+  };
+
+  var mockVectorModule = {
+    create: function() { return }
   };
 
   var mockGait = {
@@ -19,24 +23,25 @@ describe("Animator", function() {
     gait: function() { return mockGait }
   };
 
-  var cellRepository = {
+  var mockCellRepository = {
     store: function() { return [mockCell, mockCell, mockCell]}
   };
 
   beforeEach(function() {
-    animator = new Animator(matterBody);
+    animator = new Animator(mockCellRepository, mockBodyModule, mockVectorModule);
   });
 
-
-  describe("#propel", function() {
+  describe("#action", function() {
 
     beforeEach(function() {
-      spyOn(matterBody, 'applyForce')
+      spyOn(mockBodyModule, 'applyForce')
+      animator.action();
     })
 
     it("applies a force to each cell", function() {
-      animator.propel(cellRepository)
-      expect(matterBody.applyForce).toHaveBeenCalledTimes(3);
+      expect(mockBodyModule.applyForce).toHaveBeenCalledTimes(3);
     });
+
   });
+
 });
