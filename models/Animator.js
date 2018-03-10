@@ -8,7 +8,7 @@
     this._vectorModule = vectorModule;
   };
 
-  Animator.prototype.action = function() {
+  Animator.prototype.action = function(event) {
     this._cellRepository.store().forEach(function(cell) {
       var force1 = this._vectorModule.create(cell.gait().calculate(), cell.gait().calculate());
       this._bodyModule.applyForce(cell.body(), cell.body().position, force1);
