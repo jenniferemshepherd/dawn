@@ -16,21 +16,21 @@
 
   CellFactory.prototype.action = function (cellRepository, event) {
     var time = event.source.timing.timestamp;
-    if (this.isCompatible(event) && this.isFertile(time)) {
+    if (this._isMating(time, event)) {
       this.create(cellRepository);
       this.timeArray.push(time);
     }
   };
 
-  CellFactory.prototype.methodName = function () {
-
+  CellFactory.prototype._isMating = function (time, event) {
+    return (this.isFertile(time) && this.isCompatible(event));
   };
 
-  CellFactory.prototype.isFertile = function (time) {
+  CellFactory.prototype._isFertile = function (time) {
     return (time > this.timeArray[this.timeArray.length - 1] + 1000)
   };
 
-  CellFactory.prototype.isCompatible = function (event) {
+  CellFactory.prototype._isCompatible = function (event) {
     return (event.pairs[0].bodyA.label !== 'Rectangle Body' && event.pairs[0].bodyB.label !== 'Rectangle Body')
   };
 
