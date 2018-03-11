@@ -2,24 +2,25 @@
 
 (function(exports) {
 
-  function CellFactory(simulation) {
-    this.simulation = simulation
-    this.timeArray = [0]
-  };
+  function CellFactory(simulation, cellRepository) {
+    this._simulation = simulation;
+    this._cellRepository = cellRepository;
+    this._timeArray = [0];
+  }
 
-  CellFactory.prototype.create = function(cellRepository) {
+  CellFactory.prototype.create = function() {
     var cell = new Cell(Matter.Bodies.circle(150, 200, 30), new Gait());
-    cellRepository.add(cell);
-    this.simulation.addToWorld(cell);
+    this._cellRepository.add(cell);
+    this._simulation.addToWorld(cell);
     return cell;
   };
 
-  CellFactory.prototype.action = function (cellRepository, event) {
+  CellFactory.prototype.action = function (event) {
     var time = event.source.timing.timestamp;
     if (this._isMating(time, event)) {
-      this.create(cellRepository);
-      this.timeArray.push(time);
-    }
+      this.create();
+      this._timeArray.push(time);
+    };
   };
 
   CellFactory.prototype._isMating = function (time, event) {
@@ -27,7 +28,7 @@
   };
 
   CellFactory.prototype._isFertile = function (time) {
-    return (time > this.timeArray[this.timeArray.length - 1] + 1000)
+    return (time > this._timeArray[this._timeArray.length - 1] + 1000)
   };
 
   CellFactory.prototype._isCompatible = function (event) {

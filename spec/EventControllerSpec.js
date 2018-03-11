@@ -2,24 +2,27 @@
 
 describe("EventController", function() {
   var eventController;
-  var mockEngine;
-  var mockCellRepository;
 
-  var mockAnimator = {
-    propel: function() { return }
+  var mockDecoratedEngine = {
+    matterEngine: function() { return }
   };
 
   var mockEventsModule = {
     on: function() { return }
   };
 
+  var mockListener = {
+    action: function() { return }
+  };
+
+
   beforeEach(function() {
-    eventController = new EventController(mockEventsModule);
+    eventController = new EventController(mockDecoratedEngine, mockEventsModule);
     spyOn(mockEventsModule, 'on');
+    eventController.register('afterUpdate', mockListener);
   });
 
   it("calls on() on the events module", function() {
-    eventController.register(mockEngine, 'afterUpdate', mockAnimator, mockCellRepository);
     expect(mockEventsModule.on).toHaveBeenCalled();
   });
 

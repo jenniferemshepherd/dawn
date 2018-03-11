@@ -2,13 +2,14 @@
 
 (function(exports) {
 
-  function EventController(eventsModule = Matter.Events) {
+  function EventController(decoratedEngine, eventsModule = Matter.Events) {
+    this._decoratedEngine = decoratedEngine;
     this._eventsModule = eventsModule;
   };
 
-  EventController.prototype.register = function(engine, eventString, listener, cellRepository) {
-    this._eventsModule.on(engine, eventString, function(event) {
-      listener.action(cellRepository, event);
+  EventController.prototype.register = function(eventString, listener) {
+    this._eventsModule.on(this._decoratedEngine.matterEngine(), eventString, function(event) {
+      listener.action(event);
     });
   };
 
