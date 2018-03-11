@@ -18,7 +18,7 @@ cellFactory.create();
 
 // register our listeners
 eventController.register('afterUpdate', animator);
-eventController.register('afterUpdate', grow);
+// eventController.register('afterUpdate', grow);
 eventController.register('collisionStart', cellFactory);
 
 // run things
