@@ -6,7 +6,6 @@
     this._simulation = simulation;
     this._cellRepository = cellRepository;
     this._timeArray = [0];
-    this._parents = [];
   }
 
   CellFactory.prototype.create = function() {
@@ -19,9 +18,8 @@
   CellFactory.prototype.action = function (event) {
     var time = event.source.timing.timestamp;
     if (this._isMating(time, event)) {
-      this._parents.push(event.pairs[0].bodyA.id);
-      this._parents.push(event.pairs[0].bodyB.id);
-      console.log(this._parents)
+      var parent1 = event.pairs[0].bodyA.id;
+      var parent2 = event.pairs[0].bodyB.id;
       this.create();
       this._timeArray.push(time);
     };
