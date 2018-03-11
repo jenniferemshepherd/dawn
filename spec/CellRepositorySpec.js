@@ -2,7 +2,12 @@
 
 describe("CellRepository", function() {
   var cellRepository;
-  var mockCell;
+  var mockBody = {
+    id: 3
+  };
+  var mockCell = {
+    body: function() { return mockBody }
+  };
 
   beforeEach(function() {
     cellRepository = new CellRepository();
@@ -12,16 +17,25 @@ describe("CellRepository", function() {
     expect(cellRepository.store()).toEqual([])
   });
 
-  it("can hold a cell", function() {
-    cellRepository.add(mockCell)
-    expect(cellRepository.store()).toContain(mockCell)
+  describe("#add", function() {
+
+    beforeEach(function() {
+      cellRepository.add(mockCell)
+    });
+
+    it("can hold a cell", function() {
+      expect(cellRepository.store()).toContain(mockCell)
+    });
+
   });
 
   decribe("#findCellByBodyId", function() {
 
+    beforeEach(function() {
+      cellRepository.add(mockCell)
+    });
+
     it("returns the cell with corresponding body id", function() {
-
-
 
     });
 
