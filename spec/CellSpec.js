@@ -2,11 +2,13 @@
 
 describe("Cell", function() {
   var cell;
-  var bodyCircle = Matter.Bodies.circle(400, 200, 40)
-  var stoop = {}
+  var bodyCircle = Matter.Bodies.circle(400, 200, 40);
+  var stoop = {};
+  var mockAge;
+
 
   beforeEach(function() {
-    cell = new Cell(bodyCircle, stoop);
+    cell = new Cell(bodyCircle, stoop, mockAge);
   });
 
   it("has a body", function() {
@@ -15,6 +17,10 @@ describe("Cell", function() {
 
   it("has a gait", function() {
     expect(cell.gait()).toEqual(stoop)
+  });
+
+  it("has an age", function() {
+    expect(cell.mockAge).toEqual(mockAge)
   });
 
 });
