@@ -9,7 +9,7 @@
   }
 
   CellFactory.prototype.create = function() {
-    var cell = new Cell(Matter.Bodies.circle(150, 200, 30), new Gait());
+    var cell = new Cell(Matter.Bodies.circle(150, 200, 30), new Gait(), new Age());
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
     return cell;
