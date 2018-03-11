@@ -15,7 +15,7 @@
     this._matterRender = this._renderModule.create({
                          element: document.body,
                          engine: engine,
-                         options: { width: width, height: height, wireframeBackground: background }
+                         options: { width: width, height: height, wireframeBackground: background, wireframes: false }
                        });
   }
 

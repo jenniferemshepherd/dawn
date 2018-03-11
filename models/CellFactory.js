@@ -15,10 +15,21 @@
     return cell;
   };
 
+  CellFactory.prototype.createFromParents = function (parent1, parent2) {
+    var averageXPosition = 0.5 * (parent1.body().position.x + parent2.body().position.x);
+    var averageYPosition = 0.5 * (parent1.body().position.y + parent2.body().position.y)
+    var cell = new Cell(Matter.Bodies.circle(averageXPosition, averageYPosition, 30), new Gait());
+    this._cellRepository.add(cell);
+    this._simulation.addToWorld(cell);
+    return cell;
+  };
+
   CellFactory.prototype.action = function (event) {
     var time = event.source.timing.timestamp;
     if (this._isMating(time, event)) {
-      this.create();
+      var parent1 = this._cellRepository.findCellByBodyId(event.pairs[0].bodyA.id);
+      var parent2 = this._cellRepository.findCellByBodyId(event.pairs[0].bodyB.id);
+      this.createFromParents(parent1, parent2);
       this._timeArray.push(time);
     };
   };

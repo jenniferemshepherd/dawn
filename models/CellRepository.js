@@ -14,6 +14,12 @@
     this._store.push(cell);
   };
 
+  CellRepository.prototype.findCellByBodyId = function (id) {
+    return this._store.find(function(cell) {
+      return cell.body().id === id;
+    });
+  };
+
   exports.CellRepository = CellRepository;
 
 })(this);
