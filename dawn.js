@@ -6,6 +6,7 @@ var simulation = new Simulation(decoratedEngine, decoratedRenderer);
 var cellRepository = new CellRepository();
 var cellFactory = new CellFactory(simulation, cellRepository);
 var animator = new Animator(cellRepository);
+var grow = new Grow(cellRepository);
 
 // create render
 decoratedRenderer.createRender(decoratedEngine.matterEngine());
@@ -17,6 +18,7 @@ cellFactory.create();
 
 // register our listeners
 eventController.register('afterUpdate', animator);
+eventController.register('afterUpdate', grow);
 eventController.register('collisionStart', cellFactory);
 
 // run things
