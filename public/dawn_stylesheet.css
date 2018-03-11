@@ -18,16 +18,18 @@ body {
 }
 
 h1 {
-  margin-top: -0.3em;
-  font-family: 'Comfortaa', cursive;
-  font-size: 10em;
-  background: -webkit-linear-gradient(#FFFC69, #55ABBD);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  margin-top: -0.5em;
+  font-family: 'Mrs Sheppards', cursive;
+  font-size: 13em;
+  color: white;
+  text-shadow: 3px 3px 8px #ff7300;
+  letter-spacing: 0.1em;
 }
 
 #canvas_container {
-  margin-top: -3em;
+  margin-top: -9em;
   height: 600px;
   width: 800px;
+  border: 1px solid black;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
 }
