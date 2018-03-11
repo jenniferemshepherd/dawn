@@ -22,37 +22,43 @@ because I am interested in life simulations
 i want to see a basic cell
 
 as an observer
-so that there is variation in cells
+so that there is more to look at
 i want to see two different cells
 
 as an observer
 so the cells seem more realistic as living creatures
 i want to see them move
-
-as an observer
-so that the cells can interact
-i want an event to occur when they collide
-
-as an observer
-so that more cells can be created
-i want the cells to create another cell on collision
 ```
 
 ### v2
 
 ```
 as an observer
-so that the new cells are genetic offspring
-the new cell will have attributes that are a mix of the parent attributes
+so that more cells can be created
+i want the cells to create another cell on collision
 ```
 
 ### v3
 
-`Placeholder`
+```
+
+as an observer
+so that i can get a sesne of time elapsing in the simuation
+i would like to see the cells grow
+```
 
 ### v4
 
-`Placeholder`
+```
+as an observer
+so that the canvas looks interesting
+i want there to be visibly different properties in each cell
+
+as an observer
+so that the new cells are genetic offspring
+the new cell will have attributes that are a mix of the parent attributes
+```
+
 
 ## web stack
 * [Node.js](https://nodejs.org/en/).
@@ -65,6 +71,11 @@ the new cell will have attributes that are a mix of the parent attributes
 * [Jasmine](https://jasmine.github.io/) for unit and integration testing.
 * [Nightwatch.js](http://nightwatchjs.org/) for front-end UI testing.
 * [webpack](https://webpack.js.org/) for bundling on deployment.
+
+## to run
+
+## to test
+* open specrunner blah
 
 # Points for development:
 * sounds
@@ -82,10 +93,6 @@ the new cell will have attributes that are a mix of the parent attributes
 
 * Database creation/initialization
 
-* How to run the test suite
-
 * Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
 
 * ... -->
