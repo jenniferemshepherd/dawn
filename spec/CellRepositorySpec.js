@@ -29,14 +29,14 @@ describe("CellRepository", function() {
 
   });
 
-  decribe("#findCellByBodyId", function() {
+  describe("#findCellByBodyId", function() {
 
     beforeEach(function() {
       cellRepository.add(mockCell)
     });
 
     it("returns the cell with corresponding body id", function() {
-
+      expect(cellRepository.findCellByBodyId(3)).toEqual(mockCell);
     });
 
   });
