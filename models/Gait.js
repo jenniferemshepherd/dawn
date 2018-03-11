@@ -7,7 +7,7 @@
   };
 
   Gait.prototype.calculate = function() {
-    return (0.005 * (0.5 -  Math.random()));
+    return (0.01 * (0.5 -  Math.random()));
   };
 
   exports.Gait = Gait;
