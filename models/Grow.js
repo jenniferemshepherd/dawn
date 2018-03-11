@@ -9,7 +9,7 @@
 
   Grow.prototype.action = function(event) {
     this._cellRepository.store().forEach(function(cell) {
-      this._bodyModule.scale(cell.body(), 1.00001, 1.00001);
+      this._bodyModule.scale(cell.body(), 1.0001, 1.0001);
     }.bind(this));
   };
 
