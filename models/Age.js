@@ -8,6 +8,10 @@
     this._value = BIRTH_AGE
   };
 
+  Age.prototype.increment = function() {
+    this._value += 1
+  };
+
   exports.Age = Age;
 
 })(this);
