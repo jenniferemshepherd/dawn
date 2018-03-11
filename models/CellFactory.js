@@ -9,7 +9,15 @@
   }
 
   CellFactory.prototype.create = function() {
-    var cell = new Cell(Matter.Bodies.circle(150, 200, 30), new Gait());
+
+    var vectorArray = []
+    var i;
+
+    for (i = 0; i < Math.ceil(Math.random() * 20); i++) {
+      vectorArray.push(Matter.Vector.create(100 * Math.random(), 100 * Math.random()));
+    }
+
+    var cell = new Cell(Matter.Bodies.fromVertices(150, 200, vectorArray), new Gait());
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
     return cell;
