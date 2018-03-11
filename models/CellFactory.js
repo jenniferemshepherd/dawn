@@ -18,8 +18,10 @@
   CellFactory.prototype.action = function (event) {
     var time = event.source.timing.timestamp;
     if (this._isMating(time, event)) {
-      var parent1 = event.pairs[0].bodyA.id;
-      var parent2 = event.pairs[0].bodyB.id;
+      var parent1 = this._cellRepository.findCellByBodyId(event.pairs[0].bodyA.id);
+      var parent2 = this._cellRepository.findCellByBodyId(event.pairs[0].bodyB.id);
+      console.log(parent1);
+      console.log(parent2);
       this.create();
       this._timeArray.push(time);
     };
