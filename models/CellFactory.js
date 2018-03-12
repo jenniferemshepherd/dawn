@@ -35,7 +35,7 @@
   };
 
   CellFactory.prototype.createIsoscelesTriangle = function () {
-    var x = 10;
+    var x = 15;
     var vectors = [Matter.Vector.create(x, 3 * x), Matter.Vector.create(-2 * x, 0), Matter.Vector.create(x, -3 * x)];
     var cell = new Cell(Matter.Bodies.fromVertices(150, 200, vectors), new Gait());
     this._cellRepository.add(cell);
