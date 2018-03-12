@@ -15,6 +15,7 @@ decoratedRenderer.createRender(decoratedEngine.matterEngine());
 cellFactory.create();
 cellFactory.create();
 cellFactory.create();
+cellFactory.createSquare();
 
 // register our listeners
 eventController.register('afterUpdate', animator);
