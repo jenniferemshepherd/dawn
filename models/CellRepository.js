@@ -4,7 +4,7 @@
 
   function CellRepository() {
     this._store = [];
-  };
+  }
 
   CellRepository.prototype.store = function() {
     return this._store;

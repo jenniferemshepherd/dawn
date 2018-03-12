@@ -18,7 +18,7 @@
 
   CellFactory.prototype.createSquare = function () {
     var x = 40;
-    var vectors = [Matter.Vector.create(x, 0), Matter.Vector.create(0, x), Matter.Vector.create(-x, 0), Matter.Vector.create(0, -x)]
+    var vectors = [Matter.Vector.create(x, 0), Matter.Vector.create(0, x), Matter.Vector.create(-x, 0), Matter.Vector.create(0, -x)];
     var cell = new Cell(Matter.Bodies.fromVertices(150, 200, vectors), new Gait(), new Age());
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
@@ -62,7 +62,7 @@
       return {
         x: vertex.x * scaleFactor,
         y: vertex.y * scaleFactor
-      }
+      };
     });
   };
 
@@ -77,7 +77,7 @@
       var parent2 = this._cellRepository.findCellByBodyId(event.pairs[0].bodyB.id);
       this.createFromParents(parent1, parent2);
       this._timeArray.push(time);
-    };
+    }
   };
 
   CellFactory.prototype._isMating = function (time, event) {
@@ -85,11 +85,11 @@
   };
 
   CellFactory.prototype._isFertile = function (time) {
-    return (time > this._timeArray[this._timeArray.length - 1] + 1000)
+    return (time > this._timeArray[this._timeArray.length - 1] + 1000);
   };
 
   CellFactory.prototype._isCompatible = function (event) {
-    return (event.pairs[0].bodyA.label !== 'Rectangle Body' && event.pairs[0].bodyB.label !== 'Rectangle Body')
+    return (event.pairs[0].bodyA.label !== 'Rectangle Body' && event.pairs[0].bodyB.label !== 'Rectangle Body');
   };
 
   exports.CellFactory = CellFactory;

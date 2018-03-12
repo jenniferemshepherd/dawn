@@ -18,5 +18,8 @@
   "homepage": "https://github.com/jenniferemshepherd/dawn#readme",
   "dependencies": {
     "matter-js": "^0.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.2"
   }
 }

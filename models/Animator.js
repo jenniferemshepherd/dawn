@@ -6,7 +6,7 @@
     this._cellRepository = cellRepository;
     this._bodyModule = bodyModule;
     this._vectorModule = vectorModule;
-  };
+  }
 
   Animator.prototype.action = function(event) {
     this._cellRepository.store().forEach(function(cell) {
