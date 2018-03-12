@@ -43,25 +43,29 @@
     return cell;
   };
 
-  // CellFactory.prototype.createFromParents = function (parent1, parent2) {
-  //   var averageXPosition = 0.5 * (parent1.body().position.x + parent2.body().position.x);
-  //   var averageYPosition = 0.5 * (parent1.body().position.y + parent2.body().position.y)
-  //   var cell = new Cell(Matter.Bodies.circle(averageXPosition, averageYPosition, 30), new Gait());
-  //   this._cellRepository.add(cell);
-  //   this._simulation.addToWorld(cell);
-  //   return cell;
-  // };
-
   CellFactory.prototype.createFromParents = function (parent1, parent2) {
     var averageXPosition = 0.5 * (parent1.body().position.x + parent2.body().position.x);
     var averageYPosition = 0.5 * (parent1.body().position.y + parent2.body().position.y);
-    var parent1vectors = parent1.body().vertices;
-    // console.log(parent1vectors);
-    var parent2vectors = parent2.body().vertices;
-    var cell = new Cell(Matter.Bodies.fromVertices(averageXPosition, averageYPosition, parent1vectors), new Gait());
+    var cell = new Cell(Matter.Bodies.fromVertices(averageXPosition, averageYPosition, this.concatenateVertices(parent1, parent2)), new Gait());
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
     return cell;
+  };
+
+  CellFactory.prototype.concatenateVertices = function (parent1, parent2) {
+    var vertices = parent1.body().vertices.concat(parent2.body().vertices);
+    var justVertices = []
+    vertices.forEach(function(vertex) {
+      justVertices.push({x: vertex.x, y: vertex.y})
+    })
+    var reducedVertices = justVertices.map(oldObj => {
+      var newObj = {}
+      newObj.x = oldObj.x * 0.65;
+      newObj.y = oldObj.y * 0.65;
+      return newObj;
+    })
+    console.log(reducedVertices);
+    return reducedVertices;
   };
 
   CellFactory.prototype.action = function (event) {
