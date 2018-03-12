@@ -9,7 +9,14 @@
   }
 
   CellFactory.prototype.create = function() {
-    var cell = new Cell(Matter.Bodies.circle(150, 200, 30), new Gait());
+    var cell = new Cell(Matter.Bodies.circle(150, 200, 30, {
+                                              render: {
+                                                   fillStyle: `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`,
+                                                   lineWidth: 3
+                                              }
+                                          }),
+                                          new Gait());
+    console.log(`rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`)
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
     return cell;
