@@ -5,12 +5,14 @@
   function CellFactory(
     simulation,
     cellRepository,
+    positionInheritor,
     shapeInheritor,
     vectorModule = Matter.Vector,
     colourInheritor = new ColourInheritor(),
   ) {
     this._simulation = simulation;
     this._cellRepository = cellRepository;
+    this._positionInheritor = positionInheritor;
     this._shapeInheritor = shapeInheritor;
     this._timeArray = [0];
     this._vectorModule = vectorModule;
@@ -76,11 +78,9 @@
   };
 
   CellFactory.prototype.createFromParents = function (parent1, parent2) {
-    var averageXPosition = 0.5 * (parent1.body().position.x + parent2.body().position.x);
-    var averageYPosition = 0.5 * (parent1.body().position.y + parent2.body().position.y);
     var cell = new Cell(Matter.Bodies.fromVertices(
-      averageXPosition,
-      averageYPosition,
+      this._positionInheritor.x(parent1, parent2),
+      this._positionInheritor.y(parent1, parent2),
       this._shapeInheritor.childVertices(parent1, parent2),
       { render: {fillStyle: this._colourInheritor.colourMixer(parent1, parent2) }}),
       new Gait(),
