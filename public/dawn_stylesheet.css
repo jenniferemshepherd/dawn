@@ -1,6 +1,78 @@
+:root {
+
+}
+
+html {
+  font-size: 10px;
+}
+
 body {
+  height: 100vh;
+  background-image: url('./resources/cell9.png');
+  background-size: cover;
+  margin: 0;
+  font-family: 'Ubuntu', cursive;
+  color: rgba(255, 255, 255, 0.5)
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 6rem;
+  background-color: rgba(0, 0, 0, 0.76);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px rgba(255, 255, 255, 0.5) solid;
+}
+
+.main_container {
+  padding-top: 10em;
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+}
+
+h1 {
+  font-family: 'Sacramento', cursive;
+  font-weight: 200;
+  font-style: italic;
+  font-size: 5em;
+  color: rgba(255, 255, 255, 0.76);
+  letter-spacing: 0.1em;
+}
+
+#canvas_container {
+  height: 600px;
+  width: 800px;
+  border: 1px solid black;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+}
+
+.menu {
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 1.3rem;
+  font-weight: 300;
+  padding-left: 1rem;
+}
+
+.media_container {
+  display: flex;
+}
+
+.media_container img {
+  padding: 0.4em;
+}
+
+img:hover {
+  background-color: rgba(255, 255, 255, 0.13);
+  border-radius: 30px;
+}
+
+.media_container:last-child {
+  padding-right: 0.5em;
 }

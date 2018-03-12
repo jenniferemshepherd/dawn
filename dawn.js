@@ -13,9 +13,10 @@ var ager = new Ager(cellRepository);
 decoratedRenderer.createRender(decoratedEngine.matterEngine());
 
 // create some cells
-cellFactory.create();
-cellFactory.create();
-cellFactory.create();
+cellFactory.createCircle();
+cellFactory.createSquare();
+cellFactory.createEquilateralTriangle();
+cellFactory.createRhombus();
 
 // register our listeners
 eventController.register('afterUpdate', animator);
