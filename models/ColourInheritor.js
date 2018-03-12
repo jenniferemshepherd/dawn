@@ -5,27 +5,26 @@
   }
 
   ColourInheritor.prototype.colourMixer = function (parent1, parent2) {
-    var weightedParent1Colour = this.weightedParentColour(parent1, 0.8)
-    var weightedParent2Colour = this.weightedParentColour(parent2, 0.2)
+    var weightedParent1Colour = this._weightedParentColour(parent1, 0.8)
+    var weightedParent2Colour = this._weightedParentColour(parent2, 0.2)
     var sum = weightedParent1Colour.map(function(num, id) {return num + weightedParent2Colour[id]})
-    return this.convertToRgbString(sum)
+    return this._convertToRgbString(sum)
   };
 
 
-  ColourInheritor.prototype.weightedParentColour = function (parent, multiplier) {
-    return this.formatRgbString(parent).map(x => Math.floor(x * multiplier))
+  ColourInheritor.prototype._weightedParentColour = function (parent, multiplier) {
+    return this._formatRgbString(parent).map(x => Math.floor(x * multiplier))
   };
 
-  ColourInheritor.prototype.formatRgbString = function (parent) {
+  ColourInheritor.prototype._formatRgbString = function (parent) {
     var rgbString = parent.body().render.fillStyle
-    var colour = rgbString.slice(4, rgbString.length-1)
-    var colourStringArr = colour.split(', ')
+    var colourStringArr = rgbString.slice(4, rgbString.length-1).split(', ')
     var intArray = []
     colourStringArr.forEach(function(colourVal) { intArray.push(parseInt(colourVal))});
     return intArray
   };
 
-  ColourInheritor.prototype.convertToRgbString = function (array) {
+  ColourInheritor.prototype._convertToRgbString = function (array) {
     var rgb = array.join(', ')
     return `rgb(${rgb})`
   };
