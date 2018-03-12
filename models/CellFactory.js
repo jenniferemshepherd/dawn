@@ -9,8 +9,8 @@
     this._vectorModule = vectorModule;
   }
 
-  CellFactory.prototype.createCircle = function() {
-    var cell = new Cell(Matter.Bodies.circle(150, 200, 30), new Gait());
+  CellFactory.prototype.create = function() {
+    var cell = new Cell(Matter.Bodies.circle(150, 200, 30), new Gait(), new Age());
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
     return cell;
