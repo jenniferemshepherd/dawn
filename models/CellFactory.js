@@ -25,6 +25,24 @@
     return cell;
   };
 
+  CellFactory.prototype.createRightAngledTriangle = function () {
+    var x = 10;
+    var vectors = [Matter.Vector.create(4 * x, 3 * x), Matter.Vector.create(-4 * x, 0), Matter.Vector.create(0, -3 * x)];
+    var cell = new Cell(Matter.Bodies.fromVertices(150, 200, vectors), new Gait());
+    this._cellRepository.add(cell);
+    this._simulation.addToWorld(cell);
+    return cell;
+  };
+
+  CellFactory.prototype.createIsoscelesTriangle = function () {
+    var x = 10;
+    var vectors = [Matter.Vector.create(x, 3 * x), Matter.Vector.create(-2 * x, 0), Matter.Vector.create(x, -3 * x)];
+    var cell = new Cell(Matter.Bodies.fromVertices(150, 200, vectors), new Gait());
+    this._cellRepository.add(cell);
+    this._simulation.addToWorld(cell);
+    return cell;
+  };
+
   CellFactory.prototype.createFromParents = function (parent1, parent2) {
     var averageXPosition = 0.5 * (parent1.body().position.x + parent2.body().position.x);
     var averageYPosition = 0.5 * (parent1.body().position.y + parent2.body().position.y)
