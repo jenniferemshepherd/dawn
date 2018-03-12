@@ -25,7 +25,8 @@
   CellFactory.prototype.createFromParents = function (parent1, parent2) {
     var averageXPosition = 0.5 * (parent1.body().position.x + parent2.body().position.x);
     var averageYPosition = 0.5 * (parent1.body().position.y + parent2.body().position.y)
-    var cell = new Cell(Matter.Bodies.circle(averageXPosition, averageYPosition, 30), new Gait());
+    var parentColour = (parent1.body().render.fillStyle)
+    var cell = new Cell(Matter.Bodies.circle(averageXPosition, averageYPosition, 30, { render: {fillStyle: parentColour }}), new Gait());
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
     return cell;
