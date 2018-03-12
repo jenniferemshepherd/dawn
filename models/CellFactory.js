@@ -2,10 +2,11 @@
 
 (function(exports) {
 
-  function CellFactory(simulation, cellRepository) {
+  function CellFactory(simulation, cellRepository, colourInheritor = new ColourInheritor()) {
     this._simulation = simulation;
     this._cellRepository = cellRepository;
     this._timeArray = [0];
+    this._colourInheritor = colourInheritor
   }
 
   CellFactory.prototype.create = function() {
@@ -25,36 +26,10 @@
   CellFactory.prototype.createFromParents = function (parent1, parent2) {
     var averageXPosition = 0.5 * (parent1.body().position.x + parent2.body().position.x);
     var averageYPosition = 0.5 * (parent1.body().position.y + parent2.body().position.y)
-    var cell = new Cell(Matter.Bodies.circle(averageXPosition, averageYPosition, 30, { render: {fillStyle: this.colourMixer(parent1, parent2) }}), new Gait());
-    console.log(cell)
+    var cell = new Cell(Matter.Bodies.circle(averageXPosition, averageYPosition, 30, { render: {fillStyle: this._colourInheritor.colourMixer(parent1, parent2) }}), new Gait());
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
     return cell;
-  };
-
-  CellFactory.prototype.formatRgbString = function (parent) {
-    var rgbString = parent.body().render.fillStyle
-    var colour = rgbString.slice(4, rgbString.length-1)
-    var colourStringArr = colour.split(', ')
-    var intArray = []
-    colourStringArr.forEach(function(colourVal) { intArray.push(parseInt(colourVal))});
-    return intArray
-  };
-
-  CellFactory.prototype.weightedParentColour = function (parent, multiplier) {
-    return this.formatRgbString(parent).map(x => Math.floor(x * multiplier))
-  };
-
-  CellFactory.prototype.convertToRgbString = function (array) {
-    var rgb = array.join(', ')
-    return `rgb(${rgb})`
-  };
-
-  CellFactory.prototype.colourMixer = function (parent1, parent2) {
-    var weightedParent1Colour = this.weightedParentColour(parent1, 0.8)
-    var weightedParent2Colour = this.weightedParentColour(parent2, 0.2)
-    var sum = weightedParent1Colour.map(function(num, id) {return num + weightedParent2Colour[id]})
-    return this.convertToRgbString(sum)
   };
 
   CellFactory.prototype.action = function (event) {
