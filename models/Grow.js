@@ -5,7 +5,7 @@
   function Grow(cellRepository, bodyModule = Matter.Body) {
     this._cellRepository = cellRepository;
     this._bodyModule = bodyModule;
-  };
+  }
 
   Grow.prototype.action = function(event) {
     this._cellRepository.store().forEach(function(cell) {

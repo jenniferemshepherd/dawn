@@ -14,7 +14,7 @@
     this._worldModule = worldModule;
     this._engineModule = engineModule;
     this._renderModule = renderModule;
-  };
+  }
 
   Simulation.prototype.decoratedEngine = function() {
     return this._decoratedEngine;
@@ -29,7 +29,7 @@
   };
 
   Simulation.prototype.addToWorld = function (cell) {
-    this._worldModule.add(this.world(), cell.body())
+    this._worldModule.add(this.world(), cell.body());
   };
 
   Simulation.prototype.setup = function() {
@@ -39,10 +39,12 @@
 
 
   Simulation.prototype.addWalls = function() {
-    this._worldModule.add(this.world(), [Matter.Bodies.rectangle(400, -50, 1200, 100, { isStatic: true }),
-                                         Matter.Bodies.rectangle(850, 300, 100, 600, { isStatic: true }),
-                                         Matter.Bodies.rectangle(400, 650, 1200, 100, { isStatic: true }),
-                                         Matter.Bodies.rectangle(-50, 300, 100, 600, { isStatic: true })]);
+    this._worldModule.add(this.world(), [
+      Matter.Bodies.rectangle(400, -50, 1200, 100, { isStatic: true }),
+      Matter.Bodies.rectangle(850, 300, 100, 600, { isStatic: true }),
+      Matter.Bodies.rectangle(400, 650, 1200, 100, { isStatic: true }),
+      Matter.Bodies.rectangle(-50, 300, 100, 600, { isStatic: true })
+    ]);
     // top, right, bottom, left
   };
 
