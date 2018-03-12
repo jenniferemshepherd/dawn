@@ -16,8 +16,7 @@ cellFactory.create();
 cellFactory.create();
 cellFactory.create();
 cellFactory.createSquare();
-cellFactory.createRightAngledTriangle();
-cellFactory.createIsoscelesTriangle();
+cellFactory.createEquilateralTriangle();
 cellFactory.createRhombus();
 
 // register our listeners
