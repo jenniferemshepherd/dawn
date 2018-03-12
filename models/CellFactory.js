@@ -43,6 +43,15 @@
     return cell;
   };
 
+  CellFactory.prototype.createRhombus = function () {
+    var x = 25;
+    var vectors = [Matter.Vector.create(2 * x, 0), Matter.Vector.create(0, x), Matter.Vector.create(-2 * x, 0), Matter.Vector.create(0, -x)];
+    var cell = new Cell(Matter.Bodies.fromVertices(150, 200, vectors), new Gait());
+    this._cellRepository.add(cell);
+    this._simulation.addToWorld(cell);
+    return cell;
+  };
+
   CellFactory.prototype.createFromParents = function (parent1, parent2) {
     var averageXPosition = 0.5 * (parent1.body().position.x + parent2.body().position.x);
     var averageYPosition = 0.5 * (parent1.body().position.y + parent2.body().position.y)

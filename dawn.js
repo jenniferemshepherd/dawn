@@ -18,6 +18,7 @@ cellFactory.create();
 cellFactory.createSquare();
 cellFactory.createRightAngledTriangle();
 cellFactory.createIsoscelesTriangle();
+cellFactory.createRhombus();
 
 // register our listeners
 eventController.register('afterUpdate', animator);
