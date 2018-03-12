@@ -2,14 +2,42 @@
 
 (function(exports) {
 
-  function CellFactory(simulation, cellRepository) {
+  function CellFactory(simulation, cellRepository, vectorModule = Matter.Vector) {
     this._simulation = simulation;
     this._cellRepository = cellRepository;
     this._timeArray = [0];
+    this._vectorModule = vectorModule;
   }
 
   CellFactory.prototype.create = function() {
     var cell = new Cell(Matter.Bodies.circle(150, 200, 30), new Gait());
+    this._cellRepository.add(cell);
+    this._simulation.addToWorld(cell);
+    return cell;
+  };
+
+  CellFactory.prototype.createSquare = function () {
+    var x = 40;
+    var vectors = [Matter.Vector.create(x, 0), Matter.Vector.create(0, x), Matter.Vector.create(-x, 0), Matter.Vector.create(0, -x)]
+    var cell = new Cell(Matter.Bodies.fromVertices(150, 200, vectors), new Gait());
+    this._cellRepository.add(cell);
+    this._simulation.addToWorld(cell);
+    return cell;
+  };
+
+  CellFactory.prototype.createEquilateralTriangle = function () {
+    var x = 15;
+    var vectors = [Matter.Vector.create(1.5 * x, Math.sqrt(6.75) * x), Matter.Vector.create(-3 * x, 0), Matter.Vector.create(1.5 * x, - 1 * Math.sqrt(6.75) * x)];
+    var cell = new Cell(Matter.Bodies.fromVertices(150, 200, vectors), new Gait());
+    this._cellRepository.add(cell);
+    this._simulation.addToWorld(cell);
+    return cell;
+  };
+
+  CellFactory.prototype.createRhombus = function () {
+    var x = 25;
+    var vectors = [Matter.Vector.create(2 * x, 0), Matter.Vector.create(0, x), Matter.Vector.create(-2 * x, 0), Matter.Vector.create(0, -x)];
+    var cell = new Cell(Matter.Bodies.fromVertices(150, 200, vectors), new Gait());
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
     return cell;
