@@ -8,7 +8,7 @@ var cellFactory = new CellFactory(simulation, cellRepository);
 var animator = new Animator(cellRepository);
 var grow = new Grow(cellRepository);
 var ager = new Ager(cellRepository);
-var killer = new Killer(cellRepository);
+var killer = new Killer(cellRepository, simulation);
 
 // create render
 decoratedRenderer.createRender(decoratedEngine.matterEngine());
