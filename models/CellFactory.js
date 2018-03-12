@@ -25,11 +25,24 @@
   CellFactory.prototype.createFromParents = function (parent1, parent2) {
     var averageXPosition = 0.5 * (parent1.body().position.x + parent2.body().position.x);
     var averageYPosition = 0.5 * (parent1.body().position.y + parent2.body().position.y)
-    var parentColour = (parent1.body().render.fillStyle)
-    var cell = new Cell(Matter.Bodies.circle(averageXPosition, averageYPosition, 30, { render: {fillStyle: parentColour }}), new Gait());
+    var cell = new Cell(Matter.Bodies.circle(averageXPosition, averageYPosition, 30, { render: {fillStyle: parent1Colour }}), new Gait());
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
     return cell;
+  };
+
+  CellFactory.prototype.formatRgbString = function (parent) {
+    var rgbString = parent.body().render.fillStyle
+    var colour = rgbString.slice(4, rgbString.length-1)
+    var colourStringArr = parent1Colour.split(', ')
+    var intArray = []
+    colourStringArr.forEach(function(colourVal) { intArray.push(parseInt(colourVal))});
+    return intArray
+  };
+
+  CellFactory.prototype.mixParentColour = function (parent1, parent2) {
+    parent1colour = this.formatRgbString(parent1)
+    parent2colour = this.formatRgbString(parent2)
   };
 
   CellFactory.prototype.action = function (event) {
