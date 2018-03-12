@@ -14,6 +14,7 @@ describe("ShapeInheritor", function() {
 
   var mockVertices1 = [vertex1, vertex2, vertex3];
   var mockVertices2 = [vertex4, vertex5, vertex6];
+  var mockConcatenatedVertices = mockVertices1.concat(mockVertices2);
 
   var mockBody1 = {
     vertices: [vertex1, vertex2, vertex3]
@@ -37,14 +38,7 @@ describe("ShapeInheritor", function() {
 
   describe("#_parentVertices", function() {
     it("returns a concatenated array of parents' vertices", function() {
-      expect(shapeInheritor._parentVertices(mockParent1, mockParent2)).toEqual([
-        vertex1,
-        vertex2,
-        vertex3,
-        vertex4,
-        vertex5,
-        vertex6
-      ]);
+      expect(shapeInheritor._parentVertices(mockParent1, mockParent2)).toEqual(mockConcatenatedVertices);
     });
 
   });
@@ -67,6 +61,21 @@ describe("ShapeInheritor", function() {
     });
   });
 
+  describe("#childVertices", function() {
 
+    beforeEach(function() {
+      spyOn(shapeInheritor, '_parentVertices');
+      spyOn(shapeInheritor, '_scaleVertices');
+      shapeInheritor.childVertices(mockParent1, mockParent2);
+    });
+
+    it("calls _parentVertices with parent arguments", function() {
+      expect(shapeInheritor._parentVertices).toHaveBeenCalledWith(mockParent1, mockParent2);
+    });
+
+    it("calls _scaleVertices with return of _parentVertices", function() {
+      expect(shapeInheritor._scaleVertices).toHaveBeenCalledWith(shapeInheritor._parentVertices(mockParent1, mockParent2));
+    });
+  });
 
 });
