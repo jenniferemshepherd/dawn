@@ -7,7 +7,7 @@ describe("Ager", function() {
   };
 
   var mockCell = {
-    body: function() { return }
+    age: function() { return mockAge }
   };
 
   var mockCellRepository = {
@@ -15,12 +15,14 @@ describe("Ager", function() {
   };
 
   beforeEach(function() {
+    spyOn(mockAge, 'increment')
     ager = new Ager(mockCellRepository);
   });
 
   describe("#action", function() {
     it("increases cell age over time", function() {
-      expect(mockAge.increment()).toHaveBeenCalledTimes(3);
+      ager.action()
+      expect(mockAge.increment).toHaveBeenCalledTimes(3);
     });
 
   });
