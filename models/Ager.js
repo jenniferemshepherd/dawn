@@ -8,7 +8,7 @@
 
   Ager.prototype.action = function(event) {
     this._cellRepository.store().forEach(function(cell) {
-      cell.age.increment()
+      cell.age().increment()
     }.bind(this));
   };
 
