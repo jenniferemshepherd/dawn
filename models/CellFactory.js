@@ -9,7 +9,7 @@
     this._vectorModule = vectorModule;
   }
 
-  CellFactory.prototype.create = function() {
+  CellFactory.prototype.createCircle = function() {
     var cell = new Cell(Matter.Bodies.circle(150, 200, 30), new Gait());
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
@@ -45,11 +45,29 @@
 
   CellFactory.prototype.createFromParents = function (parent1, parent2) {
     var averageXPosition = 0.5 * (parent1.body().position.x + parent2.body().position.x);
-    var averageYPosition = 0.5 * (parent1.body().position.y + parent2.body().position.y)
-    var cell = new Cell(Matter.Bodies.circle(averageXPosition, averageYPosition, 30), new Gait());
+    var averageYPosition = 0.5 * (parent1.body().position.y + parent2.body().position.y);
+    var inheritedVertices = this._inheritedVertices(parent1, parent2);
+    var cell = new Cell(Matter.Bodies.fromVertices(averageXPosition, averageYPosition, inheritedVertices), new Gait());
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
     return cell;
+  };
+
+  CellFactory.prototype._inheritedVertices = function (parent1, parent2) {
+    return this._scaleVertices(this._parentVertices(parent1, parent2), 0.65);
+  };
+
+  CellFactory.prototype._scaleVertices = function (vertices, scaleFactor) {
+    return vertices.map(vertex => {
+      return {
+        x: vertex.x * scaleFactor,
+        y: vertex.y * scaleFactor
+      }
+    });
+  };
+
+  CellFactory.prototype._parentVertices = function (parent1, parent2) {
+    return parent1.body().vertices.concat(parent2.body().vertices);
   };
 
   CellFactory.prototype.action = function (event) {
