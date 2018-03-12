@@ -13,7 +13,7 @@ var ager = new Ager(cellRepository);
 decoratedRenderer.createRender(decoratedEngine.matterEngine());
 
 // create some cells
-cellFactory.createCircle();
+var cell = cellFactory.createCircle();
 cellFactory.createSquare();
 cellFactory.createEquilateralTriangle();
 cellFactory.createRhombus();
