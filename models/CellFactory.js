@@ -2,15 +2,23 @@
 
 (function(exports) {
 
-  function CellFactory(simulation, cellRepository, vectorModule = Matter.Vector) {
+  function CellFactory(simulation, cellRepository, vectorModule = Matter.Vector, colourInheritor = new ColourInheritor()) {
     this._simulation = simulation;
     this._cellRepository = cellRepository;
     this._timeArray = [0];
     this._vectorModule = vectorModule;
+    this._colourInheritor = colourInheritor
   }
 
   CellFactory.prototype.createCircle = function () {
-    var cell = new Cell(Matter.Bodies.circle(150, 200, 30), new Gait(), new Age());
+    var cell = new Cell(Matter.Bodies.circle(150, 200, 30), {
+                                                      render: {
+                                                           fillStyle: `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`,
+                                                           lineWidth: 3
+                                                      }
+                                                  }), 
+                                                  new Gait(), 
+                                                  new Age());
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
     return cell;
@@ -47,7 +55,7 @@
     var averageXPosition = 0.5 * (parent1.body().position.x + parent2.body().position.x);
     var averageYPosition = 0.5 * (parent1.body().position.y + parent2.body().position.y);
     var inheritedVertices = this._inheritedVertices(parent1, parent2);
-    var cell = new Cell(Matter.Bodies.fromVertices(averageXPosition, averageYPosition, inheritedVertices), new Gait(), new Age());
+    var cell = new Cell(Matter.Bodies.fromVertices(averageXPosition, averageYPosition, inheritedVertices, { render: {fillStyle: this._colourInheritor.colourMixer(parent1, parent2) }}), new Gait(), new Age());
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
     return cell;
