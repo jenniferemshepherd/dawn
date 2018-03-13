@@ -11,6 +11,9 @@ describe("CellFactory", function() {
   var mockCellRepository = {
     add: function() { return }
   };
+  var mockShapeInheritor = {
+    childVertices: function() { return }
+  }
 
   beforeEach(function() {
     cellFactory = new CellFactory(mockSimulation, mockCellRepository);
@@ -24,16 +27,16 @@ describe("CellFactory", function() {
     });
 
     it("can create a cell", function() {
-      expect(cellFactory.create().body().type).toEqual('body');
+      expect(cellFactory.createCircle().body().type).toEqual('body');
     });
 
     it("stores it in the repository", function() {
-      cellFactory.create();
+      cellFactory.createCircle();
       expect(mockCellRepository.add).toHaveBeenCalled();
     });
 
     it("adds the cell to the world", function() {
-      cellFactory.create();
+      cellFactory.createCircle();
       expect(mockSimulation.addToWorld).toHaveBeenCalled();
     });
   });

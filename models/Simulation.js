@@ -32,6 +32,10 @@
     this._worldModule.add(this.world(), cell.body());
   };
 
+  Simulation.prototype.removeFromWorld = function(cell) {
+    this._worldModule.remove(this.world(), cell.body());
+  };
+
   Simulation.prototype.setup = function() {
     this.addWalls();
     this._decoratedEngine.disableGravity();

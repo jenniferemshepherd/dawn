@@ -21,7 +21,7 @@ describe("Ager", function() {
 
   describe("#action", function() {
     it("increases cell age over time", function() {
-      ager.action()
+      ager.action();
       expect(mockAge.increment).toHaveBeenCalledTimes(3);
     });
 
