@@ -4,6 +4,7 @@
 
   const ADULTHOOD_AGE = 5000;
   const DORMANCY_PERIOD = 5000;
+  const ELDERLY_AGE = 20000;
 
   function Cell(body, gait, age) {
     this._body = body;
@@ -29,15 +30,19 @@
   };
 
   Cell.prototype.isFertile = function (time) {
-    return this._isAdult(time) && this._isPostnatal(time);
+    return (this._isAdult(time) && this._isPostnatal(time) && !this._isElderly(time));
   };
 
   Cell.prototype._isAdult = function (time) {
-    return this._age.value(time) > 5000;
+    return this._age.value(time) > ADULTHOOD_AGE;
   };
 
   Cell.prototype._isPostnatal = function (time) {
     return time > this._lastReproduction + DORMANCY_PERIOD;
+  };
+
+  Cell.prototype._isElderly = function (time) {
+    return this._age.value(time) > ELDERLY_AGE;
   };
 
   exports.Cell = Cell;
