@@ -3,7 +3,7 @@
 (function(exports) {
 
   const ADULTHOOD_AGE = 5000;
-  const DORMANCY_PERIOD = 5000;
+  const DORMANCY_PERIOD = 2500;
   const ELDERLY_AGE = 20000;
 
   function Cell(body, gait, age) {
