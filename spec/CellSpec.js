@@ -23,4 +23,8 @@ describe("Cell", function() {
     expect(cell.mockAge).toEqual(mockAge)
   });
 
+  it("has a default fertility of false", function() {
+    expect(cell._fertility).toEqual(false)
+  })
+
 });

@@ -6,6 +6,7 @@
     this._body = body;
     this._gait = gait;
     this._age = age;
+    this._fertility = false;
   }
 
   Cell.prototype.body = function() {
