@@ -9,7 +9,7 @@ describe("cellFader", function() {
   var mockCell = {
     body: function() { return mockRender},
     age: function() { return 1200 },
-    fade: function() { return };
+    fade: function() { return }
   };
 
   var mockCellRepository = {
