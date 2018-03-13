@@ -106,11 +106,10 @@
   };
 
   CellFactory.prototype.action = function (event) {
-    var time = event.source.timing.timestamp;
     if (this._isCompatible(event)) {
       var parent1 = this._cellRepository.findCellByBodyId(event.pairs[0].bodyA.id);
       var parent2 = this._cellRepository.findCellByBodyId(event.pairs[0].bodyB.id);
-      this.createFromParents(parent1, parent2, time);
+      this.createFromParents(parent1, parent2, event.source.timing.timestamp);
     };
   };
 
