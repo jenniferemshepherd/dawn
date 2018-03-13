@@ -3,9 +3,10 @@
 (function(exports) {
 
 
-function Time(decoratedEngine) {
+function DawnTime(decoratedEngine) {
   this._decoratedEngine = decoratedEngine;
 };
 
-exports.Time = Time;
+exports.DawnTime = DawnTime;
+
 })(this);
