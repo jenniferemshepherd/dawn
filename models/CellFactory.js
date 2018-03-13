@@ -80,24 +80,26 @@
   };
 
   CellFactory.prototype.createFromParents = function (parent1, parent2) {
-    parent1.makeInfertile();
-    parent2.makeInfertile();
-    var cell = new Cell(this._bodyModule.fromVertices(
-      this._positionInheritor.x(parent1, parent2),
-      this._positionInheritor.y(parent1, parent2),
-      this._shapeInheritor.childVertices(parent1, parent2),
-      { render: {fillStyle: this._colourInheritor.colourMixer(parent1, parent2) }}),
-                        new Gait(),
-                        new Age()
-                       );
-    this._cellRepository.add(cell);
-    this._simulation.addToWorld(cell);
-    return cell;
+    if (this._areParentsFertile(parent1, parent2)) {
+      parent1.makeInfertile();
+      parent2.makeInfertile();
+      var cell = new Cell(this._bodyModule.fromVertices(
+        this._positionInheritor.x(parent1, parent2),
+        this._positionInheritor.y(parent1, parent2),
+        this._shapeInheritor.childVertices(parent1, parent2),
+        { render: {fillStyle: this._colourInheritor.colourMixer(parent1, parent2) }}),
+                          new Gait(),
+                          new Age()
+                         );
+      this._cellRepository.add(cell);
+      this._simulation.addToWorld(cell);
+      return cell;
+    };
   };
 
   CellFactory.prototype.action = function (event) {
     var time = event.source.timing.timestamp;
-    if (this._isMating(time, event)) {
+    if (this._isCompatible(event)) {
       var parent1 = this._cellRepository.findCellByBodyId(event.pairs[0].bodyA.id);
       var parent2 = this._cellRepository.findCellByBodyId(event.pairs[0].bodyB.id);
       this.createFromParents(parent1, parent2);
@@ -105,9 +107,9 @@
     }
   };
 
-  CellFactory.prototype._isMating = function (time, event) {
-    return (this._isFertile(time) && this._isCompatible(event));
-  };
+  // CellFactory.prototype._isMating = function (time, event) {
+  //   return (this._isFertile(time) && this._isCompatible(event));
+  // };
 
   CellFactory.prototype._isFertile = function (time) {
     return (time > this._timeArray[this._timeArray.length - 1] + 1000);
@@ -116,6 +118,10 @@
   CellFactory.prototype._isCompatible = function (event) {
     return (event.pairs[0].bodyA.label !== 'Rectangle Body' && event.pairs[0].bodyB.label !== 'Rectangle Body');
   };
+
+  CellFactory.prototype._areParentsFertile = function (parent1, parent2) {
+    return parent1.isFertile() && parent2.isFertile()
+  }
 
   exports.CellFactory = CellFactory;
 
