@@ -3,7 +3,8 @@
 describe("CellFactory", function() {
   var cellFactory;
   var mockCell = {
-    makeInfertile: function() { return }
+    makeInfertile: function() { return },
+    isFertile: function() { return true }
   };
   var mockSimulation = {
     addToWorld: function() { return }

@@ -103,16 +103,7 @@
       var parent1 = this._cellRepository.findCellByBodyId(event.pairs[0].bodyA.id);
       var parent2 = this._cellRepository.findCellByBodyId(event.pairs[0].bodyB.id);
       this.createFromParents(parent1, parent2);
-      this._timeArray.push(time);
-    }
-  };
-
-  // CellFactory.prototype._isMating = function (time, event) {
-  //   return (this._isFertile(time) && this._isCompatible(event));
-  // };
-
-  CellFactory.prototype._isFertile = function (time) {
-    return (time > this._timeArray[this._timeArray.length - 1] + 1000);
+    };
   };
 
   CellFactory.prototype._isCompatible = function (event) {
@@ -120,7 +111,7 @@
   };
 
   CellFactory.prototype._areParentsFertile = function (parent1, parent2) {
-    return parent1.isFertile() && parent2.isFertile()
+    return parent1.isFertile() && parent2.isFertile();
   }
 
   exports.CellFactory = CellFactory;
