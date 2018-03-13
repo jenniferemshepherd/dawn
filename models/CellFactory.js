@@ -69,6 +69,8 @@
   };
 
   CellFactory.prototype.createFromParents = function (parent1, parent2) {
+    parent1.makeInfertile();
+    parent2.makeInfertile();
     var averageXPosition = 0.5 * (parent1.body().position.x + parent2.body().position.x);
     var averageYPosition = 0.5 * (parent1.body().position.y + parent2.body().position.y);
     var inheritedVertices = this._inheritedVertices(parent1, parent2);
