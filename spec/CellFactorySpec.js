@@ -59,17 +59,4 @@ describe("CellFactory", function() {
     });
   });
 
-  describe("#createFromParents", function() {
-
-    beforeEach(function() {
-      spyOn(mockCell, 'makeInfertile');
-      cellFactory.createFromParents(mockCell, mockCell);
-    });
-
-    it("sets the parent cells' fertility to false", function() {
-      expect(mockCell.makeInfertile).toHaveBeenCalledTimes(2);
-    });
-
-  });
-
 });
