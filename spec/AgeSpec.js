@@ -2,19 +2,18 @@
 
 describe("Age", function() {
   var age;
+  var mockBirthday = 3000;
+  var mockCurrentTime = 5000;
 
   beforeEach(function() {
-    age = new Age();
+    age = new Age(mockBirthday);
   });
 
-  it("is initiated with an age value of 0", function() {
-    expect(age.value()).toEqual(0)
+  it("is initiated with a birthday", function() {
+    expect(age.birthday()).toEqual(mockBirthday);
   });
 
-  describe("#increment", function() {
-    it("increases age value when called", function() {
-      age.increment()
-      expect(age.value()).toEqual(1);
-    });
+  it("#value() returns current age", function() {
+    expect(age.value(mockCurrentTime)).toEqual(mockCurrentTime - mockBirthday);
   });
 });
