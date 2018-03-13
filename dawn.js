@@ -10,7 +10,7 @@ var cellFactory = new CellFactory(simulation, cellRepository, positionInheritor,
 var colourInheritor = new ColourInheritor();
 var animator = new Animator(cellRepository);
 var grow = new Grow(cellRepository);
-var ager = new Ager(cellRepository);
+// var ager = new Ager(cellRepository);
 var killer = new Killer(cellRepository, simulation);
 
 // instantiate our listeners
@@ -28,10 +28,8 @@ cellFactory.createRhombus();
 // register our listeners
 eventController.register('afterUpdate', animator);
 eventController.register('afterUpdate', grow);
-eventController.register('afterUpdate', ager);
 eventController.register('afterUpdate', killer);
 eventController.register('collisionStart', cellFactory);
-eventController.register('afterUpdate', updateCellsFertility);
 
 // run things
 simulation.setup();

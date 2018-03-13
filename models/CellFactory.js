@@ -28,7 +28,8 @@
                                               }
                                             }),
                                             new Gait(),
-                                            new Age());
+                                            new Age(0)
+                                          );
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
     return cell;
@@ -43,7 +44,8 @@
                                               }
                                             }),
                                             new Gait(),
-                                            new Age());
+                                            new Age(0)
+                                          );
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
     return cell;
@@ -58,7 +60,8 @@
                                               }
                                             }),
                                             new Gait(),
-                                            new Age());
+                                            new Age(0)
+                                          );
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
     return cell;
@@ -73,23 +76,23 @@
                                               }
                                             }),
                                             new Gait(),
-                                            new Age());
+                                            new Age(0)
+                                          );
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
     return cell;
   };
 
-  CellFactory.prototype.createFromParents = function (parent1, parent2) {
-    if (this._areParentsFertile(parent1, parent2)) {
-      parent1.makeInfertile();
-      parent2.makeInfertile();
+  CellFactory.prototype.createFromParents = function (parent1, parent2, time) {
+    if (this._areParentsFertile(parent1, parent2, time)) {
+      this._updateParentsLastReproduction(parent1, parent2, time);
       var cell = new Cell(this._bodyModule.fromVertices(
         this._positionInheritor.x(parent1, parent2),
         this._positionInheritor.y(parent1, parent2),
         this._shapeInheritor.childVertices(parent1, parent2),
         { render: {fillStyle: this._colourInheritor.colourMixer(parent1, parent2) }}),
                           new Gait(),
-                          new Age()
+                          new Age(time)
                          );
       this._cellRepository.add(cell);
       this._simulation.addToWorld(cell);
@@ -97,12 +100,17 @@
     };
   };
 
+  CellFactory.prototype._updateParentsLastReproduction = function (parent1, parent2, time) {
+    parent1.updateLastReproduction(time);
+    parent2.updateLastReproduction(time);
+  };
+
   CellFactory.prototype.action = function (event) {
     var time = event.source.timing.timestamp;
     if (this._isCompatible(event)) {
       var parent1 = this._cellRepository.findCellByBodyId(event.pairs[0].bodyA.id);
       var parent2 = this._cellRepository.findCellByBodyId(event.pairs[0].bodyB.id);
-      this.createFromParents(parent1, parent2);
+      this.createFromParents(parent1, parent2, time);
     };
   };
 
@@ -110,8 +118,8 @@
     return (event.pairs[0].bodyA.label !== 'Rectangle Body' && event.pairs[0].bodyB.label !== 'Rectangle Body');
   };
 
-  CellFactory.prototype._areParentsFertile = function (parent1, parent2) {
-    return parent1.isFertile() && parent2.isFertile();
+  CellFactory.prototype._areParentsFertile = function (parent1, parent2, time) {
+    return parent1.isFertile(time) && parent2.isFertile(time);
   }
 
   exports.CellFactory = CellFactory;

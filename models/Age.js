@@ -4,16 +4,12 @@
 
   var BIRTH_AGE = 0;
 
-  function Age() {
-    this._value = BIRTH_AGE;
+  function Age(birthday) {
+    this._birthday = birthday;
   }
 
-  Age.prototype.value = function() {
-    return this._value;
-  };
-
-  Age.prototype.increment = function() {
-    this._value += 1;
+  Age.prototype.value = function(currentTime) {
+    return currentTime - this._birthday;
   };
 
   exports.Age = Age;
