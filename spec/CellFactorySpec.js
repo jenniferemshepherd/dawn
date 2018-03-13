@@ -2,7 +2,9 @@
 
 describe("CellFactory", function() {
   var cellFactory;
-  var mockCell;
+  var mockCell = {
+    makeInfertile: function() { return }
+  };
   var mockSimulation = {
     addToWorld: function() { return }
   };
@@ -11,12 +13,32 @@ describe("CellFactory", function() {
   };
   var mockShapeInheritor = {
     childVertices: function() { return }
-  }
+  };
+  var mockPositionInheritor = {
+    x: function() { return },
+    y: function() { return }
+  };
+  var mockColourInheritor = {
+    colourMixer: function() { return }
+  };
+  var mockBodyModule = {
+    fromVertices: function() { return }
+  };
+
+  beforeEach(function() {
+    cellFactory = new CellFactory(
+      mockSimulation,
+      mockCellRepository,
+      mockPositionInheritor,
+      mockShapeInheritor,
+      mockColourInheritor,
+      mockBodyModule
+    );
+  });
 
   describe("#create", function() {
 
     beforeEach(function() {
-      cellFactory = new CellFactory(mockSimulation, mockCellRepository);
       spyOn(mockCellRepository, 'add');
       spyOn(mockSimulation, 'addToWorld');
     });
@@ -34,6 +56,19 @@ describe("CellFactory", function() {
       cellFactory.createCircle();
       expect(mockSimulation.addToWorld).toHaveBeenCalled();
     });
+  });
+
+  describe("#createFromParents", function() {
+
+    beforeEach(function() {
+      spyOn(mockCell, 'makeInfertile');
+      cellFactory.createFromParents(mockCell, mockCell);
+    });
+
+    it("sets the parent cells' fertility to false", function() {
+      expect(mockCell.makeInfertile).toHaveBeenCalledTimes(2);
+    });
+
   });
 
 });

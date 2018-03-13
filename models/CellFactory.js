@@ -7,16 +7,18 @@
     cellRepository,
     positionInheritor,
     shapeInheritor,
-    vectorModule = Matter.Vector,
     colourInheritor = new ColourInheritor(),
+    bodyModule = Matter.Bodies,
+    vectorModule = Matter.Vector
   ) {
     this._simulation = simulation;
     this._cellRepository = cellRepository;
     this._positionInheritor = positionInheritor;
     this._shapeInheritor = shapeInheritor;
-    this._timeArray = [0];
+    this._colourInheritor = colourInheritor;
+    this._bodyModule = bodyModule;
     this._vectorModule = vectorModule;
-    this._colourInheritor = colourInheritor
+    this._timeArray = [0];
   }
 
   CellFactory.prototype.createCircle = function () {
@@ -78,14 +80,16 @@
   };
 
   CellFactory.prototype.createFromParents = function (parent1, parent2) {
-    var cell = new Cell(Matter.Bodies.fromVertices(
+    parent1.makeInfertile();
+    parent2.makeInfertile();
+    var cell = new Cell(this._bodyModule.fromVertices(
       this._positionInheritor.x(parent1, parent2),
       this._positionInheritor.y(parent1, parent2),
       this._shapeInheritor.childVertices(parent1, parent2),
       { render: {fillStyle: this._colourInheritor.colourMixer(parent1, parent2) }}),
-      new Gait(),
-      new Age()
-    );
+                        new Gait(),
+                        new Age()
+                       );
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
     return cell;
