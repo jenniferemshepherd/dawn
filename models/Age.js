@@ -8,6 +8,10 @@
     this._birthday = birthday;
   }
 
+  Age.prototype.birthday = function () {
+    return this._birthday;
+  };
+
   Age.prototype.value = function(currentTime) {
     return currentTime - this._birthday;
   };
