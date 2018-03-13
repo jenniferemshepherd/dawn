@@ -15,7 +15,12 @@ var cellFader = new CellFader(cellRepository);
 var killer = new Killer(cellRepository, simulation);
 
 // create render
-decoratedRender.createRender(decoratedEngine.matterEngine());
+var render = decoratedRender.createRender(decoratedEngine.matterEngine());
+
+// create runner
+var runner = Matter.Runner.create();
+
+// simulation.run();
 
 // create some cells
 var cell = cellFactory.createCircle();
