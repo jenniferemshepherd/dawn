@@ -29,6 +29,19 @@ describe("CellRepository", function() {
 
   });
 
+  describe("#remove", function() {
+
+    beforeEach(function() {
+      cellRepository.add(mockCell)
+    });
+
+    it("can hold a cell", function() {
+      cellRepository.remove(mockCell)
+      expect(cellRepository.store()).not.toContain(mockCell)
+    });
+
+  });
+
   describe("#findCellByBodyId", function() {
 
     beforeEach(function() {
