@@ -2,9 +2,18 @@
 
 (function(exports) {
 
-  function CellFactory(simulation, cellRepository, colourInheritor, vectorModule = Matter.Vector) {
+  function CellFactory(
+    simulation,
+    cellRepository,
+    positionInheritor,
+    shapeInheritor,
+    vectorModule = Matter.Vector,
+    colourInheritor = new ColourInheritor(),
+  ) {
     this._simulation = simulation;
     this._cellRepository = cellRepository;
+    this._positionInheritor = positionInheritor;
+    this._shapeInheritor = shapeInheritor;
     this._timeArray = [0];
     this._vectorModule = vectorModule;
     this._colourInheritor = colourInheritor
@@ -69,30 +78,17 @@
   };
 
   CellFactory.prototype.createFromParents = function (parent1, parent2) {
-    var averageXPosition = 0.5 * (parent1.body().position.x + parent2.body().position.x);
-    var averageYPosition = 0.5 * (parent1.body().position.y + parent2.body().position.y);
-    var inheritedVertices = this._inheritedVertices(parent1, parent2);
-    var cell = new Cell(Matter.Bodies.fromVertices(averageXPosition, averageYPosition, inheritedVertices, { render: {fillStyle: this._colourInheritor.colourMixer(parent1, parent2) }}), new Gait(), new Age());
+    var cell = new Cell(Matter.Bodies.fromVertices(
+      this._positionInheritor.x(parent1, parent2),
+      this._positionInheritor.y(parent1, parent2),
+      this._shapeInheritor.childVertices(parent1, parent2),
+      { render: {fillStyle: this._colourInheritor.colourMixer(parent1, parent2) }}),
+      new Gait(),
+      new Age()
+    );
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
     return cell;
-  };
-
-  CellFactory.prototype._inheritedVertices = function (parent1, parent2) {
-    return this._scaleVertices(this._parentVertices(parent1, parent2), 0.65);
-  };
-
-  CellFactory.prototype._scaleVertices = function (vertices, scaleFactor) {
-    return vertices.map(vertex => {
-      return {
-        x: vertex.x * scaleFactor,
-        y: vertex.y * scaleFactor
-      };
-    });
-  };
-
-  CellFactory.prototype._parentVertices = function (parent1, parent2) {
-    return parent1.body().vertices.concat(parent2.body().vertices);
   };
 
   CellFactory.prototype.action = function (event) {
