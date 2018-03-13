@@ -68,6 +68,10 @@ h1 {
   padding: 0.4em;
 }
 
+.buttons {
+  justify-content: center;
+}
+
 img:hover {
   background-color: rgba(255, 255, 255, 0.13);
   border-radius: 30px;
