@@ -14,6 +14,7 @@ var ager = new Ager(cellRepository);
 var killer = new Killer(cellRepository, simulation);
 var dawnTime = new DawnTime(decoratedEngine);
 
+
 // create render
 decoratedRenderer.createRender(decoratedEngine.matterEngine());
 

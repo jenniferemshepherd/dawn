@@ -5,11 +5,13 @@
 
 function DawnTime(decoratedEngine) {
   this._decoratedEngine = decoratedEngine;
-  this._speed = 0
 };
 
-  DawnTime.prototype.speed = function() {
-    return this._speed
+  DawnTime.prototype.speed = function(input) {
+    var current_speed = this._decoratedEngine.matterEngine().timing.timeScale
+    var speed = input || current_speed
+    this._decoratedEngine.matterEngine().timing.timeScale = input
+    return speed
   };
 
 exports.DawnTime = DawnTime;

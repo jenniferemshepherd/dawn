@@ -2,7 +2,13 @@
 
 describe("DawnTime", function() {
   var dawnTime;
-  var mockEngine;
+  var mockTimeScale;
+  var mockTiming = {
+    mockTimeScale: function() { return mockTimeScale }
+  };
+  var mockEngine = {
+    matterEngine: function() { return mockTiming }
+  };
 
   beforeEach(function() {
     dawnTime = new DawnTime(mockEngine);
@@ -12,9 +18,10 @@ describe("DawnTime", function() {
     expect(this._decoratedEngine).toEqual(mockEngine)
   });
 
-  it("has an initial speed of 0", function() {
-    expect(dawnTime.speed()).toEqual(0)
+  describe("#speed", function() {
+    it("can be set with a speed of 0", function() {
+      expect(dawnTime.speed(0)).toEqual(0)
+    });
   });
-
 
 });
