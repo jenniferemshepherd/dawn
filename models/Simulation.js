@@ -53,8 +53,8 @@
   };
 
   Simulation.prototype.run = function() {
-    this._engineModule.run(this._decoratedEngine.matterEngine());
-    this._renderModule.run(this._render.matterRender());
+    // this._engineModule.run(this._decoratedEngine.matterEngine());
+    this._renderModule.run(this._decoratedRender.matterRender());
   };
 
   exports.Simulation = Simulation;

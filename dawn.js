@@ -20,22 +20,20 @@ var render = decoratedRender.createRender(decoratedEngine.matterEngine());
 // create runner
 var runner = Matter.Runner.create();
 
-// simulation.run();
-
 // create some cells
-var cell = cellFactory.createCircle();
-cellFactory.createSquare();
-cellFactory.createEquilateralTriangle();
+// var cell = cellFactory.createCircle();
+// cellFactory.createSquare();
+// cellFactory.createEquilateralTriangle();
 // cellFactory.createRhombus();
 
 // register our listeners
 eventController.register('afterUpdate', animator);
-eventController.register('afterUpdate', grow);
-eventController.register('afterUpdate', ager);
-eventController.register('afterUpdate', killer);
-eventController.register('afterUpdate', cellFader);
+// eventController.register('afterUpdate', grow);
+// eventController.register('afterUpdate', ager);
+// eventController.register('afterUpdate', killer);
+// eventController.register('afterUpdate', cellFader);
 eventController.register('collisionStart', cellFactory);
 
 // run things
-simulation.setup();
-simulation.run();
+// simulation.setup();
+// simulation.run();
