@@ -10,7 +10,7 @@
     } else if (this._isMutation()) {
       return this._randomColour();
     } else {
-      return this._mixedColour();
+      return this._mixedColour(parent1, parent2);
     };
   };
 
@@ -22,9 +22,9 @@
     return `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
   };
 
-  ColourInheritor.prototype._mixedColour = function(parent1, parent2) {
-    var weightedParent1Colour = this._weightedParentColour(parent1, 0.8)
-    var weightedParent2Colour = this._weightedParentColour(parent2, 0.2)
+  ColourInheritor.prototype._mixedColour = function(parent1, parent2, weight1 = 0.8, weight2 = 0.2) {
+    var weightedParent1Colour = this._weightedParentColour(parent1, weight1)
+    var weightedParent2Colour = this._weightedParentColour(parent2, weight2)
     var sum = weightedParent1Colour.map(function(num, id) {return num + weightedParent2Colour[id]})
     return this._convertToRgbString(sum)
   };

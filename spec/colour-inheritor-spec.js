@@ -12,6 +12,14 @@ describe("ColourInheritor", function() {
       expect(colourInheritor.colourMixer()).toEqual('rgb(255, 255, 255)')
     });
 
+    it('returns a weighted value if isMutation() is false', function() {
+      var colourInheritor = new ColourInheritor(parent, parent);
+      spyOn(colourInheritor, '_isMutation').and.returnValue(false);
+      spyOn(colourInheritor, '_mixedColour')
+      colourInheritor.colourMixer(parent, parent)
+      expect(colourInheritor._mixedColour).toHaveBeenCalled()
+    });
+
   });
 
 });
