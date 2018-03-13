@@ -2,7 +2,7 @@
 
 (function(exports) {
 
-  function CellFactory(simulation, cellRepository, vectorModule = Matter.Vector, colourInheritor = new ColourInheritor()) {
+  function CellFactory(simulation, cellRepository, colourInheritor, vectorModule = Matter.Vector) {
     this._simulation = simulation;
     this._cellRepository = cellRepository;
     this._timeArray = [0];
