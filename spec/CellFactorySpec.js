@@ -13,10 +13,27 @@ describe("CellFactory", function() {
   };
   var mockShapeInheritor = {
     childVertices: function() { return }
-  }
+  };
+  var mockPositionInheritor = {
+    x: function() { return },
+    y: function() { return }
+  };
+  var mockColourInheritor = {
+    colourMixer: function() { return }
+  };
+  var mockBodyModule = {
+    fromVertices: function() { return }
+  };
 
   beforeEach(function() {
-    cellFactory = new CellFactory(mockSimulation, mockCellRepository);
+    cellFactory = new CellFactory(
+      mockSimulation,
+      mockCellRepository,
+      mockPositionInheritor,
+      mockShapeInheritor,
+      mockColourInheritor,
+      mockBodyModule
+    );
   });
 
   describe("#create", function() {
