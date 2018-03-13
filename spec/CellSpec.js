@@ -4,49 +4,45 @@ describe("Cell", function() {
   var cell;
   var bodyCircle = Matter.Bodies.circle(400, 200, 40);
   var stoop = {};
-  var mockAge;
-
+  var mockAge = {
+    value: function() { return }
+  };
+  var mockCurrentTime = 7500;
 
   beforeEach(function() {
     cell = new Cell(bodyCircle, stoop, mockAge);
   });
 
-  it("has a body", function() {
-    expect(cell.body()).toEqual(bodyCircle)
-  });
+  describe("initially,", function() {
 
-  it("has a gait", function() {
-    expect(cell.gait()).toEqual(stoop)
-  });
+    it("has a body", function() {
+      expect(cell.body()).toEqual(bodyCircle)
+    });
 
-  it("has an age", function() {
-    expect(cell.mockAge).toEqual(mockAge)
-  });
+    it("has a gait", function() {
+      expect(cell.gait()).toEqual(stoop)
+    });
 
-  it("has a default fertility of false", function() {
-    expect(cell.isFertile()).toEqual(false)
-  });
+    it("has an age", function() {
+      expect(cell.age()).toEqual(mockAge)
+    });
 
-  describe("#makeFertile", function() {
-
-    it("changes the fertility of the cell to true", function() {
-      cell.makeFertile();
-      expect(cell.isFertile()).toEqual(true);
+    it("is infertile", function() {
+      expect(cell.isFertile()).toEqual(false)
     });
 
   });
 
-  describe("#makeInfertile", function() {
+  describe("#updateLastReproduction()", function() {
 
     beforeEach(function() {
-      cell.makeFertile();
+      cell.updateLastReproduction(mockCurrentTime);
     });
 
-    it("changes the fertility of the cell to false", function() {
-      cell.makeInfertile();
-      expect(cell.isFertile()).toEqual(false);
-    })
+    it("updates the cells' lastReproduction property", function() {
+      expect(cell.lastReproduction()).toEqual(mockCurrentTime);
+    });
 
-  })
+  });
 
 });

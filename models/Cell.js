@@ -25,6 +25,10 @@
     return this._age;
   };
 
+  Cell.prototype.lastReproduction = function () {
+    return this._lastReproduction;
+  };
+
   Cell.prototype.updateLastReproduction = function (time) {
     this._lastReproduction = time;
   };
