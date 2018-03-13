@@ -48,7 +48,6 @@
 
   ColourInheritor.prototype._isMutation = function() {
     return (Math.floor(Math.random() * 10) === 5)
-    // return true
   }
 
   exports.ColourInheritor = ColourInheritor
