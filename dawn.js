@@ -8,6 +8,7 @@ var cellFactory = new CellFactory(simulation, cellRepository);
 var animator = new Animator(cellRepository);
 var grow = new Grow(cellRepository);
 var ager = new Ager(cellRepository);
+var killer = new Killer(cellRepository, simulation);
 
 // create render
 decoratedRenderer.createRender(decoratedEngine.matterEngine());
@@ -22,6 +23,7 @@ cellFactory.createRhombus();
 eventController.register('afterUpdate', animator);
 eventController.register('afterUpdate', grow);
 eventController.register('afterUpdate', ager);
+eventController.register('afterUpdate', killer);
 eventController.register('collisionStart', cellFactory);
 
 // run things
