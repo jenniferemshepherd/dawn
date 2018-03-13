@@ -20,6 +20,10 @@
     });
   };
 
+  CellRepository.prototype.remove = function(cell) {
+    this._store.splice(this._store.indexOf(cell), 1);
+  };
+
   exports.CellRepository = CellRepository;
 
 })(this);
