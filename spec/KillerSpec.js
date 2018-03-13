@@ -2,8 +2,13 @@
 
 describe("Killer", function() {
   var killer;
+  var mockkiller;
 
   var mockSimulation = {
+    removeFromWorld: function() { return }
+  };
+
+  var mockOldSimulation = {
     removeFromWorld: function() { return }
   };
 
@@ -29,25 +34,26 @@ describe("Killer", function() {
   };
 
   var mockOldCellRepository = {
-    store: function() { return [mockOldCell] }
+    store: function() { return [mockOldCell] },
+    remove: function() { return }
   };
 
   beforeEach(function() {
     spyOn(mockSimulation, 'removeFromWorld')
+    spyOn(mockOldSimulation, 'removeFromWorld')
   });
 
   describe("#kill", function() {
     it("does not kill cell if younger than 1500", function() {
       killer = new Killer(mockCellRepository, mockSimulation);
-      killer.action()
+      killer.action();
       expect(mockSimulation.removeFromWorld).toHaveBeenCalledTimes(0);
     });
 
     it("kills cell if older than 1500", function() {
-      killer = new Killer(mockOldCellRepository, mockSimulation);
-      killer.action();
-      expect(mockSimulation.removeFromWorld).toHaveBeenCalledTimes(1);
+      mockkiller = new Killer(mockOldCellRepository, mockOldSimulation);
+      mockkiller.action();
+      expect(mockOldSimulation.removeFromWorld).toHaveBeenCalledTimes(1);
     });
   });
-
 });
