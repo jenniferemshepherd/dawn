@@ -21,7 +21,7 @@
     return this._age;
   };
 
-  Cell.prototype.fertility = function () {
+  Cell.prototype.isFertile = function () {
     return this._fertility;
   };
 

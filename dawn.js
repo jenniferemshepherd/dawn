@@ -13,6 +13,9 @@ var grow = new Grow(cellRepository);
 var ager = new Ager(cellRepository);
 var killer = new Killer(cellRepository, simulation);
 
+// instantiate our listeners
+var updateCellsFertility = new UpdateCellsFertility(cellRepository);
+
 // create render
 decoratedRenderer.createRender(decoratedEngine.matterEngine());
 
@@ -28,6 +31,7 @@ eventController.register('afterUpdate', grow);
 eventController.register('afterUpdate', ager);
 eventController.register('afterUpdate', killer);
 eventController.register('collisionStart', cellFactory);
+eventController.register('afterUpdate', updateCellsFertility);
 
 // run things
 simulation.setup();

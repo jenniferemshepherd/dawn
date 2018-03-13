@@ -24,14 +24,14 @@ describe("Cell", function() {
   });
 
   it("has a default fertility of false", function() {
-    expect(cell.fertility()).toEqual(false)
+    expect(cell.isFertile()).toEqual(false)
   });
 
   describe("#makeFertile", function() {
 
     it("changes the fertility of the cell to true", function() {
       cell.makeFertile();
-      expect(cell.fertility()).toEqual(true);
+      expect(cell.isFertile()).toEqual(true);
     });
 
   });
@@ -44,7 +44,7 @@ describe("Cell", function() {
 
     it("changes the fertility of the cell to false", function() {
       cell.makeInfertile();
-      expect(cell.fertility()).toEqual(false);
+      expect(cell.isFertile()).toEqual(false);
     })
 
   })
