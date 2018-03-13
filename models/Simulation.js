@@ -10,7 +10,7 @@
     renderModule = Matter.Render
   ) {
     this._decoratedEngine = decoratedEngine;
-    this._render = decoratedRender;
+    this._decoratedRender = decoratedRender;
     this._worldModule = worldModule;
     this._engineModule = engineModule;
     this._renderModule = renderModule;
@@ -20,8 +20,8 @@
     return this._decoratedEngine;
   };
 
-  Simulation.prototype.render = function() {
-    return this._render;
+  Simulation.prototype.decoratedRender = function() {
+    return this._decoratedRender;
   };
 
   Simulation.prototype.world = function() {
