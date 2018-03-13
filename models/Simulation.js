@@ -4,13 +4,13 @@
 
   function Simulation(
     decoratedEngine,
-    renderer,
+    decoratedRender,
     worldModule = Matter.World,
     engineModule = Matter.Engine,
     renderModule = Matter.Render
   ) {
     this._decoratedEngine = decoratedEngine;
-    this._renderer = renderer;
+    this._render = decoratedRender;
     this._worldModule = worldModule;
     this._engineModule = engineModule;
     this._renderModule = renderModule;
@@ -20,8 +20,8 @@
     return this._decoratedEngine;
   };
 
-  Simulation.prototype.renderer = function() {
-    return this._renderer;
+  Simulation.prototype.render = function() {
+    return this._render;
   };
 
   Simulation.prototype.world = function() {
@@ -54,7 +54,7 @@
 
   Simulation.prototype.run = function() {
     this._engineModule.run(this._decoratedEngine.matterEngine());
-    this._renderModule.run(this._renderer.matterRender());
+    this._renderModule.run(this._render.matterRender());
   };
 
   exports.Simulation = Simulation;

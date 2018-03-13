@@ -1,8 +1,8 @@
 // instantiate our objects
 var decoratedEngine = new DecoratedEngine();
-var decoratedRenderer = new DecoratedRender();
+var decoratedRender = new DecoratedRender();
 var eventController = new EventController(decoratedEngine);
-var simulation = new Simulation(decoratedEngine, decoratedRenderer);
+var simulation = new Simulation(decoratedEngine, decoratedRender);
 var cellRepository = new CellRepository();
 var shapeInheritor = new ShapeInheritor();
 var positionInheritor = new PositionInheritor();
@@ -15,13 +15,13 @@ var cellFader = new CellFader(cellRepository);
 var killer = new Killer(cellRepository, simulation);
 
 // create render
-decoratedRenderer.createRender(decoratedEngine.matterEngine());
+decoratedRender.createRender(decoratedEngine.matterEngine());
 
 // create some cells
 var cell = cellFactory.createCircle();
 cellFactory.createSquare();
 cellFactory.createEquilateralTriangle();
-cellFactory.createRhombus();
+// cellFactory.createRhombus();
 
 // register our listeners
 eventController.register('afterUpdate', animator);
