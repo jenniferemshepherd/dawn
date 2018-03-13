@@ -3,6 +3,9 @@ console.log("Jennifer is doing the JQuery")
 $( document ).ready(function() {
 
   $( "#start" ).click(function() {
+    var cell = cellFactory.createCircle();
+    cellFactory.createSquare();
+    cellFactory.createEquilateralTriangle();
     Matter.Runner.run(runner, decoratedEngine.matterEngine());
     simulation.setup();
     simulation.run();
@@ -10,6 +13,8 @@ $( document ).ready(function() {
 
   $( "#stop" ).click(function() {
     Matter.Runner.stop(runner)
+    Matter.Engine.clear(decoratedEngine.matterEngine());
+    simulation.world().bodies = []
     });
 
   $( "#pause" ).click(function() {
@@ -21,7 +26,18 @@ $( document ).ready(function() {
     });
 
   $('#refresh').click(function() {
-    location.reload();
+    // Common._nextId = 0;
+    // Common._seed = 0;
+    Matter.Runner.stop(runner)
+    Matter.Engine.clear(decoratedEngine.matterEngine());
+    simulation.world().bodies = []
+    var cell = cellFactory.createCircle();
+    cellFactory.createSquare();
+    cellFactory.createEquilateralTriangle();
+    Matter.Runner.run(runner, decoratedEngine.matterEngine());
+    simulation.setup();
+    simulation.run();
+    // location.reload();
   });
 
   $('#wireframe').click(function() {
