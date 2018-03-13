@@ -8,7 +8,6 @@ var shapeInheritor = new ShapeInheritor();
 var positionInheritor = new PositionInheritor();
 var cellFactory = new CellFactory(simulation, cellRepository, positionInheritor, shapeInheritor);
 var colourInheritor = new ColourInheritor();
-var cellFactory = new CellFactory(simulation, cellRepository, colourInheritor);
 var animator = new Animator(cellRepository);
 var grow = new Grow(cellRepository);
 var ager = new Ager(cellRepository);
