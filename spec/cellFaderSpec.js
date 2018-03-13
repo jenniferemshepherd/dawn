@@ -23,7 +23,7 @@ describe("cellFader", function() {
 
   beforeEach(function() {
     spyOn(mockCell, 'fade')
-    cellFader = new cellFader(mockCellRepository);
+    cellFader = new CellFader(mockCellRepository);
   });
 
   describe("#action", function() {
