@@ -49,6 +49,10 @@
     return this._age.value(time) > ELDERLY_AGE;
   };
 
+  Cell.prototype.fade = function() {
+    this._body.render.opacity *= 0.992
+  };
+
   exports.Cell = Cell;
 
 })(this);
