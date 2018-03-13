@@ -12,5 +12,9 @@ describe("DawnTime", function() {
     expect(this._decoratedEngine).toEqual(mockEngine)
   });
 
+  it("has an initial speed of 0", function() {
+    expect(dawnTime.speed()).toEqual(0)
+  });
+
 
 });
