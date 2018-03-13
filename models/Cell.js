@@ -21,6 +21,18 @@
     return this._age;
   };
 
+  Cell.prototype.fertility = function () {
+    return this._fertility;
+  };
+
+  Cell.prototype.makeFertile = function () {
+    this._fertility = true;
+  };
+
+  Cell.prototype.makeInfertile = function () {
+    this._fertility = false;
+  };
+
   exports.Cell = Cell;
 
 })(this);
