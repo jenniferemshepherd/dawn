@@ -4,6 +4,10 @@
 
   }
 
+  TOP_RGB_VALUE = 255;
+  PARENT1_WEIGHT = 0.8;
+  PARENT2_WEIGHT = 0.2;
+
   ColourInheritor.prototype.colourMixer = function(parent1, parent2) {
     if (this._isMutation() && this._isMutation()) {
       return this._albinoString();
@@ -15,16 +19,16 @@
   };
 
   ColourInheritor.prototype._albinoString = function() {
-    return 'rgb(255, 255, 255)'
+    return `rgb(${TOP_RGB_VALUE}, ${TOP_RGB_VALUE}, ${TOP_RGB_VALUE})`
   }
 
   ColourInheritor.prototype._randomColour = function () {
-    return `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
+    return `rgb(${Math.floor(Math.random() * TOP_RGB_VALUE)}, ${Math.floor(Math.random() * TOP_RGB_VALUE)}, ${Math.floor(Math.random() * TOP_RGB_VALUE)})`
   };
 
-  ColourInheritor.prototype._mixedColour = function(parent1, parent2, weight1 = 0.8, weight2 = 0.2) {
-    var weightedParent1Colour = this._weightedParentColour(parent1, weight1)
-    var weightedParent2Colour = this._weightedParentColour(parent2, weight2)
+  ColourInheritor.prototype._mixedColour = function(parent1, parent2) {
+    var weightedParent1Colour = this._weightedParentColour(parent1, PARENT1_WEIGHT)
+    var weightedParent2Colour = this._weightedParentColour(parent2, PARENT2_WEIGHT)
     var sum = weightedParent1Colour.map(function(num, id) {return num + weightedParent2Colour[id]})
     return this._convertToRgbString(sum)
   };
