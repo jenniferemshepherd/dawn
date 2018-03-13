@@ -8,7 +8,8 @@ describe("cellFader", function() {
 
   var mockCell = {
     body: function() { return mockRender},
-    age: function() { return 1200 }
+    age: function() { return 1200 },
+    fade: function() { return };
   };
 
   var mockCellRepository = {
@@ -16,14 +17,14 @@ describe("cellFader", function() {
   };
 
   beforeEach(function() {
-    spyOn(mockCell, 'body')
+    spyOn(mockCell, 'fade')
     cellFader = new cellFader(mockCellRepository);
   });
 
   describe("#action", function() {
     it("fades cells after a certain time", function() {
       cellFader.action();
-      expect(body.render.opacity).toHaveBeenCalledTimes(3);
+      expect(fade).toHaveBeenCalledTimes(3);
     });
 
 

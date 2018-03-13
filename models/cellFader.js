@@ -9,7 +9,7 @@
   cellFader.prototype.action = function(event) {
     this._cellRepository.store().forEach(function(cell) {
       if (cell.age().value() > 1000) {
-        cell._body.render.opacity *= 0.992
+        cell.fade();
       }
     }.bind(this));
   };

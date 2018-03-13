@@ -33,6 +33,10 @@
     this._fertility = false;
   };
 
+  Cell.prototype.fade = function() {
+    this._body.render.opacity *= 0.992
+  };
+
   exports.Cell = Cell;
 
 })(this);

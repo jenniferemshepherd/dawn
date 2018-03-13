@@ -9,7 +9,7 @@
 
   Killer.prototype.action = function(event) {
     this._cellRepository.store().forEach(function(cell) {
-      if (cell.age().value() > 1500) {
+      if (cell.age().value() > 4000) {
         this._simulation.removeFromWorld(cell);
         this._cellRepository.remove(cell);
       };

@@ -2,6 +2,7 @@
 
 describe("Killer", function() {
   var killer;
+  var mockkiller;
 
   var mockSimulation = {
     removeFromWorld: function() { return }
@@ -44,8 +45,8 @@ describe("Killer", function() {
     });
 
     it("kills cell if older than 1500", function() {
-      killer = new Killer(mockOldCellRepository, mockSimulation);
-      killer.action();
+      mockkiller = new Killer(mockOldCellRepository, mockSimulation);
+      mockkiller.action();
       expect(mockSimulation.removeFromWorld).toHaveBeenCalledTimes(1);
     });
   });
