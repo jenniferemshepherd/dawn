@@ -2,18 +2,17 @@
 
 (function(exports) {
 
-  function Ager(cellRepository) {
+  function cellFader(cellRepository) {
     this._cellRepository = cellRepository;
   }
 
-  Ager.prototype.action = function(event) {
+  cellFader.prototype.action = function(event) {
     this._cellRepository.store().forEach(function(cell) {
-      cell.age().increment();
       if (cell.age().value() > 1000) {
         cell._body.render.opacity *= 0.992
       }
     }.bind(this));
   };
 
-  exports.Ager = Ager;
+  exports.cellFader = cellFader;
 })(this);
