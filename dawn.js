@@ -22,7 +22,7 @@ var cellFactory = new CellFactory(simulation, cellRepository, positionInheritor,
 // instantiate listeners
 var animateCells = new AnimateCells(cellRepository);
 var grow = new Grow(cellRepository);
-var cellFader = new CellFader(cellRepository);
+var fadeCells = new FadeCells(cellRepository);
 var killer = new Killer(cellRepository, simulation);
 var dawnTime = new DawnTime(decoratedEngine);
 var birthCell = new BirthCell(cellFactory, cellRepository);
@@ -34,5 +34,5 @@ var render = decoratedRender.createRender(decoratedEngine.matterEngine());
 eventController.register('afterUpdate', animateCells);
 eventController.register('afterUpdate', grow);
 eventController.register('afterUpdate', killer);
-eventController.register('afterUpdate', cellFader);
+eventController.register('afterUpdate', fadeCells);
 eventController.register('collisionStart', birthCell);

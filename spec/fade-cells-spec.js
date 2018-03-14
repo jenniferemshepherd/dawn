@@ -1,7 +1,7 @@
 'use strict';
 
-describe("cellFader", function() {
-  var cellFader;
+describe("FadeCells", function() {
+  var fadeCells;
 
   var mockAge = {
     value: function() { return 30000 }
@@ -22,12 +22,12 @@ describe("cellFader", function() {
 
   beforeEach(function() {
     spyOn(mockCell, 'fade')
-    cellFader = new CellFader(mockCellRepository);
+    fadeCells = new FadeCells(mockCellRepository);
   });
 
   describe("#action", function() {
     it("fades cells after a certain time", function() {
-      cellFader.action(mockEvent);
+      fadeCells.action(mockEvent);
       expect(mockCell.fade).toHaveBeenCalledTimes(3);
     });
 
