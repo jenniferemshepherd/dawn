@@ -12,6 +12,7 @@ var animator = new Animator(cellRepository);
 var grow = new Grow(cellRepository);
 var cellFader = new CellFader(cellRepository);
 var killer = new Killer(cellRepository, simulation);
+var notes = new Notes();
 
 // instantiate our listeners
 var updateCellsFertility = new UpdateCellsFertility(cellRepository);
