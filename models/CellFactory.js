@@ -7,7 +7,7 @@
     cellRepository,
     positionInheritor,
     shapeInheritor,
-    colourInheritor = new ColourInheritor(),
+    colourInheritor,
     bodyModule = Matter.Bodies,
     vectorModule = Matter.Vector
   ) {
