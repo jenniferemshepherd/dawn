@@ -26,7 +26,7 @@
   };
 
   BirthCell.prototype._isBoundary = function (body) {
-    return body.label === 'Rectangle Body';
+    return body.label === 'Boundary';
   };
 
   BirthCell.prototype._cellsAreFertile = function (bodyA, bodyB, time) {

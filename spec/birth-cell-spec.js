@@ -42,7 +42,7 @@ describe("BirthCell", function() {
 
   // mocking boundary body
   var mockBoundaryBody = {
-    label: 'Rectangle Body',
+    label: 'Boundary',
   };
   var mockBoundaryPair = {
     bodyA: mockCellBody,
