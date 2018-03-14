@@ -5,6 +5,8 @@
     <title>dawn</title>
     <link href="./public/dawn_stylesheet.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Sacramento|Ubuntu:300,400" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="./public/dawn-jquery.js"></script>
   </head>
   <body>
     <header>
@@ -24,6 +26,7 @@
     <script src="./node_modules/p5/lib/addons/p5.sound.js"></script>
     <script src="./models/Cell.js"></script>
     <script src="./models/Simulation.js"></script>
+    <script src="./models/decorated-runner.js"></script>
     <script src="./models/DecoratedEngine.js"></script>
     <script src="./models/DecoratedRender.js"></script>
     <script src="./models/CellRepository.js"></script>
@@ -37,11 +40,22 @@
     <script src="./models/EventController.js"></script>
     <script src="./models/CellFactory.js"></script>
     <script src="./models/cellFader.js"></script>
+    <script src="./models/mutator.js"></script>
+    <script src="./models/rgb-formatter.js"></script>
     <script src="./models/ColourInheritor.js"></script>
+    <script src="./models/DawnTime.js"></script>
     <script src="./inheritors/position-inheritor.js"></script>
     <script src="./inheritors/shape-inheritor.js"></script>
-    <script src="./models/update-cells-fertility.js"></script>
+    <script src="./listeners/birth-cell.js"></script>
     <script src="./dawn.js"></script>
 
+    <div class="buttons" style="text-align:center;">
+      <button id="start" type="button">Start</button>
+      <button id="stop" type="button">Stop</button>
+      <button id="pause" type="button">Pause</button>
+      <button id="unpause" type="button">unPause</button>
+      <button id="refresh" type="button">Refresh</button>
+      <button id="wireframe" type="button">Wireframe toggle</button>
+    </div>
   </body>
 </html>
