@@ -3,7 +3,7 @@ $( document ).ready(function() {
   startSimulation(cellFactory, runner, decoratedEngine, simulation);
 
   $( "#start" ).click(function() {
-    if (this.matterEngine().timing.timestamp === 0) {
+    if (decoratedEngine.matterEngine().timing.timestamp === 0) {
       startSimulation(cellFactory, runner, decoratedEngine, simulation);
     };
     });
