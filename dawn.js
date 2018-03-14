@@ -23,7 +23,7 @@ decoratedRenderer.createRender(decoratedEngine.matterEngine());
 var cell = cellFactory.createCircle();
 cellFactory.createSquare();
 cellFactory.createEquilateralTriangle();
-cellFactory.createRhombus();
+cellFactory.createTrapezoid();
 
 // register our listeners
 eventController.register('afterUpdate', animator);
