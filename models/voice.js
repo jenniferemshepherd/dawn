@@ -3,11 +3,11 @@
 (function(exports) {
 
   function Voice() {
-
+    this._osc = new p5.Oscillator
   }
 
   Voice.prototype.oscillator = function() {
-    return 'sine'
+    this._osc.start()
   };
 
 
