@@ -11,9 +11,11 @@ var cellFactory = new CellFactory(simulation, cellRepository, positionInheritor,
 var colourInheritor = new ColourInheritor();
 var animator = new Animator(cellRepository);
 var grow = new Grow(cellRepository);
-var ager = new Ager(cellRepository);
 var cellFader = new CellFader(cellRepository);
 var killer = new Killer(cellRepository, simulation);
+
+// instantiate our listeners
+var birthCell = new BirthCell(cellFactory, cellRepository);
 
 // create render
 var render = decoratedRender.createRender(decoratedEngine.matterEngine());
@@ -31,10 +33,9 @@ var runner = Matter.Runner.create();
 // register our listeners
 eventController.register('afterUpdate', animator);
 eventController.register('afterUpdate', grow);
-eventController.register('afterUpdate', ager);
 eventController.register('afterUpdate', killer);
 eventController.register('afterUpdate', cellFader);
-eventController.register('collisionStart', cellFactory);
+eventController.register('collisionStart', birthCell);
 
 // run things
 // simulation.setup();
