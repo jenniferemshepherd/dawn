@@ -6,15 +6,8 @@ describe("BirthCell", function() {
   var mockCellFactory = {
     createFromParents: function() { return }
   };
-  var mockCell = {
-    isFertile: function() { return true },
-    updateLastReproduction: function() { return }
-  };
-  var mockCellRepository = {
-    findCellByBodyId: function() { return mockCell }
-  };
 
-  // mocking event
+  // mocking event properties and sub-properties
   var mockTimestamp = 26;
   var mockTiming = {
     timestamp: mockTimestamp
@@ -23,18 +16,27 @@ describe("BirthCell", function() {
     timing: mockTiming
   };
 
-  // mocking reproductive body
-  var mockReproductiveBody = {
+  // mocking fertile cell
+  var mockFertileCell = {
+    isFertile: function() { return true },
+    updateLastReproduction: function() { return }
+  };
+  var mockFertileCellRepository = {
+    findCellByBodyId: function() { return mockFertileCell }
+  };
+
+  // mocking cell body
+  var mockCellBody = {
     label: 'Circular Body',
     id: 1
   };
-  var mockReproductivePair = {
-    bodyA: mockReproductiveBody,
-    bodyB: mockReproductiveBody
+  var mockCellPair = {
+    bodyA: mockCellBody,
+    bodyB: mockCellBody
   };
-  var mockReproductivePairs = [mockReproductivePair];
-  var mockReproductiveEvent = {
-    pairs: mockReproductivePairs,
+  var mockCellPairs = [mockCellPair];
+  var mockCellEvent = {
+    pairs: mockCellPairs,
     source: mockSource
   };
 
@@ -43,7 +45,7 @@ describe("BirthCell", function() {
     label: 'Rectangle Body',
   };
   var mockBoundaryPair = {
-    bodyA: mockReproductiveBody,
+    bodyA: mockCellBody,
     bodyB: mockBoundaryBody
   };
   var mockBoundaryPairs = [mockBoundaryPair];
@@ -52,22 +54,28 @@ describe("BirthCell", function() {
     source: mockSource
   };
 
-  beforeEach(function() {
-    birthCell = new BirthCell(mockCellFactory, mockCellRepository);
-  });
+  // mocking infertile cell
+  var mockInfertileCell = {
+    isFertile: function() { return false },
+    updateLastReproduction: function() { return }
+  };
+  var mockInfertileCellRepository = {
+    findCellByBodyId: function() { return mockInfertileCell }
+  };
 
   describe("#action()", function() {
 
-    describe("if cells should reproduce", function() {
+    describe("if both colliders are cells and are fertile", function() {
 
       beforeEach(function() {
-        spyOn(mockCell, 'updateLastReproduction');
+        birthCell = new BirthCell(mockCellFactory, mockFertileCellRepository);
+        spyOn(mockFertileCell, 'updateLastReproduction');
         spyOn(mockCellFactory, 'createFromParents');
-        birthCell.action(mockReproductiveEvent);
+        birthCell.action(mockCellEvent);
       });
 
       it("updates parents' last reproduction", function() {
-        expect(mockCell.updateLastReproduction).toHaveBeenCalledTimes(2);
+        expect(mockFertileCell.updateLastReproduction).toHaveBeenCalledTimes(2);
       });
 
       it("calls #createFromParents() on its cell factory", function() {
@@ -76,16 +84,17 @@ describe("BirthCell", function() {
 
     });
 
-    describe("if one or more colliders is a boundary", function() {
+    describe("if one or more colliders is an infertile cell", function() {
 
       beforeEach(function() {
-        spyOn(mockCell, 'updateLastReproduction');
+        birthCell = new BirthCell(mockCellFactory, mockInfertileCellRepository);
+        spyOn(mockInfertileCell, 'updateLastReproduction');
         spyOn(mockCellFactory, 'createFromParents');
-        birthCell.action(mockBoundaryEvent);
+        birthCell.action(mockCellEvent);
       });
 
       it("does not update parents' last reproduction", function() {
-        expect(mockCell.updateLastReproduction).toHaveBeenCalledTimes(0);
+        expect(mockInfertileCell.updateLastReproduction).toHaveBeenCalledTimes(0);
       });
 
       it("does not call #createFromParents() on its cell factory", function() {
@@ -94,5 +103,25 @@ describe("BirthCell", function() {
 
     });
 
-  })
+    describe("if one or more colliders is a boundary", function() {
+
+      beforeEach(function() {
+        birthCell = new BirthCell(mockCellFactory, mockFertileCellRepository);
+        spyOn(mockFertileCell, 'updateLastReproduction');
+        spyOn(mockCellFactory, 'createFromParents');
+        birthCell.action(mockBoundaryEvent);
+      });
+
+      it("does not update parents' last reproduction", function() {
+        expect(mockFertileCell.updateLastReproduction).toHaveBeenCalledTimes(0);
+      });
+
+      it("does not call #createFromParents() on its cell factory", function() {
+        expect(mockCellFactory.createFromParents).toHaveBeenCalledTimes(0);
+      });
+
+    });
+
+  });
+
 });
