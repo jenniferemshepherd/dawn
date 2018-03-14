@@ -1,7 +1,7 @@
 'use strict';
 
-describe("Grow", function() {
-  var grow;
+describe("GrowCells", function() {
+  var growCells;
   var mockBodyModule = {
     scale: function() { return }
   };
@@ -19,14 +19,14 @@ describe("Grow", function() {
   };
 
   beforeEach(function() {
-    grow = new Grow(mockCellRepository, mockBodyModule);
+    growCells = new GrowCells(mockCellRepository, mockBodyModule);
   });
 
   describe("#action", function() {
 
     beforeEach(function() {
       spyOn(mockBodyModule, 'scale')
-      grow.action();
+      growCells.action();
     })
 
     it("increases cell size over time", function() {
