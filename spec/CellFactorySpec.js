@@ -3,7 +3,8 @@
 describe("CellFactory", function() {
   var cellFactory;
   var mockCell = {
-    makeInfertile: function() { return }
+    makeInfertile: function() { return },
+    isFertile: function() { return true }
   };
   var mockSimulation = {
     addToWorld: function() { return }
@@ -56,19 +57,6 @@ describe("CellFactory", function() {
       cellFactory.createCircle();
       expect(mockSimulation.addToWorld).toHaveBeenCalled();
     });
-  });
-
-  describe("#createFromParents", function() {
-
-    beforeEach(function() {
-      spyOn(mockCell, 'makeInfertile');
-      cellFactory.createFromParents(mockCell, mockCell);
-    });
-
-    it("sets the parent cells' fertility to false", function() {
-      expect(mockCell.makeInfertile).toHaveBeenCalledTimes(2);
-    });
-
   });
 
 });

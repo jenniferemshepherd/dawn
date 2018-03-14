@@ -2,50 +2,78 @@
 
 describe("Cell", function() {
   var cell;
-  var bodyCircle = Matter.Bodies.circle(400, 200, 40);
-  var stoop = {};
-  var mockAge;
-
+  var mockBody;
+  var mockGait;
+  var mockCurrentTime = 12500;
+  var mockAdolescentAge = {
+    value: function() { return 1000 }
+  };
+  var mockMiddleAge = {
+    value: function() { return 10000 }
+  };
+  var mockElderlyAge = {
+    value: function() { return 22000 }
+  };
 
   beforeEach(function() {
-    cell = new Cell(bodyCircle, stoop, mockAge);
+    cell = new Cell(mockBody, mockGait, mockAdolescentAge);
   });
 
-  it("has a body", function() {
-    expect(cell.body()).toEqual(bodyCircle)
-  });
+  describe("initially,", function() {
 
-  it("has a gait", function() {
-    expect(cell.gait()).toEqual(stoop)
-  });
+    it("has a body", function() {
+      expect(cell.body()).toEqual(mockBody);
+    });
 
-  it("has an age", function() {
-    expect(cell.mockAge).toEqual(mockAge)
-  });
+    it("has a gait", function() {
+      expect(cell.gait()).toEqual(mockGait);
+    });
 
-  it("has a default fertility of false", function() {
-    expect(cell.fertility()).toEqual(false)
-  });
+    it("has an age", function() {
+      expect(cell.age()).toEqual(mockAdolescentAge);
+    });
 
-  describe("#makeFertile", function() {
-
-    it("changes the fertility of the cell to true", function() {
-      cell.makeFertile();
-      expect(cell.fertility()).toEqual(true);
+    it("is infertile", function() {
+      expect(cell.isFertile()).toEqual(false);
     });
 
   });
 
-  describe("#makeInfertile", function() {
+  describe("#updateLastReproduction()", function() {
 
     beforeEach(function() {
-      cell.makeFertile();
+      cell.updateLastReproduction(mockCurrentTime);
     });
 
-    it("changes the fertility of the cell to false", function() {
-      cell.makeInfertile();
-      expect(cell.fertility()).toEqual(false);
-    })
+    it("updates the cells' lastReproduction property", function() {
+      expect(cell.lastReproduction()).toEqual(mockCurrentTime);
+    });
+
+  });
+
+  describe("#isFertile()", function() {
+
+    it("returns true when cell has finished puberty", function() {
+      cell = new Cell(mockBody, mockGait, mockMiddleAge);
+      expect(cell.isFertile(mockCurrentTime)).toEqual(true);
+    });
+
+    it("returns false when cell has recently reproduced", function() {
+      cell = new Cell(mockBody, mockGait, mockMiddleAge);
+      cell.updateLastReproduction(mockCurrentTime);
+      expect(cell.isFertile(mockCurrentTime)).toEqual(false);
+    });
+
+    it("returns true when cell is adult and has not reproduced recently", function() {
+      cell = new Cell(mockBody, mockGait, mockMiddleAge);
+      cell.updateLastReproduction(mockCurrentTime);
+      expect(cell.isFertile(mockCurrentTime + 6000)).toEqual(true);
+    });
+
+    it("returns false when cell is elderly", function() {
+      cell = new Cell(mockBody, mockGait, mockElderlyAge);
+      expect(cell.isFertile(mockCurrentTime)).toEqual(false);
+    });
 
   })
 
