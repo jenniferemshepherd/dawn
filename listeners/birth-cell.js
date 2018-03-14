@@ -18,10 +18,10 @@
   };
 
   BirthCell.prototype._reproductionShouldHappen = function (bodyA, bodyB, collisionTime) {
-    return this._isCompatible(bodyA, bodyB) && this._isFertile(bodyA, bodyB, collisionTime);
+    return this._isTwoCells(bodyA, bodyB) && this._cellsAreFertile(bodyA, bodyB, collisionTime);
   };
 
-  BirthCell.prototype._isCompatible = function (bodyA, bodyB) {
+  BirthCell.prototype._isTwoCells = function (bodyA, bodyB) {
     return !(this._isBoundary(bodyA) || this._isBoundary(bodyB));
   };
 
@@ -29,7 +29,7 @@
     return body.label === 'Rectangle Body';
   };
 
-  BirthCell.prototype._isFertile = function (bodyA, bodyB, time) {
+  BirthCell.prototype._cellsAreFertile = function (bodyA, bodyB, time) {
     return this._parent(bodyA).isFertile(time) && this._parent(bodyB).isFertile(time);
   };
 
