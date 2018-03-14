@@ -1,4 +1,5 @@
 // instantiate our objects
+// var Common = Matter.Common;
 var decoratedEngine = new DecoratedEngine();
 var decoratedRender = new DecoratedRender();
 var eventController = new EventController(decoratedEngine);

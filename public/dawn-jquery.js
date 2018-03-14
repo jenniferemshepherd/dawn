@@ -3,7 +3,6 @@ console.log("Jennifer is doing the JQuery")
 $( document ).ready(function() {
 
   $( "#start" ).click(function() {
-    console.log(runner)
     var cell = cellFactory.createCircle();
     cellFactory.createSquare();
     cellFactory.createEquilateralTriangle();
