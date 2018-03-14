@@ -3,19 +3,18 @@
 describe("cellFader", function() {
   var cellFader;
 
-  // var mockRender = {
-  //   opacity: function() { return }
-  // };
-
   var mockAge = {
-    value: function() { return 1200 }
+    value: function() { return 30000 }
   };
 
   var mockCell = {
-    // body: function() { return mockRender},
     age: function() { return mockAge },
     fade: function() { return }
   };
+
+  var mockEvent = {
+    timestamp: 25000
+  }
 
   var mockCellRepository = {
     store: function() { return [mockCell, mockCell, mockCell] }
@@ -28,7 +27,7 @@ describe("cellFader", function() {
 
   describe("#action", function() {
     it("fades cells after a certain time", function() {
-      cellFader.action();
+      cellFader.action(mockEvent);
       expect(mockCell.fade).toHaveBeenCalledTimes(3);
     });
 
