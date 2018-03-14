@@ -1,5 +1,13 @@
 $( document ).ready(function() {
 
+  var cell = cellFactory.createCircle();
+  cellFactory.createSquare();
+  cellFactory.createEquilateralTriangle();
+  cellFactory.createTrapezoid();
+  Matter.Runner.run(runner, decoratedEngine.matterEngine());
+  simulation.setup();
+  simulation.run();
+
   $( "#start" ).click(function() {
 
     var cell = cellFactory.createCircle();
@@ -12,13 +20,14 @@ $( document ).ready(function() {
     });
 
   $( "#stop" ).click(function() {
-    Matter.Runner.stop(runner)
+    Matter.Runner.stop(runner);
     Matter.Engine.clear(decoratedEngine.matterEngine());
-    simulation.world().bodies = []
+    decoratedEngine.matterEngine().timing.timestamp = 0;
+    simulation.world().bodies = [];
     });
 
   $( "#pause" ).click(function() {
-    Matter.Runner.stop(runner)
+    Matter.Runner.stop(runner);
     });
 
   $( "#unpause" ).click(function() {
@@ -26,10 +35,9 @@ $( document ).ready(function() {
     });
 
   $('#refresh').click(function() {
-    // Common._nextId = 0;
-    // Common._seed = 0;
-    Matter.Runner.stop(runner)
+    Matter.Runner.stop(runner);
     Matter.Engine.clear(decoratedEngine.matterEngine());
+    decoratedEngine.matterEngine().timing.timestamp = 0;
     simulation.world().bodies = []
     var cell = cellFactory.createCircle();
     cellFactory.createSquare();
