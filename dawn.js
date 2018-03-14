@@ -19,7 +19,8 @@ var killer = new Killer(cellRepository, simulation);
 var render = decoratedRender.createRender(decoratedEngine.matterEngine());
 
 // create runner
-var runner = new DecoratedRunner();;
+// var runner = new DecoratedRunner();
+var runner = Matter.Runner.create();
 
 // create some cells - now happens in jquery but only til refactor
 // var cell = cellFactory.createCircle();

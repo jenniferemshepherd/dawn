@@ -3,10 +3,11 @@ console.log("Jennifer is doing the JQuery")
 $( document ).ready(function() {
 
   $( "#start" ).click(function() {
+
     var cell = cellFactory.createCircle();
     cellFactory.createSquare();
     cellFactory.createEquilateralTriangle();
-    Matter.Runner.run(runner._matterRunner, decoratedEngine.matterEngine());
+    Matter.Runner.run(runner, decoratedEngine.matterEngine());
     simulation.setup();
     simulation.run();
     });
@@ -18,11 +19,11 @@ $( document ).ready(function() {
     });
 
   $( "#pause" ).click(function() {
-    Matter.Runner.stop(runner._matterRunner)
+    Matter.Runner.stop(runner)
     });
 
   $( "#unpause" ).click(function() {
-    Matter.Runner.run(runner._matterRunner, decoratedEngine.matterEngine());
+    Matter.Runner.run(runner, decoratedEngine.matterEngine());
     });
 
   $('#refresh').click(function() {
