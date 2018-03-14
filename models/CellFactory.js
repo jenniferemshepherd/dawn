@@ -95,7 +95,7 @@
                           new Age(time),
                           new Voice()
                          );
-      cell.voice().start();
+      cell.voice().playEnv();
       this._cellRepository.add(cell);
       this._simulation.addToWorld(cell);
       return cell;
