@@ -3,6 +3,8 @@
 (function(exports) {
 
   function Voice() {
+    this._scaleArray = [830.609, 932.328, 1046.50, 1108.73, 1244.51, 1396.91, 1567.98, 1661.22];
+    this._note = this._scaleArray.sample
     this._osc = new p5.Oscillator;
     this._attackLevel = 1.0;
     this._releaseLevel = 0;
@@ -20,14 +22,13 @@
     this._osc.start()
   };
 
-
   Voice.prototype.playEnv = function() {
     var env = new p5.Env();
     env.setADSR(this._attackTime, this._decayTime, this._susPercent, this._releaseTime);
     env.setRange(this._attackLevel, this._releaseLevel);
     this._osc.amp(env)
     this._osc.start()
-    this._osc.freq(220)
+    this._osc.freq(this._note)
     env.play();
   };
 
