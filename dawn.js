@@ -6,8 +6,13 @@ var simulation = new Simulation(decoratedEngine, decoratedRenderer);
 var cellRepository = new CellRepository();
 var shapeInheritor = new ShapeInheritor();
 var positionInheritor = new PositionInheritor();
-var cellFactory = new CellFactory(simulation, cellRepository, positionInheritor, shapeInheritor);
-var colourInheritor = new ColourInheritor();
+var rgbFormatter = new RgbFormatter();
+console.log(rgbFormatter)
+var mutator = new Mutator();
+console.log(mutator)
+var colourInheritor = new ColourInheritor(rgbFormatter, mutator);
+console.log(colourInheritor)
+var cellFactory = new CellFactory(simulation, cellRepository, positionInheritor, shapeInheritor, colourInheritor);
 var animator = new Animator(cellRepository);
 var grow = new Grow(cellRepository);
 var cellFader = new CellFader(cellRepository);
