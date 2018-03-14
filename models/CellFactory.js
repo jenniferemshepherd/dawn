@@ -93,7 +93,7 @@
         { render: {fillStyle: this._colourInheritor.colourMixer(parent1, parent2) }}),
                           new Gait(),
                           new Age(time),
-                          new Voice()
+                          new Voice(notes)
                          );
       cell.voice().playEnv();
       this._cellRepository.add(cell);
