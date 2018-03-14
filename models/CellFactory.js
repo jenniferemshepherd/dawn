@@ -34,7 +34,8 @@
         }
       ),
       new Gait(),
-      new Age(0)
+      new Age(0),
+      new Voice(notes)
     );
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
@@ -55,7 +56,8 @@
         }
       ),
       new Gait(),
-      new Age(0)
+      new Age(0),
+      new Voice(notes)
     );
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
@@ -81,7 +83,8 @@
         }
       ),
       new Gait(),
-      new Age(0)
+      new Age(0),
+      new Voice(notes)
     );
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
@@ -103,7 +106,8 @@
         }
       ),
       new Gait(),
-      new Age(0)
+      new Age(0),
+      new Voice(notes)
     );
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
@@ -117,7 +121,8 @@
       this._shapeInheritor.childVertices(parent1, parent2),
       { render: {fillStyle: this._colourInheritor.colourMixer(parent1, parent2) }}),
                         new Gait(),
-                        new Age(time)
+                        new Age(time),
+                        new Voice(notes)
                        );
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);

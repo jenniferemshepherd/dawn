@@ -15,8 +15,8 @@ var animator = new Animator(cellRepository);
 var grow = new Grow(cellRepository);
 var cellFader = new CellFader(cellRepository);
 var killer = new Killer(cellRepository, simulation);
+var notes = new Notes();
 var dawnTime = new DawnTime(decoratedEngine);
-
 
 // instantiate our listeners
 var birthCell = new BirthCell(cellFactory, cellRepository);
