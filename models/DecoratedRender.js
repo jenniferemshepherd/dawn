@@ -19,6 +19,14 @@
     });
   };
 
+  DecoratedRender.prototype.wireframeswitch = function() {
+    if (this.matterRender().options.wireframes === false) {
+      this.matterRender().options.wireframes = true;
+    } else {
+      this.matterRender().options.wireframes = false;
+    }
+  };
+
   exports.DecoratedRender = DecoratedRender;
 
 })(this);
