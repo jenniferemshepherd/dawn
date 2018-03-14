@@ -1,7 +1,7 @@
 'use strict';
 
-describe("Animator", function() {
-  var animator;
+describe("AnimateCells", function() {
+  var animateCells;
   var mockBodyModule = {
     applyForce: function() { return }
   };
@@ -28,14 +28,14 @@ describe("Animator", function() {
   };
 
   beforeEach(function() {
-    animator = new Animator(mockCellRepository, mockBodyModule, mockVectorModule);
+    animateCells = new AnimateCells(mockCellRepository, mockBodyModule, mockVectorModule);
   });
 
   describe("#action", function() {
 
     beforeEach(function() {
       spyOn(mockBodyModule, 'applyForce')
-      animator.action();
+      animateCells.action();
     })
 
     it("applies a force to each cell", function() {
