@@ -12,7 +12,7 @@
     this._decayTime = 0.2;
     this._susPercent = 0.2;
     this._releaseTime = 0.5;
-  }
+  };
 
   Voice.prototype.osc = function() {
     return this._osc
@@ -31,7 +31,6 @@
     this._osc.freq(this._note)
     env.play();
   };
-
 
 exports.Voice = Voice;
 
