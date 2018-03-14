@@ -41,7 +41,6 @@
     this._decoratedEngine.disableGravity();
   };
 
-
   Simulation.prototype.addWalls = function() {
     this._worldModule.add(this.world(), [
       Matter.Bodies.rectangle(400, -50, 1200, 100, { isStatic: true, label: 'Boundary' }),

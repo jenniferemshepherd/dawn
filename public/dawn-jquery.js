@@ -1,16 +1,10 @@
 $( document ).ready(function() {
 
-  cellFactory.createInitialShapes();
-  Matter.Runner.run(runner.matterRunner(), decoratedEngine.matterEngine());
-  simulation.setup();
-  simulation.run();
+  startSimulation(cellFactory, runner, decoratedEngine, simulation)
 
   $( "#start" ).click(function() {
     if (decoratedEngine.matterEngine().timing.timestamp === 0) {
-      cellFactory.createInitialShapes();
-      Matter.Runner.run(runner.matterRunner(), decoratedEngine.matterEngine());
-      simulation.setup();
-      simulation.run();
+      startSimulation(cellFactory, runner, decoratedEngine, simulation)
     };
     });
 
@@ -34,15 +28,19 @@ $( document ).ready(function() {
     Matter.Engine.clear(decoratedEngine.matterEngine());
     decoratedEngine.matterEngine().timing.timestamp = 0;
     simulation.emptyWorld();
-    cellFactory.createInitialShapes();
-    Matter.Runner.run(runner.matterRunner(), decoratedEngine.matterEngine());
-    simulation.setup();
-    simulation.run();
+    startSimulation(cellFactory, runner, decoratedEngine, simulation)
   });
 
   $('#wireframe').click(function() {
     decoratedRender.wireframeswitch();
   });
 
+
+  function startSimulation(cellFactory, runner, decoratedEngine, simulation) {
+    cellFactory.createInitialShapes();
+    Matter.Runner.run(runner.matterRunner(), decoratedEngine.matterEngine());
+    simulation.setup();
+    simulation.run();
+  };
 
 });
