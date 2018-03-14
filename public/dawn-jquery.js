@@ -1,43 +1,46 @@
 $( document ).ready(function() {
 
-  $( "#start" ).click(function() {
+  cellFactory.createInitialShapes();
+  Matter.Runner.run(runner.matterRunner(), decoratedEngine.matterEngine());
+  simulation.setup();
+  simulation.run();
 
-    var cell = cellFactory.createCircle();
-    cellFactory.createSquare();
-    cellFactory.createEquilateralTriangle();
-    cellFactory.createTrapezoid();
-    Matter.Runner.run(runner, decoratedEngine.matterEngine());
-    simulation.setup();
-    simulation.run();
+  $( "#start" ).click(function() {
+    if (decoratedEngine.matterEngine().timing.timestamp = 0) {
+      var cell = cellFactory.createCircle();
+      cellFactory.createSquare();
+      cellFactory.createEquilateralTriangle();
+      cellFactory.createTrapezoid();
+      Matter.Runner.run(runner.matterRunner(), decoratedEngine.matterEngine());
+      simulation.setup();
+      simulation.run();
+    };
     });
 
   $( "#stop" ).click(function() {
-    Matter.Runner.stop(runner)
+    Matter.Runner.stop(runner.matterRunner());
     Matter.Engine.clear(decoratedEngine.matterEngine());
-    simulation.world().bodies = []
+    decoratedEngine.matterEngine().timing.timestamp = 0;
+    simulation.world().bodies = [];
     });
 
   $( "#pause" ).click(function() {
-    Matter.Runner.stop(runner)
+    Matter.Runner.stop(runner.matterRunner());
     });
 
   $( "#unpause" ).click(function() {
-    Matter.Runner.run(runner, decoratedEngine.matterEngine());
+    Matter.Runner.run(runner.matterRunner(), decoratedEngine.matterEngine());
     });
 
   $('#refresh').click(function() {
-    // Common._nextId = 0;
-    // Common._seed = 0;
-    Matter.Runner.stop(runner)
+    Matter.Runner.stop(runner.matterRunner());
     Matter.Engine.clear(decoratedEngine.matterEngine());
-    simulation.world().bodies = []
-    var cell = cellFactory.createCircle();
-    cellFactory.createSquare();
-    cellFactory.createEquilateralTriangle();
-    Matter.Runner.run(runner, decoratedEngine.matterEngine());
+    decoratedEngine.matterEngine().timing.timestamp = 0;
+    simulation.world().bodies = [];
+    cellFactory.createInitialShapes();
+    Matter.Runner.run(runner.matterRunner(), decoratedEngine.matterEngine());
     simulation.setup();
     simulation.run();
-    // location.reload();
   });
 
   $('#wireframe').click(function() {
