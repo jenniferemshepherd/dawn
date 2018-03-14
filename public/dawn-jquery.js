@@ -1,5 +1,3 @@
-console.log("Jennifer is doing the JQuery")
-
 $( document ).ready(function() {
 
   $( "#start" ).click(function() {
