@@ -114,6 +114,13 @@
     return cell;
   };
 
+  CellFactory.prototype.createInitialShapes = function () {
+    this.createCircle();
+    this.createEquilateralTriangle();
+    this.createSquare();
+    this.createTrapezoid();
+  };
+
   CellFactory.prototype.createFromParents = function (parent1, parent2, time) {
     var cell = new Cell(this._bodyModule.fromVertices(
       this._positionInheritor.x(parent1, parent2),

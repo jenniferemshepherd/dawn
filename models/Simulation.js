@@ -41,7 +41,6 @@
     this._decoratedEngine.disableGravity();
   };
 
-
   Simulation.prototype.addWalls = function() {
     this._worldModule.add(this.world(), [
       Matter.Bodies.rectangle(400, -50, 1200, 100, { isStatic: true, label: 'Boundary' }),
@@ -53,8 +52,11 @@
   };
 
   Simulation.prototype.run = function() {
-    // this._engineModule.run(this._decoratedEngine.matterEngine());
     this._renderModule.run(this._decoratedRender.matterRender());
+  };
+
+  Simulation.prototype.emptyWorld = function() {
+    this.world().bodies = []
   };
 
   exports.Simulation = Simulation;

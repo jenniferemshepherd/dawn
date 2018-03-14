@@ -1,5 +1,4 @@
 // instantiate our objects
-// var Common = Matter.Common;
 var decoratedEngine = new DecoratedEngine();
 var decoratedRender = new DecoratedRender();
 var eventController = new EventController(decoratedEngine);
@@ -25,22 +24,10 @@ var birthCell = new BirthCell(cellFactory, cellRepository);
 var render = decoratedRender.createRender(decoratedEngine.matterEngine());
 
 // create runner
-// var runner = new DecoratedRunner();
-var runner = Matter.Runner.create();
-
-// create some cells - now happens in jquery but only til refactor
-// var cell = cellFactory.createCircle();
-// cellFactory.createSquare();
-// cellFactory.createEquilateralTriangle();
-// cellFactory.createTrapezoid();
-
+var runner = new DecoratedRunner();
 // register our listeners
 eventController.register('afterUpdate', animator);
 eventController.register('afterUpdate', grow);
 eventController.register('afterUpdate', killer);
 eventController.register('afterUpdate', cellFader);
 eventController.register('collisionStart', birthCell);
-
-// run things
-// simulation.setup();
-// simulation.run();

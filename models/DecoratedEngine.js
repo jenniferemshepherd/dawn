@@ -14,6 +14,10 @@
     this.matterEngine().world.gravity.y = 0;
   };
 
+  DecoratedEngine.prototype.resetTimer = function() {
+    this.matterEngine().timing.timestamp = 0;
+  };
+
   exports.DecoratedEngine = DecoratedEngine;
 
 })(this);

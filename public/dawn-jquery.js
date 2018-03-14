@@ -1,48 +1,59 @@
 $( document ).ready(function() {
 
-  $( "#start" ).click(function() {
+  startSimulation(cellFactory, runner, decoratedEngine, simulation);
 
-    var cell = cellFactory.createCircle();
-    cellFactory.createSquare();
-    cellFactory.createEquilateralTriangle();
-    cellFactory.createTrapezoid();
-    Matter.Runner.run(runner, decoratedEngine.matterEngine());
-    simulation.setup();
-    simulation.run();
+  $( "#start" ).click(function() {
+    if (decoratedEngine.matterEngine().timing.timestamp === 0) {
+      startSimulation(cellFactory, runner, decoratedEngine, simulation);
+    };
     });
 
   $( "#stop" ).click(function() {
-    Matter.Runner.stop(runner)
-    Matter.Engine.clear(decoratedEngine.matterEngine());
-    simulation.world().bodies = []
+    stopSimulation(runner, decoratedEngine, simulation);
     });
 
   $( "#pause" ).click(function() {
-    Matter.Runner.stop(runner)
+    stopRunner(runner);
     });
 
   $( "#unpause" ).click(function() {
-    Matter.Runner.run(runner, decoratedEngine.matterEngine());
+    runRunner(runner, decoratedEngine)
     });
 
   $('#refresh').click(function() {
-    // Common._nextId = 0;
-    // Common._seed = 0;
-    Matter.Runner.stop(runner)
-    Matter.Engine.clear(decoratedEngine.matterEngine());
-    simulation.world().bodies = []
-    var cell = cellFactory.createCircle();
-    cellFactory.createSquare();
-    cellFactory.createEquilateralTriangle();
-    Matter.Runner.run(runner, decoratedEngine.matterEngine());
-    simulation.setup();
-    simulation.run();
-    // location.reload();
+    stopSimulation(runner, decoratedEngine, simulation);
+    startSimulation(cellFactory, runner, decoratedEngine, simulation);
   });
 
   $('#wireframe').click(function() {
     decoratedRender.wireframeswitch();
   });
 
+  // functions for jQuery
 
+  function startSimulation(cellFactory, runner, decoratedEngine, simulation) {
+    cellFactory.createInitialShapes();
+    runRunner(runner, decoratedEngine);
+    simulation.setup();
+    simulation.run();
+  };
+
+  function stopSimulation(runner, decoratedEngine, simulation) {
+    stopRunner(runner);
+    clearEngine(decoratedEngine);
+    decoratedEngine.resetTimer();
+    simulation.emptyWorld();
+  };
+
+  function clearEngine(decoratedEngine) {
+    Matter.Engine.clear(decoratedEngine.matterEngine());
+  };
+
+  function stopRunner(runner) {
+    Matter.Runner.stop(runner.matterRunner());
+  };
+
+  function runRunner(runner, decoratedEngine) {
+    Matter.Runner.run(runner.matterRunner(), decoratedEngine.matterEngine());
+  };
 });
