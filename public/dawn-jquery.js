@@ -7,6 +7,7 @@ $( document ).ready(function() {
     var cell = cellFactory.createCircle();
     cellFactory.createSquare();
     cellFactory.createEquilateralTriangle();
+    cellFactory.createTrapezoid();
     Matter.Runner.run(runner, decoratedEngine.matterEngine());
     simulation.setup();
     simulation.run();
