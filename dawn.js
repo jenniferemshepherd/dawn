@@ -14,7 +14,7 @@ var cellFader = new CellFader(cellRepository);
 var killer = new Killer(cellRepository, simulation);
 
 // instantiate our listeners
-var updateCellsFertility = new UpdateCellsFertility(cellRepository);
+var birthCell = new BirthCell(cellFactory, cellRepository);
 
 // create render
 decoratedRenderer.createRender(decoratedEngine.matterEngine());
@@ -30,7 +30,7 @@ eventController.register('afterUpdate', animator);
 eventController.register('afterUpdate', grow);
 eventController.register('afterUpdate', killer);
 eventController.register('afterUpdate', cellFader);
-eventController.register('collisionStart', cellFactory);
+eventController.register('collisionStart', birthCell);
 
 // run things
 simulation.setup();
