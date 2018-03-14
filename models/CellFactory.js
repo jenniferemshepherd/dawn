@@ -92,7 +92,8 @@
         this._shapeInheritor.childVertices(parent1, parent2),
         { render: {fillStyle: this._colourInheritor.colourMixer(parent1, parent2) }}),
                           new Gait(),
-                          new Age(time)
+                          new Age(time),
+                          new Voice()
                          );
       this._cellRepository.add(cell);
       this._simulation.addToWorld(cell);
