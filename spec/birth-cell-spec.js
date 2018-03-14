@@ -23,12 +23,11 @@ describe("BirthCell", function() {
     timing: mockTiming
   };
 
-  // mocking bodies for a reproductive event
+  // mocking reproductive body
   var mockReproductiveBody = {
     label: 'Circular Body',
     id: 1
   };
-
   var mockReproductivePair = {
     bodyA: mockReproductiveBody,
     bodyB: mockReproductiveBody
@@ -36,6 +35,20 @@ describe("BirthCell", function() {
   var mockReproductivePairs = [mockReproductivePair];
   var mockReproductiveEvent = {
     pairs: mockReproductivePairs,
+    source: mockSource
+  };
+
+  // mocking boundary body
+  var mockBoundaryBody = {
+    label: 'Rectangle Body',
+  };
+  var mockBoundaryPair = {
+    bodyA: mockReproductiveBody,
+    bodyB: mockBoundaryBody
+  };
+  var mockBoundaryPairs = [mockBoundaryPair];
+  var mockBoundaryEvent = {
+    pairs: mockBoundaryPairs,
     source: mockSource
   };
 
@@ -57,8 +70,26 @@ describe("BirthCell", function() {
         expect(mockCell.updateLastReproduction).toHaveBeenCalledTimes(2);
       });
 
-      it("calls #create() on its cell factory", function() {
+      it("calls #createFromParents() on its cell factory", function() {
         expect(mockCellFactory.createFromParents).toHaveBeenCalled();
+      });
+
+    });
+
+    describe("if one or more colliders is a boundary", function() {
+
+      beforeEach(function() {
+        spyOn(mockCell, 'updateLastReproduction');
+        spyOn(mockCellFactory, 'createFromParents');
+        birthCell.action(mockBoundaryEvent);
+      });
+
+      it("does not update parents' last reproduction", function() {
+        expect(mockCell.updateLastReproduction).toHaveBeenCalledTimes(0);
+      });
+
+      it("does not call #createFromParents() on its cell factory", function() {
+        expect(mockCellFactory.createFromParents).toHaveBeenCalledTimes(0);
       });
 
     });
