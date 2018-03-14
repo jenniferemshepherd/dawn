@@ -1,8 +1,9 @@
 // instantiate our objects
+// var Common = Matter.Common;
 var decoratedEngine = new DecoratedEngine();
-var decoratedRenderer = new DecoratedRender();
+var decoratedRender = new DecoratedRender();
 var eventController = new EventController(decoratedEngine);
-var simulation = new Simulation(decoratedEngine, decoratedRenderer);
+var simulation = new Simulation(decoratedEngine, decoratedRender);
 var cellRepository = new CellRepository();
 var shapeInheritor = new ShapeInheritor();
 var positionInheritor = new PositionInheritor();
@@ -16,24 +17,28 @@ var dawnTime = new DawnTime(decoratedEngine);
 
 
 // instantiate our listeners
-var updateCellsFertility = new UpdateCellsFertility(cellRepository);
+var birthCell = new BirthCell(cellFactory, cellRepository);
 
 // create render
-decoratedRenderer.createRender(decoratedEngine.matterEngine());
+var render = decoratedRender.createRender(decoratedEngine.matterEngine());
 
-// create some cells
-var cell = cellFactory.createCircle();
-cellFactory.createSquare();
-cellFactory.createEquilateralTriangle();
-cellFactory.createRhombus();
+// create runner
+// var runner = new DecoratedRunner();
+var runner = Matter.Runner.create();
+
+// create some cells - now happens in jquery but only til refactor
+// var cell = cellFactory.createCircle();
+// cellFactory.createSquare();
+// cellFactory.createEquilateralTriangle();
+// cellFactory.createTrapezoid();
 
 // register our listeners
 eventController.register('afterUpdate', animator);
 eventController.register('afterUpdate', grow);
 eventController.register('afterUpdate', killer);
 eventController.register('afterUpdate', cellFader);
-eventController.register('collisionStart', cellFactory);
+eventController.register('collisionStart', birthCell);
 
 // run things
-simulation.setup();
-simulation.run();
+// simulation.setup();
+// simulation.run();
