@@ -6,10 +6,11 @@
   const DORMANCY_PERIOD = 2500;
   const ELDERLY_AGE = 20000;
 
-  function Cell(body, gait, age) {
+  function Cell(body, gait, age, voice) {
     this._body = body;
     this._gait = gait;
     this._age = age;
+    this._voice = voice;
     this._lastReproduction = 0;
   }
 
@@ -23,6 +24,10 @@
 
   Cell.prototype.age = function() {
     return this._age;
+  };
+
+  Cell.prototype.voice = function() {
+    return this._voice;
   };
 
   Cell.prototype.lastReproduction = function () {
