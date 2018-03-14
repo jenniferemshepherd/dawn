@@ -56,6 +56,10 @@
     this._renderModule.run(this._decoratedRender.matterRender());
   };
 
+  Simulation.prototype.emptyWorld = function() {
+    this.world().bodies = []
+  };
+
   exports.Simulation = Simulation;
 
 })(this);

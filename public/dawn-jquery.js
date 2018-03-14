@@ -18,7 +18,7 @@ $( document ).ready(function() {
     Matter.Runner.stop(runner.matterRunner())
     Matter.Engine.clear(decoratedEngine.matterEngine());
     decoratedEngine.matterEngine().timing.timestamp = 0;
-    simulation.world().bodies = []
+    simulation.emptyWorld();
     });
 
   $( "#pause" ).click(function() {
@@ -33,7 +33,7 @@ $( document ).ready(function() {
     Matter.Runner.stop(runner.matterRunner())
     Matter.Engine.clear(decoratedEngine.matterEngine());
     decoratedEngine.matterEngine().timing.timestamp = 0;
-    simulation.world().bodies = []
+    simulation.emptyWorld();
     cellFactory.createInitialShapes();
     Matter.Runner.run(runner.matterRunner(), decoratedEngine.matterEngine());
     simulation.setup();
