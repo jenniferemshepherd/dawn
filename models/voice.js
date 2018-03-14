@@ -2,9 +2,9 @@
 
 (function(exports) {
 
-  function Voice() {
-    this._scaleArray = [830.609, 932.328, 1046.50, 1108.73, 1244.51, 1396.91, 1567.98, 1661.22];
-    this._note = this._scaleArray.sample
+  function Voice(notes) {
+    this._notes = notes
+    this._note = this._notes.choose()
     this._osc = new p5.Oscillator;
     this._attackLevel = 1.0;
     this._releaseLevel = 0;
