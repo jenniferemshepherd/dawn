@@ -7,7 +7,11 @@
   }
 
   DecoratedRunner.prototype.matterRunner = function () {
-    return this._matterRender;
+    return this._matterRunner;
+  };
+
+  DecoratedRunner.prototype.createRunner = function () {
+    this.matterRunner.create();
   };
 
   exports.DecoratedRunner = DecoratedRunner;
