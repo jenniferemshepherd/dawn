@@ -10,7 +10,7 @@ describe("Simulation", function() {
     matterEngine: function() { return mockMatterEngine },
     disableGravity: function() { return }
   };
-  var mockRenderer = {
+  var mockDecoratedRender = {
     matterRender: function() { return }
   }
   var mockWorldModule = {
@@ -27,7 +27,7 @@ describe("Simulation", function() {
   };
 
   beforeEach(function() {
-    simulation = new Simulation(mockDecoratedEngine, mockRenderer, mockWorldModule, mockEngineModule, mockRenderModule);
+    simulation = new Simulation(mockDecoratedEngine, mockDecoratedRender, mockWorldModule, mockEngineModule, mockRenderModule);
   });
 
   describe("initially", function() {
@@ -35,8 +35,8 @@ describe("Simulation", function() {
       expect(simulation.decoratedEngine()).toEqual(mockDecoratedEngine);
     });
 
-    it("has a renderer", function() {
-      expect(simulation.renderer()).toEqual(mockRenderer);
+    it("has a decorated render", function() {
+      expect(simulation.decoratedRender()).toEqual(mockDecoratedRender);
     });
 
     it("has a world", function() {
@@ -91,17 +91,12 @@ describe("Simulation", function() {
   describe("#run()", function() {
 
     beforeEach(function() {
-      spyOn(mockEngineModule, 'run')
       spyOn(mockRenderModule, 'run')
-      simulation.run();
-    });
-
-    it("calls run on its engine module", function() {
-      expect(mockEngineModule.run).toHaveBeenCalledWith(mockMatterEngine);
+      simulation.runRender();
     });
 
     it("calls run on its render module", function() {
-      expect(mockRenderModule.run).toHaveBeenCalledWith(mockRenderer.matterRender());
+      expect(mockRenderModule.run).toHaveBeenCalledWith(mockDecoratedRender.matterRender());
     });
 
   })

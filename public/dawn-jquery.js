@@ -35,7 +35,7 @@ $( document ).ready(function() {
     cellFactory.createInitialShapes();
     runRunner(runner, decoratedEngine);
     simulation.setup();
-    simulation.run();
+    simulation.runRender();
   };
 
   function stopSimulation(runner, decoratedEngine, simulation) {
