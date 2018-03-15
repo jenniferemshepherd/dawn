@@ -2,7 +2,7 @@
 
 (function(exports) {
 
-  function KillCells(cellRepository, simulation, deathAge = 25000) {
+  function KillCells(cellRepository, simulation, deathAge = 45000) {
     this._cellRepository = cellRepository;
     this._simulation = simulation;
     this._deathAge = deathAge;

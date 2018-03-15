@@ -2,9 +2,9 @@
 
 (function(exports) {
 
-  const ADULTHOOD_AGE = 5000;
-  const DORMANCY_PERIOD = 2500;
-  const ELDERLY_AGE = 20000;
+  const ADULTHOOD_AGE = 10000;
+  const DORMANCY_PERIOD = 7500;
+  const ELDERLY_AGE = 40000;
 
   function Cell(body, gait, age, voice) {
     this._body = body;
