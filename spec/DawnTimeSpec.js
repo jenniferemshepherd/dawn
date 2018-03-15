@@ -6,16 +6,16 @@ describe("DawnTime", function() {
   var mockTiming = {
     mockTimeScale: function() { return mockTimeScale }
   };
-  var mockEngine = {
+  var mockDecoratedEngine = {
     matterEngine: function() { return mockTiming }
   };
 
   beforeEach(function() {
-    dawnTime = new DawnTime(mockEngine);
+    dawnTime = new DawnTime(mockDecoratedEngine);
   });
 
-  it("has a an engine", function() {
-    expect(this._decoratedEngine).toEqual(mockEngine)
+  it("has an engine", function() {
+    expect(dawnTime._decoratedEngine).toEqual(mockDecoratedEngine)
   });
 
   describe("#speed", function() {

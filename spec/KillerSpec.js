@@ -13,7 +13,7 @@ describe("Killer", function() {
   };
 
   var mockAge = {
-    value: function() { return 1499 }
+    value: function() { return 24499 }
   };
 
   var mockCell = {
@@ -26,7 +26,7 @@ describe("Killer", function() {
   };
 
   var mockOldAge = {
-    value: function() { return 1505 }
+    value: function() { return 25005 }
   };
 
   var mockOldCell = {
