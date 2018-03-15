@@ -3,7 +3,7 @@
 (function(exports) {
 
   function Voice(notes) {
-    this._noteArray = [830.609, 932.328, 1046.50, 1108.73, 1244.51, 1396.91, 1567.98, 1661.22]
+    this._noteArray = [830.609, 932.328, 1046.50, 1108.73, 1244.51, 1396.91, 1567.98, 1661.22, 1864.656, 2093, 2217.46, 2489.02]
     this._osc = new p5.Oscillator;
     this._attackLevel = 1.0;
     this._releaseLevel = 0;
