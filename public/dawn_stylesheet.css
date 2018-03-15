@@ -41,9 +41,9 @@ h1 {
   font-family: 'Sacramento', cursive;
   font-weight: 200;
   font-style: italic;
-  font-size: 5em;
+  font-size: 6em;
+  padding-top: 0.2em;
   color: rgba(255, 255, 255, 0.76);
-  letter-spacing: 0.1em;
 }
 
 #canvas_container {
@@ -79,4 +79,29 @@ img:hover {
 
 .media_container:last-child {
   padding-right: 0.5em;
+}
+
+a:hover {
+
+}
+
+button {
+  margin: 0.3em;
+  padding: 0.6em;
+  color: rgba(255, 255, 255, 0.76);
+  border: none;
+  background-color: rgba(0, 0, 0, 0.76);
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+button:focus {
+  outline: 0;
+}
+
+button:active {
+  background-color: rgba(0, 0, 0, 0.76);
 }
