@@ -1,6 +1,6 @@
 (function(exports) {
 
-  function ShapeInheritor(scaleFactor = 0.65) {
+  function ShapeInheritor(scaleFactor = 0.5) {
     this._scaleFactor = scaleFactor;
   }
 
