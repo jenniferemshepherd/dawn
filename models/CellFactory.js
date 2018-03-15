@@ -35,7 +35,6 @@
       ),
       new Gait(),
       new Age(0),
-      new Voice(notes)
     );
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
@@ -57,7 +56,6 @@
       ),
       new Gait(),
       new Age(0),
-      new Voice(notes)
     );
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
@@ -84,7 +82,6 @@
       ),
       new Gait(),
       new Age(0),
-      new Voice(notes)
     );
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
@@ -107,7 +104,6 @@
       ),
       new Gait(),
       new Age(0),
-      new Voice(notes)
     );
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
@@ -129,8 +125,9 @@
       { render: {fillStyle: this._colourInheritor.colourMixer(parent1, parent2) }}),
                         new Gait(),
                         new Age(time),
-                        new Voice(notes)
+                        new Voice()
                        );
+    cell.voice().playEnv();
     this._cellRepository.add(cell);
     this._simulation.addToWorld(cell);
     return cell;
