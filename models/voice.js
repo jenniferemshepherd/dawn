@@ -8,9 +8,9 @@
     this._attackLevel = 1.0;
     this._releaseLevel = 0;
     this._attackTime = 0.001
-    this._decayTime = 1.;
+    this._decayTime = .2;
     this._susPercent = 1.;
-    this._releaseTime = 0.5;
+    this._releaseTime = 1.;
   };
 
   Voice.prototype.playEnv = function() {
