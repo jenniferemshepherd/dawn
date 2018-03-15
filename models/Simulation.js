@@ -51,7 +51,7 @@
     // top, right, bottom, left
   };
 
-  Simulation.prototype.run = function() {
+  Simulation.prototype.runRender = function() {
     this._renderModule.run(this._decoratedRender.matterRender());
   };
 
