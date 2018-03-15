@@ -17,10 +17,6 @@
     return this._osc
   };
 
-  Voice.prototype.start = function() {
-    this._osc.start()
-  };
-
   Voice.prototype.playEnv = function() {
     var env = new p5.Env();
     env.setADSR(this._attackTime, this._decayTime, this._susPercent, this._releaseTime);
