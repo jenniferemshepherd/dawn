@@ -60,7 +60,7 @@ i want the cells to create another cell on collision
 ```
 
 as an observer
-so that i can get a sesne of time elapsing in the simuation
+so that i can get a sense of time elapsing in the simuation
 i would like to see the cells grow
 
 as an observer
