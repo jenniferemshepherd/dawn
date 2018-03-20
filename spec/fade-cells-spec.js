@@ -4,7 +4,7 @@ describe("FadeCells", function() {
   var fadeCells;
 
   var mockAge = {
-    value: function() { return 30000 }
+    value: function() { return 100000 }
   };
 
   var mockCell = {

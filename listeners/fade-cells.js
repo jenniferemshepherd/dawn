@@ -10,7 +10,7 @@
     this._cellRepository.store().forEach(function(cell) {
       if (cell.age().value(event.timestamp) > 40000) {
         cell.fade();
-      }
+      };
     });
   };
 
