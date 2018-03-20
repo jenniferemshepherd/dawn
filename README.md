@@ -1,9 +1,16 @@
 # dawn
 
-## process
+|| [Ed Perkins](https://github.com/edpe) || [Jennifer Shepherd](https://github.com/jenniferemshepherd) || [Ellie Wem](https://github.com/elliewem) || [Roland Vink](https://github.com/rcvink) ||
 
-1. listed user interactions and defined mvp and v2 interactions.
-2. wrote user stories
+## What is dawn?
+
+_dawn_ is a procedurally generated socio-genetic simulation. What does that mean?
+
+- Procedurally generated
+  - None of the outcomes are predefined; they are based purely on the results of the random algorithms.
+- Socio-genetic simulation
+  - _dawn_ is inspired by Conway's Game of Life and Spore (also No Man's Sky regarding the procedural generation).
+  - The user observes 'cells' interacting with each other in an environment; living, breeding, inheriting properties, and eventually dying.
 
 ## getting started
 
@@ -11,7 +18,17 @@
 * `cd dawn`.
 * `npm install` to install dependencies for development.
 * `open specRunner.html` (OSX) or `xdg-open specRunner.html` (Linux) to run unit tests.
-* to be continued
+* `open dawn.html` (OSX) or `xdg-open dawn.html` (Linux) to observe _dawn_
+
+## process
+
+1. diagrammed ideas
+2. wrote user stories
+3. defined our MVP
+4. wrote tests
+5. wrote code
+6. refactored
+7. repeated steps 2 - 6
 
 ## user stories
 
@@ -43,8 +60,12 @@ i want the cells to create another cell on collision
 ```
 
 as an observer
-so that i can get a sesne of time elapsing in the simuation
+so that i can get a sense of time elapsing in the simuation
 i would like to see the cells grow
+
+as an observer
+so that the environment does not become crowded
+i want cells to die after a period of time
 ```
 
 ### v4
@@ -59,40 +80,30 @@ so that the new cells are genetic offspring
 the new cell will have attributes that are a mix of the parent attributes
 ```
 
+### v5
+```
+as an observer
+so that the new cells don't eventually become the same colour
+i want there to be a chance of colour mutation
+
+as an observer
+so i am can experience cell creation on a different sensory level
+i want there to be a sound on creation
+```
+
 
 ## web stack
 * [Node.js](https://nodejs.org/en/).
 * [NPM](https://www.npmjs.com/) for dependencies.
-* [Matter.js](http://brm.io/matter-js/) for physics, with the following plugins:
+* [Matter.js](http://brm.io/matter-js/) for physics, with the following plugin:
   * [matter-attractors](https://github.com/liabru/matter-attractors)
-  * [matter-collision-events](https://github.com/dxu/matter-collision-events)
 * [p5-sound](https://p5js.org/reference/#/libraries/p5.sound) for sound.
-* [React.js](https://reactjs.org/) for UI.
 * [Jasmine](https://jasmine.github.io/) for unit and integration testing.
-* [Nightwatch.js](http://nightwatchjs.org/) for front-end UI testing.
-* [webpack](https://webpack.js.org/) for bundling on deployment.
-
-## to run
-
-## to test
-* open specrunner blah
+<!-- * [webpack](https://webpack.js.org/) for bundling on deployment. -->
 
 # Points for development:
-* sounds
-* tbc
+* mutation in shape
+* update code to ES6
+* improve file structure
 
-
-
-<!-- ####Things you may want to cover:
-
-* version
-
-* System dependencies
-
-* Configuration
-
-* Database creation/initialization
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* ... -->
+for more points for development, you can check out our [issues](https://github.com/jenniferemshepherd/dawn/issues).
