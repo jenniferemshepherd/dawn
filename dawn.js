@@ -11,13 +11,13 @@ var mutator = new Mutator();
 var colourInheritor = new ColourInheritor(rgbFormatter, mutator);
 var cellFactory = new CellFactory(simulation, cellRepository, positionInheritor, shapeInheritor, colourInheritor);
 var grow = new Grow(cellRepository);
-var cellFader = new CellFader(cellRepository);
 var killCells = new KillCells(cellRepository, simulation);
 var dawnTime = new DawnTime(decoratedEngine);
 
 // instantiate our listeners
-var birthCell = new BirthCell(cellFactory, cellRepository);
 var animateCells = new AnimateCells(cellRepository);
+var birthCell = new BirthCell(cellFactory, cellRepository);
+var fadeCells = new FadeCells(cellRepository);
 
 // create render
 var render = decoratedRender.createRender(decoratedEngine.matterEngine());
@@ -26,7 +26,7 @@ var render = decoratedRender.createRender(decoratedEngine.matterEngine());
 var runner = new DecoratedRunner();
 // register our listeners
 eventController.register('afterUpdate', animateCells);
+eventController.register('collisionStart', birthCell);
+eventController.register('afterUpdate', fadeCells);
 eventController.register('afterUpdate', grow);
 eventController.register('afterUpdate', killCells);
-eventController.register('afterUpdate', cellFader);
-eventController.register('collisionStart', birthCell);

@@ -2,11 +2,11 @@
 
 (function(exports) {
 
-  function CellFader(cellRepository) {
+  function FadeCells(cellRepository) {
     this._cellRepository = cellRepository;
   }
 
-  CellFader.prototype.action = function(event) {
+  FadeCells.prototype.action = function(event) {
     this._cellRepository.store().forEach(function(cell) {
       if (cell.age().value(event.timestamp) > 40000) {
         cell.fade();
@@ -14,5 +14,5 @@
     });
   };
 
-  exports.CellFader = CellFader;
+  exports.FadeCells = FadeCells;
 })(this);
