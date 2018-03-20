@@ -22,8 +22,13 @@ _dawn_ is a procedurally generated socio-genetic simulation. What does that mean
 
 ## process
 
-1. listed user interactions and defined mvp and v2 interactions.
+1. diagrammed ideas
 2. wrote user stories
+3. defined our MVP
+4. wrote tests
+5. wrote code
+6. refactored
+7. repeated steps 2 - 6
 
 ## user stories
 
