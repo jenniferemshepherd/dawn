@@ -2,16 +2,16 @@
 
 (function(exports) {
 
-  function Grow(cellRepository, bodyModule = Matter.Body) {
+  function GrowCells(cellRepository, bodyModule = Matter.Body) {
     this._cellRepository = cellRepository;
     this._bodyModule = bodyModule;
   }
 
-  Grow.prototype.action = function(event) {
+  GrowCells.prototype.action = function(event) {
     this._cellRepository.store().forEach(function(cell) {
       this._bodyModule.scale(cell.body(), 1.00015, 1.00015);
     }.bind(this));
   };
 
-  exports.Grow = Grow;
+  exports.GrowCells = GrowCells;
 })(this);
