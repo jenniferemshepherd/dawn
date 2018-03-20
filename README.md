@@ -95,9 +95,8 @@ i want there to be a sound on creation
 ## web stack
 * [Node.js](https://nodejs.org/en/).
 * [NPM](https://www.npmjs.com/) for dependencies.
-* [Matter.js](http://brm.io/matter-js/) for physics, with the following plugins:
+* [Matter.js](http://brm.io/matter-js/) for physics, with the following plugin:
   * [matter-attractors](https://github.com/liabru/matter-attractors)
-  * [matter-collision-events](https://github.com/dxu/matter-collision-events)
 * [p5-sound](https://p5js.org/reference/#/libraries/p5.sound) for sound.
 * [Jasmine](https://jasmine.github.io/) for unit and integration testing.
 <!-- * [webpack](https://webpack.js.org/) for bundling on deployment. -->
