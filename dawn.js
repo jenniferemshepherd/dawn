@@ -1,11 +1,13 @@
 // insantiate decorators
 var decoratedEngine = new DecoratedEngine();
+var decoratedRender = new DecoratedRender();
 var decoratedRunner = new DecoratedRunner();
 
-// instantiate our objects
-var decoratedRender = new DecoratedRender();
+// instantiate controllers
 var eventController = new EventController(decoratedEngine);
 var simulation = new Simulation(decoratedEngine, decoratedRender);
+
+// instantiate factories and repositories
 var cellRepository = new CellRepository();
 var cellFactory = new CellFactory(simulation, cellRepository, positionInheritor, shapeInheritor, colourInheritor);
 var dawnTime = new DawnTime(decoratedEngine);
