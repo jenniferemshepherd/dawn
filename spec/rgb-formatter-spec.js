@@ -1,7 +1,7 @@
 'use strict';
 
 describe("RgbFormatter", function() {
-  
+
   var body = {
     render: {
       fillStyle: 'rgb(100, 55, 66)'
@@ -25,7 +25,6 @@ describe("RgbFormatter", function() {
 
     it("returns an array of numbers from an rgb string", function() {
       var rgbFormatter = new RgbFormatter();
-      console.log(parent.body())
       expect(rgbFormatter.formatRgbString(parent)).toEqual([100, 55, 66])
     });
 
