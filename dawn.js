@@ -7,10 +7,6 @@ var decoratedRunner = new DecoratedRunner();
 var eventController = new EventController(decoratedEngine);
 var simulation = new Simulation(decoratedEngine, decoratedRender);
 
-// instantiate factories and repositories
-var cellRepository = new CellRepository();
-var cellFactory = new CellFactory(simulation, cellRepository, positionInheritor, shapeInheritor, colourInheritor);
-
 // instantiate services
 var rgbFormatter = new RgbFormatter();
 var mutator = new Mutator();
@@ -19,6 +15,10 @@ var mutator = new Mutator();
 var colourInheritor = new ColourInheritor(rgbFormatter, mutator);
 var positionInheritor = new PositionInheritor();
 var shapeInheritor = new ShapeInheritor();
+
+// instantiate factories and repositories
+var cellRepository = new CellRepository();
+var cellFactory = new CellFactory(simulation, cellRepository, positionInheritor, shapeInheritor, colourInheritor);
 
 // instantiate listeners
 var animateCells = new AnimateCells(cellRepository);
@@ -29,8 +29,6 @@ var killCells = new KillCells(cellRepository, simulation);
 
 // create render
 var render = decoratedRender.createRender(decoratedEngine.matterEngine());
-
-// create runner
 
 // register listeners
 eventController.register('afterUpdate', animateCells);
