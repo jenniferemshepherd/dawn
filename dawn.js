@@ -4,13 +4,17 @@ var decoratedRender = new DecoratedRender();
 var eventController = new EventController(decoratedEngine);
 var simulation = new Simulation(decoratedEngine, decoratedRender);
 var cellRepository = new CellRepository();
-var shapeInheritor = new ShapeInheritor();
-var positionInheritor = new PositionInheritor();
-var rgbFormatter = new RgbFormatter();
-var mutator = new Mutator();
-var colourInheritor = new ColourInheritor(rgbFormatter, mutator);
 var cellFactory = new CellFactory(simulation, cellRepository, positionInheritor, shapeInheritor, colourInheritor);
 var dawnTime = new DawnTime(decoratedEngine);
+
+// instantiate our services
+var rgbFormatter = new RgbFormatter();
+var mutator = new Mutator();
+
+// instantiate our inheritors
+var colourInheritor = new ColourInheritor(rgbFormatter, mutator);
+var positionInheritor = new PositionInheritor();
+var shapeInheritor = new ShapeInheritor();
 
 // instantiate our listeners
 var animateCells = new AnimateCells(cellRepository);
