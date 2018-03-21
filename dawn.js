@@ -1,8 +1,8 @@
 // insantiate decorators
+var decoratedEngine = new DecoratedEngine();
 var decoratedRunner = new DecoratedRunner();
 
 // instantiate our objects
-var decoratedEngine = new DecoratedEngine();
 var decoratedRender = new DecoratedRender();
 var eventController = new EventController(decoratedEngine);
 var simulation = new Simulation(decoratedEngine, decoratedRender);
