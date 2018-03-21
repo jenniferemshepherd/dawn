@@ -9,10 +9,10 @@ describe("Cell", function() {
     value: function() { return 1000 }
   };
   var mockMiddleAge = {
-    value: function() { return 10000 }
+    value: function() { return 12000 }
   };
   var mockElderlyAge = {
-    value: function() { return 22000 }
+    value: function() { return 60000 }
   };
 
   beforeEach(function() {
@@ -67,7 +67,7 @@ describe("Cell", function() {
     it("returns true when cell is adult and has not reproduced recently", function() {
       cell = new Cell(mockBody, mockGait, mockMiddleAge);
       cell.updateLastReproduction(mockCurrentTime);
-      expect(cell.isFertile(mockCurrentTime + 6000)).toEqual(true);
+      expect(cell.isFertile(mockCurrentTime + 8000)).toEqual(true);
     });
 
     it("returns false when cell is elderly", function() {
