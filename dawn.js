@@ -10,7 +10,6 @@ var simulation = new Simulation(decoratedEngine, decoratedRender);
 // instantiate factories and repositories
 var cellRepository = new CellRepository();
 var cellFactory = new CellFactory(simulation, cellRepository, positionInheritor, shapeInheritor, colourInheritor);
-var dawnTime = new DawnTime(decoratedEngine);
 
 // instantiate services
 var rgbFormatter = new RgbFormatter();
