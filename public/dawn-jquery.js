@@ -1,28 +1,28 @@
 $( document ).ready(function() {
 
-  startSimulation(cellFactory, runner, decoratedEngine, simulation);
+  startSimulation(cellFactory, decoratedRunner, decoratedEngine, simulation);
 
   $( "#start" ).click(function() {
     if (decoratedEngine.matterEngine().timing.timestamp === 0) {
-      startSimulation(cellFactory, runner, decoratedEngine, simulation);
+      startSimulation(cellFactory, decoratedRunner, decoratedEngine, simulation);
     };
     });
 
   $( "#stop" ).click(function() {
-    stopSimulation(runner, decoratedEngine, simulation);
+    stopSimulation(decoratedRunner, decoratedEngine, simulation);
     });
 
   $( "#pause" ).click(function() {
-    stopRunner(runner);
+    stopRunner(decoratedRunner);
     });
 
   $( "#unpause" ).click(function() {
-    runRunner(runner, decoratedEngine)
+    runRunner(decoratedRunner, decoratedEngine)
     });
 
   $('#refresh').click(function() {
-    stopSimulation(runner, decoratedEngine, simulation);
-    startSimulation(cellFactory, runner, decoratedEngine, simulation);
+    stopSimulation(decoratedRunner, decoratedEngine, simulation);
+    startSimulation(cellFactory, decoratedRunner, decoratedEngine, simulation);
   });
 
   $('#wireframe').click(function() {
@@ -31,15 +31,15 @@ $( document ).ready(function() {
 
   // functions for jQuery
 
-  function startSimulation(cellFactory, runner, decoratedEngine, simulation) {
+  function startSimulation(cellFactory, decoratedRunner, decoratedEngine, simulation) {
     cellFactory.createInitialShapes();
-    runRunner(runner, decoratedEngine);
+    runRunner(decoratedRunner, decoratedEngine);
     simulation.setup();
     simulation.runRender();
   };
 
-  function stopSimulation(runner, decoratedEngine, simulation) {
-    stopRunner(runner);
+  function stopSimulation(decoratedRunner, decoratedEngine, simulation) {
+    stopRunner(decoratedRunner);
     clearEngine(decoratedEngine);
     decoratedEngine.resetTimer();
     simulation.emptyWorld();
@@ -50,10 +50,10 @@ $( document ).ready(function() {
   };
 
   function stopRunner(runner) {
-    Matter.Runner.stop(runner.matterRunner());
+    Matter.Runner.stop(decoratedRunner.matterRunner());
   };
 
   function runRunner(runner, decoratedEngine) {
-    Matter.Runner.run(runner.matterRunner(), decoratedEngine.matterEngine());
+    Matter.Runner.run(decoratedRunner.matterRunner(), decoratedEngine.matterEngine());
   };
 });

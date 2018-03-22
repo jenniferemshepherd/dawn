@@ -10,26 +10,17 @@
   <script src="lib/jasmine-3.1.0/jasmine.js"></script>
   <script src="lib/jasmine-3.1.0/jasmine-html.js"></script>
   <script src="lib/jasmine-3.1.0/boot.js"></script>
-
-  <!-- include source files here... -->
   <script src="./node_modules/matter-js/build/matter.js"></script>
   <script src="./node_modules/p5/lib/p5.js"></script>
   <script src="./node_modules/p5/lib/addons/p5.sound.js"></script>
-  <script src="./models/Cell.js"></script>
-  <script src="./models/Simulation.js"></script>
-  <script src="./models/decorated-runner.js"></script>
-  <script src="./models/DecoratedEngine.js"></script>
-  <script src="./models/DecoratedRender.js"></script>
-  <script src="./models/CellRepository.js"></script>
-  <script src="./models/Gait.js"></script>
-  <script src="./models/voice.js"></script>
-  <script src="./models/Age.js"></script>
-  <script src="./models/EventController.js"></script>
-  <script src="./models/CellFactory.js"></script>
-  <script src="./models/mutator.js"></script>
-  <script src="./models/rgb-formatter.js"></script>
-  <script src="./models/ColourInheritor.js"></script>
-  <script src="./models/DawnTime.js"></script>
+
+  <!-- include source files here... -->
+  <script src="./controllers/event-controller.js"></script>
+  <script src="./controllers/simulation.js"></script>
+  <script src="./decorators/decorated-engine.js"></script>
+  <script src="./decorators/decorated-render.js"></script>
+  <script src="./decorators/decorated-runner.js"></script>
+  <script src="./inheritors/colour-inheritor.js"></script>
   <script src="./inheritors/position-inheritor.js"></script>
   <script src="./inheritors/shape-inheritor.js"></script>
   <script src="./listeners/animate-cells.js"></script>
@@ -37,28 +28,35 @@
   <script src="./listeners/fade-cells.js"></script>
   <script src="./listeners/grow-cells.js"></script>
   <script src="./listeners/kill-cells.js"></script>
+  <script src="./models/cell.js"></script>
+  <script src="./models/cell-factory.js"></script>
+  <script src="./models/cell-repository.js"></script>
+  <script src="./properties/age.js"></script>
+  <script src="./properties/gait.js"></script>
+  <script src="./properties/voice.js"></script>
+  <script src="./services/mutator.js"></script>
+  <script src="./services/rgb-formatter.js"></script>
 
   <!-- include spec files here... -->
-  <script src="spec/CellSpec.js"></script>
-  <script src="spec/SimulationSpec.js"></script>
-  <script src="spec/DecoratedEngineSpec.js"></script>
-  <script src="spec/DecoratedRenderSpec.js"></script>
+  <script src="spec/event-controller-spec.js"></script>
+  <script src="spec/simulation-spec.js"></script>
+  <script src="spec/decorated-engine-spec.js"></script>
+  <script src="spec/decorated-render-spec.js"></script>
   <script src="spec/decorated-runner-spec.js"></script>
-  <script src="spec/GaitSpec.js"></script>
-  <script src="spec/AgeSpec.js"></script>
-  <script src="spec/CellRepositorySpec.js"></script>
-  <script src="spec/EventControllerSpec.js"></script>
-  <script src="spec/CellFactorySpec.js"></script>
-  <script src="spec/DawnTimeSpec.js"></script>
-  <script src="spec/rgb-formatter-spec.js"></script>
   <script src="spec/colour-inheritor-spec.js"></script>
   <script src="spec/position-inheritor-spec.js"></script>
   <script src="spec/shape-inheritor-spec.js"></script>
-  <script src="spec/birth-cell-spec.js"></script>
   <script src="spec/animate-cells-spec.js"></script>
+  <script src="spec/birth-cell-spec.js"></script>
   <script src="spec/fade-cells-spec.js"></script>
   <script src="spec/grow-cells-spec.js"></script>
   <script src="spec/kill-cells-spec.js"></script>
+  <script src="spec/cell-spec.js"></script>
+  <script src="spec/cell-factory-spec.js"></script>
+  <script src="spec/cell-repository-spec.js"></script>
+  <script src="spec/age-spec.js"></script>
+  <script src="spec/gait-spec.js"></script>
+  <script src="spec/rgb-formatter-spec.js"></script>
 
 </head>
 

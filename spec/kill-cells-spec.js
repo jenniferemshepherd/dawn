@@ -1,6 +1,6 @@
 'use strict';
 
-describe("Killer", function() {
+describe("KillCells", function() {
   var killCells;
 
   var mockSimulation = {
@@ -41,15 +41,15 @@ describe("Killer", function() {
     spyOn(mockSimulation, 'removeFromWorld')
   });
 
-  describe("#kill", function() {
+  describe("#action", function() {
 
-    it("does not kill cell if younger than 1500", function() {
+    it("does not kill young cells", function() {
       killCells = new KillCells(mockYoungCellRepository, mockSimulation);
       killCells.action(mockEvent);
       expect(mockSimulation.removeFromWorld).toHaveBeenCalledTimes(0);
     });
 
-    it("kills cell if older than 1500", function() {
+    it("kills old cells", function() {
       killCells = new KillCells(mockOldCellRepository, mockSimulation);
       killCells.action(mockEvent);
       expect(mockSimulation.removeFromWorld).toHaveBeenCalledTimes(1);
