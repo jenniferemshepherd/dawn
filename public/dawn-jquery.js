@@ -13,11 +13,11 @@ $( document ).ready(function() {
     });
 
   $( "#pause" ).click(function() {
-    stopRunner(decoratedRunner);
+    pauseRunner();
     });
 
-  $( "#unpause" ).click(function() {
-    runRunner(decoratedRunner, decoratedEngine)
+  $( "#resume" ).click(function() {
+    resumeRunner;
     });
 
   $('#refresh').click(function() {
@@ -56,4 +56,13 @@ $( document ).ready(function() {
   function runRunner(runner, decoratedEngine) {
     Matter.Runner.run(decoratedRunner.matterRunner(), decoratedEngine.matterEngine());
   };
+
+  function pauseRunner() {
+    decoratedRunner.matterRunner().enabled = false;
+  };
+
+  function resumeRunner() {
+    decoratedRunner.matterRunner().enabled = true;
+  };
+
 });
