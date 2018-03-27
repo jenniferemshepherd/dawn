@@ -2,6 +2,8 @@
 
 || [Ed Perkins](https://github.com/edpe) || [Jennifer Shepherd](https://github.com/jenniferemshepherd) || [Ellie Wem](https://github.com/elliewem) || [Roland Vink](https://github.com/rcvink) ||
 
+_dawn_ can be observed in action [here](https://rcvink.github.io/dawn/).
+
 ## What is dawn?
 
 _dawn_ is a procedurally generated socio-genetic simulation. What does that mean?
@@ -14,6 +16,9 @@ _dawn_ is a procedurally generated socio-genetic simulation. What does that mean
 
 ## getting started
 
+[The easy way.](https://rcvink.github.io/dawn/)
+
+The lengthier way:
 * `git clone` this repository.
 * `cd dawn`.
 * `npm install` to install dependencies for development.
@@ -87,7 +92,7 @@ so that the new cells don't eventually become the same colour
 i want there to be a chance of colour mutation
 
 as an observer
-so i am can experience cell creation on a different sensory level
+so i can experience cell creation on a different sensory level
 i want there to be a sound on creation
 ```
 
@@ -104,6 +109,6 @@ i want there to be a sound on creation
 # Points for development:
 * mutation in shape
 * update code to ES6
-* improve file structure
+* improved deployment (e.g. using Webpack)
 
 for more points for development, you can check out our [issues](https://github.com/jenniferemshepherd/dawn/issues).
