@@ -3,9 +3,9 @@ $( document ).ready(function() {
   startSimulation(cellFactory, decoratedRunner, decoratedEngine, simulation);
 
   $( "#start" ).click(function() {
-    if (decoratedEngine.matterEngine().timing.timestamp === 0) {
-      startSimulation(cellFactory, decoratedRunner, decoratedEngine, simulation);
-    };
+      if (decoratedEngine.matterEngine().timing.timestamp === 0) {
+        startSimulation(cellFactory, decoratedRunner, decoratedEngine, simulation);
+      };
     });
 
   $( "#stop" ).click(function() {
@@ -17,7 +17,9 @@ $( document ).ready(function() {
     });
 
   $( "#resume" ).click(function() {
-    resumeRunner;
+      if (decoratedRunner._matterRunner.enabled === false) {
+        resumeRunner();
+      };
     });
 
   $('#refresh').click(function() {
