@@ -3,9 +3,9 @@ $( document ).ready(function() {
   startSimulation(cellFactory, decoratedRunner, decoratedEngine, simulation);
 
   $( "#start" ).click(function() {
-    if (decoratedEngine.matterEngine().timing.timestamp === 0) {
-      startSimulation(cellFactory, decoratedRunner, decoratedEngine, simulation);
-    };
+      if (decoratedEngine.matterEngine().timing.timestamp === 0) {
+        startSimulation(cellFactory, decoratedRunner, decoratedEngine, simulation);
+      };
     });
 
   $( "#stop" ).click(function() {
@@ -13,11 +13,13 @@ $( document ).ready(function() {
     });
 
   $( "#pause" ).click(function() {
-    stopRunner(decoratedRunner);
+    pauseRunner();
     });
 
-  $( "#unpause" ).click(function() {
-    runRunner(decoratedRunner, decoratedEngine)
+  $( "#resume" ).click(function() {
+      if (decoratedRunner._matterRunner.enabled === false) {
+        resumeRunner();
+      };
     });
 
   $('#refresh').click(function() {
@@ -56,4 +58,13 @@ $( document ).ready(function() {
   function runRunner(runner, decoratedEngine) {
     Matter.Runner.run(decoratedRunner.matterRunner(), decoratedEngine.matterEngine());
   };
+
+  function pauseRunner() {
+    decoratedRunner.matterRunner().enabled = false;
+  };
+
+  function resumeRunner() {
+    decoratedRunner.matterRunner().enabled = true;
+  };
+
 });
