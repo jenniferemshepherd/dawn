@@ -1,15 +1,11 @@
 'use strict';
 
-(function(exports) {
+function Mutator() {
 
-  function Mutator() {
+}
 
-  }
+Mutator.prototype.isMutation = function() {
+  return (Math.floor(Math.random() * 10) === 5);
+};
 
-  Mutator.prototype.isMutation = function() {
-    return (Math.floor(Math.random() * 10) === 5);
-  };
-
-  exports.Mutator = Mutator;
-
-})(this);
+module.exports = Mutator;
