@@ -1,6 +1,6 @@
 'use strict';
 
-var Age = require('../properties/age');
+const Age = require('../properties/age');
 
 describe("Age", function() {
   var age;
