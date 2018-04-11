@@ -1,5 +1,7 @@
 'use strict';
 
+const KillCells = require('../listeners/kill-cells');
+
 describe("KillCells", function() {
   var killCells;
 
