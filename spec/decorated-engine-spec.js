@@ -1,5 +1,7 @@
 'use strict';
 
+const DecoratedEngine = require('../decorators/decorated-engine');
+
 describe("DecoratedEngine", function() {
   var engine;
   var ourGravity = {
