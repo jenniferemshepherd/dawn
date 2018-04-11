@@ -1,5 +1,7 @@
 'use strict';
 
+const AnimateCells = require('../listeners/animate-cells');
+
 describe("AnimateCells", function() {
   var animateCells;
   var mockBodyModule = {
