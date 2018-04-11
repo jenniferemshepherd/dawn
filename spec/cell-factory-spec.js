@@ -1,5 +1,7 @@
 'use strict';
 
+const CellFactory = require('../models/cell-factory');
+
 describe("CellFactory", function() {
   var cellFactory;
   var mockCell = {
@@ -23,6 +25,7 @@ describe("CellFactory", function() {
     colourMixer: function() { return }
   };
   var mockBodyModule = {
+    circle: function() { return },
     fromVertices: function() { return }
   };
 
@@ -37,7 +40,7 @@ describe("CellFactory", function() {
     );
   });
 
-  describe("#create", function() {
+  describe("#createCircle", function() {
 
     beforeEach(function() {
       spyOn(mockCellRepository, 'add');
@@ -45,7 +48,7 @@ describe("CellFactory", function() {
     });
 
     it("can create a cell", function() {
-      expect(cellFactory.createCircle().body().type).toEqual('body');
+      expect(cellFactory.createCircle().constructor.name).toEqual('Cell');
     });
 
     it("stores it in the repository", function() {
@@ -57,6 +60,7 @@ describe("CellFactory", function() {
       cellFactory.createCircle();
       expect(mockSimulation.addToWorld).toHaveBeenCalled();
     });
+    
   });
 
 });
