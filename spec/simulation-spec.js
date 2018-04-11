@@ -1,5 +1,7 @@
 'use strict';
 
+const Simulation = require('../controllers/simulation');
+
 describe("Simulation", function() {
   var simulation;
   var mockWorld;
