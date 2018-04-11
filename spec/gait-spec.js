@@ -1,5 +1,7 @@
 'use strict';
 
+var Gait = require('../properties/gait');
+
 describe("Gait", function() {
   var gait;
 
