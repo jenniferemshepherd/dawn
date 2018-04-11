@@ -11,7 +11,7 @@ _dawn_ is a procedurally generated socio-genetic simulation. What does that mean
 - Procedurally generated
   - None of the outcomes are predefined; they are based purely on the results of the random algorithms.
 - Socio-genetic simulation
-  - _dawn_ is inspired by Conway's Game of Life and Spore (also No Man's Sky regarding the procedural generation).
+  - _dawn_ is inspired by Conway's Game of Life, Spore and No Man's Sky.
   - The user observes 'cells' interacting with each other in an environment; living, breeding, inheriting properties, and eventually dying.
 
 ## getting started
@@ -21,8 +21,9 @@ _dawn_ is a procedurally generated socio-genetic simulation. What does that mean
 The lengthier way:
 * `git clone` this repository.
 * `cd dawn`.
-* `npm install` to install dependencies for development.
-* `open specRunner.html` (OSX) or `xdg-open specRunner.html` (Linux) to run unit tests.
+* `npm install` to install dependencies.
+* `npm run build` to bundle dependencies.
+* `npm test` to run unit tests.
 * `open dawn.html` (OSX) or `xdg-open dawn.html` (Linux) to observe _dawn_
 
 ## process
@@ -37,7 +38,7 @@ The lengthier way:
 
 ## user stories
 
-### mvp/v1
+### mvp
 ```
 as an observer
 because I am interested in life simulations
@@ -97,18 +98,12 @@ i want there to be a sound on creation
 ```
 
 
-## web stack
-* [Node.js](https://nodejs.org/en/).
-* [NPM](https://www.npmjs.com/) for dependencies.
-* [Matter.js](http://brm.io/matter-js/) for physics, with the following plugin:
-  * [matter-attractors](https://github.com/liabru/matter-attractors)
+## stack
+* [NPM](https://www.npmjs.com/) for package management.
+* [Matter-js](http://brm.io/matter-js/) for physics.
 * [p5-sound](https://p5js.org/reference/#/libraries/p5.sound) for sound.
-* [Jasmine](https://jasmine.github.io/) for unit and integration testing.
-<!-- * [webpack](https://webpack.js.org/) for bundling on deployment. -->
+* [Jasmine](https://jasmine.github.io/) for unit testing.
+* [Browserify](http://browserify.org/) for bundling.
 
-# Points for development:
-* mutation in shape
-* update code to ES6
-* improved deployment (e.g. using Webpack)
-
-for more points for development, you can check out our [issues](https://github.com/jenniferemshepherd/dawn/issues).
+# points for development
+Check out our [issues](https://github.com/jenniferemshepherd/dawn/issues).
