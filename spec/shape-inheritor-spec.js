@@ -1,5 +1,7 @@
 'use strict';
 
+const ShapeInheritor = require('../inheritors/shape-inheritor');
+
 describe("ShapeInheritor", function() {
   var shapeInheritor;
 
