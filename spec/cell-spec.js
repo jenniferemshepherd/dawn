@@ -1,5 +1,7 @@
 'use strict';
 
+const Cell = require('../models/cell');
+
 describe("Cell", function() {
   var cell;
   var mockBody;

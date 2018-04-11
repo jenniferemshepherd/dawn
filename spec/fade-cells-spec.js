@@ -1,5 +1,7 @@
 'use strict';
 
+const FadeCells = require('../listeners/fade-cells');
+
 describe("FadeCells", function() {
   var fadeCells;
 

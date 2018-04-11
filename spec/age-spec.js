@@ -1,5 +1,7 @@
 'use strict';
 
+const Age = require('../properties/age');
+
 describe("Age", function() {
   var age;
   var mockBirthday = 3000;

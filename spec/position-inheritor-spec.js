@@ -1,5 +1,7 @@
 'use strict';
 
+const PositionInheritor = require('../inheritors/position-inheritor');
+
 describe("PositionInheritor", function() {
   var positionInheritor;
   var mockPosition1 = { x: 3, y: 10 }

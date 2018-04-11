@@ -1,5 +1,7 @@
 'use strict';
 
+const RgbFormatter = require('../services/rgb-formatter');
+
 describe("RgbFormatter", function() {
 
   var body = {

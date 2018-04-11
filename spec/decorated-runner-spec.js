@@ -1,17 +1,17 @@
 'use strict';
 
-describe("DecoratedRunner", function() {
-  var runner;
-  var matterRunner = {
+const DecoratedRunner = require('../decorators/decorated-runner');
 
-  };
+describe("DecoratedRunner", function() {
+  var decoratedRunner;
+  var mockMatterRunner = {};
 
   beforeEach(function() {
-    runner = new DecoratedRunner(matterRunner)
+    decoratedRunner = new DecoratedRunner(mockMatterRunner)
   });
 
   it("stores an instance of matterRunner", function() {
-    expect(runner.matterRunner()).toEqual(matterRunner)
+    expect(decoratedRunner.matterRunner()).toEqual(mockMatterRunner);
   });
 
 });

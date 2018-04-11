@@ -1,5 +1,7 @@
 'use strict';
 
+const GrowCells = require('../listeners/grow-cells');
+
 describe("GrowCells", function() {
   var growCells;
   var mockBodyModule = {

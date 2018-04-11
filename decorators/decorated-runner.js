@@ -1,15 +1,13 @@
 'use strict';
 
-(function(exports) {
+const Matter = require('../node_modules/matter-js/build/matter');
 
-  function DecoratedRunner(matterRunner = Matter.Runner.create()) {
-    this._matterRunner = matterRunner;
-  }
+function DecoratedRunner(matterRunner = Matter.Runner.create()) {
+  this._matterRunner = matterRunner;
+}
 
-  DecoratedRunner.prototype.matterRunner = function () {
-    return this._matterRunner;
-  };
+DecoratedRunner.prototype.matterRunner = function () {
+  return this._matterRunner;
+};
 
-  exports.DecoratedRunner = DecoratedRunner;
-
-})(this);
+module.exports = DecoratedRunner;

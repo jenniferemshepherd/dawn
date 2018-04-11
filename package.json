@@ -4,7 +4,8 @@
   "description": "## process",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine --random=false",
+    "build": "browserify dawn.js -o bundle.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,8 @@
     "p5": "^0.6.0"
   },
   "devDependencies": {
-    "eslint": "^4.18.2"
+    "browserify": "^16.2.0",
+    "eslint": "^4.18.2",
+    "jasmine": "^3.1.0"
   }
 }

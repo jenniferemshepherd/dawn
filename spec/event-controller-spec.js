@@ -1,5 +1,7 @@
 'use strict';
 
+const EventController = require('../controllers/event-controller');
+
 describe("EventController", function() {
   var eventController;
 
@@ -14,7 +16,6 @@ describe("EventController", function() {
   var mockListener = {
     action: function() { return }
   };
-
 
   beforeEach(function() {
     eventController = new EventController(mockDecoratedEngine, mockEventsModule);

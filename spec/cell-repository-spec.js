@@ -1,5 +1,7 @@
 'use strict';
 
+const CellRepository = require('../models/cell-repository');
+
 describe("CellRepository", function() {
   var cellRepository;
   var mockBody = {
