@@ -1,5 +1,7 @@
 'use strict';
 
+const BirthCell = require('../listeners/birth-cell');
+
 describe("BirthCell", function() {
   // mocking instantiators
   var birthCell;
